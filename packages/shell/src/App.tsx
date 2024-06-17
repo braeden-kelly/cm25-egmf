@@ -12,9 +12,9 @@ const Item = lazy(() => import("catalog/item"));
 // @ts-ignore
 const Account = lazy(() => import("profile/account"));
 // @ts-ignore
-const Footer = lazy(() => import("profile/footer"));
+const Footer = lazy(() => import("marketing/footer"));
 // @ts-ignore
-const Header = lazy(() => import("profile/header"));
+const Header = lazy(() => import("marketing/header"));
 // @ts-ignore
 const Login = lazy(() => import("profile/login"));
 

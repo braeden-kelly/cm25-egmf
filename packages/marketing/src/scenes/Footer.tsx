@@ -2,12 +2,12 @@ import type { FC } from "react";
 
 import { Button } from "@radix-ui/themes";
 
-const Header: FC = () => {
+const Footer: FC = () => {
   return (
     <div>
-      Header Page <Button>Header</Button>
+      (marketing)Footer Page <Button>Footer</Button>
     </div>
   );
 };
 
-export default Header;
+export default Footer;

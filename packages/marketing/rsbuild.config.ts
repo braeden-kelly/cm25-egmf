@@ -5,10 +5,10 @@ export default defineConfig({
   plugins: [pluginReact()],
   moduleFederation: {
     options: {
-      name: "profile",
+      name: "marketing",
       exposes: {
-        "./account": "./src/scenes/Account.tsx",
-        "./login": "./src/scenes/Login.tsx",
+        "./header": "./src/scenes/Header.tsx",
+        "./footer": "./src/scenes/Footer.tsx",
       },
       filename: "remoteEntry.js",
     },
