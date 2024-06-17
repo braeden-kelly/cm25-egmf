@@ -1,6 +1,7 @@
+import { MantineProvider, createTheme } from "@mantine/core";
+
 import Header from "./scenes/Header";
 import Footer from "./scenes/Footer";
-import { MantineProvider, createTheme } from "@mantine/core";
 
 const theme = createTheme({});
 

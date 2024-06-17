@@ -8,7 +8,7 @@ export default defineConfig({
       name: "marketing",
       exposes: {
         "./header": "./src/scenes/Header.tsx",
-        "./footer": "./src/scenes/Footer.tsx",
+        "./footer": "./src/scenes/Footer/index.ts",
       },
       filename: "remoteEntry.js",
     },
