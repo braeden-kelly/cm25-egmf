@@ -1,5 +1,6 @@
 npx nx run shell:dev
 npx nx run-many -t dev
+npx nx run-many -t dev --parallel=10
 
 nx run <package-name>:<script>
 nx run-many -t <script>

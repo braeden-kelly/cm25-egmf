@@ -3,12 +3,17 @@ import { pluginReact } from "@rsbuild/plugin-react";
 
 export default defineConfig({
   plugins: [pluginReact()],
+  source: {
+    alias: {
+      "@test": "./src/test",
+    },
+  },
   moduleFederation: {
     options: {
-      name: "profile",
+      name: "marketing",
       exposes: {
-        "./account": "./src/scenes/Account.tsx",
-        "./login": "./src/scenes/Login.tsx",
+        "./header": "./src/scenes/Header.tsx",
+        "./footer": "./src/scenes/Footer/index.ts",
       },
       filename: "remoteEntry.js",
     },

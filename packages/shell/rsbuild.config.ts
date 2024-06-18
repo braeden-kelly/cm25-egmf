@@ -10,6 +10,7 @@ export default defineConfig({
         catalog: "catalog@http://localhost:3001/remoteEntry.js",
         order: "order@http://localhost:3002/remoteEntry.js",
         profile: "profile@http://localhost:3003/remoteEntry.js",
+        marketing: "marketing@http://localhost:3004/remoteEntry.js",
       },
     },
   },
