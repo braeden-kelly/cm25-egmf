@@ -12,6 +12,18 @@ export default defineConfig({
         profile: "profile@http://localhost:3003/remoteEntry.js",
         marketing: "marketing@http://localhost:3004/remoteEntry.js",
       },
+      shared: {
+        "@mantine/core": {
+          requiredVersion: "^7.10.2",
+          singleton: true,
+          eager: true,
+        },
+        "react-router-dom": {
+          requiredVersion: "^6.23.1",
+          singleton: true,
+          eager: true,
+        },
+      },
     },
   },
 });
