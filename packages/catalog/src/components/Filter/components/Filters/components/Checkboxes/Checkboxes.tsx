@@ -19,6 +19,7 @@ const Checkboxes = ({
       <Group>
         {options.map((option) => (
           <Checkbox
+            key={option}
             label={option}
             name={option}
             checked={checked.includes(option)}
