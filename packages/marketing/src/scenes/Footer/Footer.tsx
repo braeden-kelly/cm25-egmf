@@ -9,7 +9,7 @@ import BitoviLinks from "./components/BitoviLinks";
 
 const Footer: FC = () => {
   return (
-    <Container fluid p="xl" component="footer" bg="dark" c="white">
+    <Container component="footer" fluid p="xl" bg="dark" c="white">
       <SimpleGrid cols={{ xs: 1, md: 2, lg: 4 }}>
         <WorkShopLinks />
         <CompanyLinks />
