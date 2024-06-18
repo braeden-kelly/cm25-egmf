@@ -16,8 +16,8 @@ const FooterLinks: FC<FooterLinksProps> = ({ title, links }) => {
   return (
     <Stack>
       <Title order={3}>{title}</Title>
-      {links.map((link) => (
-        <Anchor key={link.href} c="white" href={link.href}>
+      {links.map((link, index) => (
+        <Anchor key={link.href + index} c="white" href={link.href}>
           {link.text}
         </Anchor>
       ))}

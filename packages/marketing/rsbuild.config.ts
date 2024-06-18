@@ -3,6 +3,11 @@ import { pluginReact } from "@rsbuild/plugin-react";
 
 export default defineConfig({
   plugins: [pluginReact()],
+  source: {
+    alias: {
+      "@test": "./src/test",
+    },
+  },
   moduleFederation: {
     options: {
       name: "marketing",
