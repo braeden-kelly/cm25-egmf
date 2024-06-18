@@ -8,7 +8,7 @@ const App = () => {
   return (
     <MantineProvider theme={theme}>
       <Header />
-      <Footer />
+      {/* <Footer /> */}
     </MantineProvider>
   );
 };
