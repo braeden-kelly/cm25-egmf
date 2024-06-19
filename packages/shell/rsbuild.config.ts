@@ -23,6 +23,16 @@ export default defineConfig({
           singleton: true,
           eager: true,
         },
+        react: {
+          requiredVersion: "^18.2.0",
+          singleton: true,
+          eager: true,
+        },
+        "react-dom": {
+          requiredVersion: "^18.2.0",
+          singleton: true,
+          eager: true,
+        },
       },
     },
   },

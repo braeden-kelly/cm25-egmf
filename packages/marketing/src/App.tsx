@@ -1,7 +1,7 @@
-import Header from "./scenes/Header";
-import Footer from "./scenes/Footer";
 import { MantineProvider, createTheme } from "@mantine/core";
 import { BrowserRouter, Routes, Link, Route } from "react-router-dom";
+import Header from "./scenes/Header";
+import Footer from "./scenes/Footer";
 
 const theme = createTheme({});
 
