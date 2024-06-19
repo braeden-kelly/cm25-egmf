@@ -1,8 +1,8 @@
 import type { FC } from "react";
-import { Text, Group } from "@mantine/core";
+import { Text, Group, NavLink } from "@mantine/core";
 import { Link as RouterLink } from "react-router-dom";
 
-const Link = ({ to, text }: { to: string; text: string }) => {
+const Link: FC<{ to: string; text: string }> = ({ to, text }) => {
   return (
     <RouterLink to={to} style={{ textDecoration: "none" }}>
       <Text size="lg" c="white">
@@ -15,10 +15,10 @@ const Link = ({ to, text }: { to: string; text: string }) => {
 const Links: FC = () => {
   return (
     <Group>
-      <Link to="/" text="Home" />
-      <Link to="/shop" text="Shop" />
-      <Link to="/about" text="About" />
-      <Link to="/contact" text="Contact" />
+      <NavLink to="/" component={Link} text="Home" />
+      <NavLink to="/shop" component={Link} text="Shop" />
+      <NavLink to="/about" component={Link} text="About" />
+      <NavLink to="/contact" component={Link} text="Contact" />
     </Group>
   );
 };

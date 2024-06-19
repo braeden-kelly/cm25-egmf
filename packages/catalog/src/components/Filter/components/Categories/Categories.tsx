@@ -1,6 +1,6 @@
 import type { FC } from "react";
-import { Text, Stack } from "@mantine/core";
-import { Link } from "react-router-dom";
+import { Text, Stack, NavLink } from "@mantine/core";
+import { Link as RouterLink } from "react-router-dom";
 
 const categories = [
   ["/shop/clothing", "Clothing"],
@@ -10,6 +10,16 @@ const categories = [
   ["/shop/sports-outdoors", "Sports & Outdoors"],
 ];
 
+const Link: FC<{ to: string; text: string }> = ({ to, text }) => {
+  return (
+    <RouterLink to={to} style={{ textDecoration: "none" }}>
+      <Text size="lg" c="dark">
+        {text}
+      </Text>
+    </RouterLink>
+  );
+};
+
 const Categories: FC = () => {
   return (
     <Stack gap="xs" align="flex-start">
@@ -17,15 +27,13 @@ const Categories: FC = () => {
         Categories
       </Text>
       {categories.map((category) => (
-        <Link
-          to={category[0]}
+        <NavLink
           key={category[0]}
-          style={{ textDecoration: "none" }}
-        >
-          <Text key={category[0]} size="lg" c="dark">
-            {category[1]}
-          </Text>
-        </Link>
+          to={category[0]}
+          component={Link}
+          text={category[1]}
+          p="xs"
+        />
       ))}
     </Stack>
   );

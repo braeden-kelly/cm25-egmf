@@ -1,16 +1,12 @@
+import type { FC } from "react";
 import { Group, Text, Stack, Checkbox } from "@mantine/core";
 
-const Checkboxes = ({
-  checked,
-  onChange,
-  title,
-  options,
-}: {
+const Checkboxes: FC<{
   checked: string[];
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   title: string;
   options: string[];
-}) => {
+}> = ({ checked, onChange, title, options }) => {
   return (
     <Stack gap="xs">
       <Text size="lg" c="dark">

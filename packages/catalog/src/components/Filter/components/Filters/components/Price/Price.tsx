@@ -1,16 +1,12 @@
+import type { FC } from "react";
 import { Group, Text, TextInput, Stack } from "@mantine/core";
 
-const Price = ({
-  min,
-  max,
-  setMin,
-  setMax,
-}: {
+const Price: FC<{
   min: string;
   max: string;
   setMin: React.Dispatch<React.SetStateAction<string>>;
   setMax: React.Dispatch<React.SetStateAction<string>>;
-}) => {
+}> = ({ min, max, setMin, setMax }) => {
   return (
     <Stack gap="xs">
       <Text size="lg" c="dark">
