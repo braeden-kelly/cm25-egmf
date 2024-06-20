@@ -1,5 +1,6 @@
 import type { FC } from "react";
 import { Card, Image, Text, Stack, Button } from "@mantine/core";
+import { Link } from "react-router-dom";
 
 export interface CatalogListItemProps {
   href: string;
@@ -17,7 +18,7 @@ const CatalogListItem: FC<CatalogListItemProps> = ({
   return (
     <Card shadow="sm" p={0} h={350} w={250}>
       <Stack gap="sm">
-        <a href={href}>
+        <Link to={href}>
           <Image
             src={imgSrc}
             alt={name}
@@ -25,7 +26,7 @@ const CatalogListItem: FC<CatalogListItemProps> = ({
             width={250}
             fit="contain"
           />
-        </a>
+        </Link>
         <Stack gap="sm" px="md">
           <Text size="xl" fw={700}>
             {name}
