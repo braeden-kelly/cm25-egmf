@@ -1,13 +1,5 @@
-import { Button } from "@radix-ui/themes";
-import { FC } from "react";
+import CatalogList from "../components/CatalogList";
 
-const CatalogList: FC = () => {
-  return (
-    <div>
-      List Page
-      <Button>Let's Go Get em'!</Button>
-    </div>
-  );
-};
-
-export default CatalogList;
+export default function () {
+  return <CatalogList />;
+}
