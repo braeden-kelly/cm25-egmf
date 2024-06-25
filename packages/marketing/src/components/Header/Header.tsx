@@ -12,7 +12,7 @@ const styles = {
 
 const Header: FC = () => {
   return (
-    <Container style={styles.Header.Container} fluid p="sm" component="header">
+    <Container sx={styles.Header.Container} fluid p="sm" component="header">
       <Flex justify="space-between" align="center" direction="row">
         <HomeLink />
         <MFESearch />

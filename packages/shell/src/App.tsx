@@ -2,9 +2,8 @@
 import { lazy } from "react";
 import "./App.css";
 import { Theme } from "@radix-ui/themes";
-import { MantineProvider, createTheme } from "@mantine/core";
-
-const theme = createTheme({});
+import { MantineProvider } from "@mantine/core";
+import { emotionTransform, MantineEmotionProvider } from "@mantine/emotion";
 
 import "@radix-ui/themes/styles.css";
 import { BrowserRouter } from "react-router-dom";
@@ -34,25 +33,27 @@ const Shipping = lazy(() => import("order/shipping"));
 
 const App = () => {
   return (
-    <MantineProvider theme={theme}>
-      <BrowserRouter>
-        <Theme accentColor="red">
-          <div className="content">
-            <h1>shell</h1>
-            <p>Start building amazing things with Rsbuild.</p>
-            <List />
-            <Item />
-            <Account />
-            <Header />
-            <Footer />
-            <Filter />
-            <Login />
-            <Cart />
-            <Checkout />
-            <Shipping />
-          </div>
-        </Theme>
-      </BrowserRouter>
+    <MantineProvider stylesTransform={emotionTransform}>
+      <MantineEmotionProvider>
+        <BrowserRouter>
+          <Theme accentColor="red">
+            <div className="content">
+              <h1>shell</h1>
+              <p>Start building amazing things with Rsbuild.</p>
+              <List />
+              <Item />
+              <Account />
+              <Header />
+              <Footer />
+              <Filter />
+              <Login />
+              <Cart />
+              <Checkout />
+              <Shipping />
+            </div>
+          </Theme>
+        </BrowserRouter>
+      </MantineEmotionProvider>
     </MantineProvider>
   );
 };
