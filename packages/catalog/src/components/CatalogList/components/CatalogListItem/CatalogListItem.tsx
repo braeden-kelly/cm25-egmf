@@ -1,5 +1,5 @@
 import type { FC } from "react";
-import { Card, Image, Text, Stack, Button } from "@mantine/core";
+import { Card, Image, Text, Stack, Button, Tooltip } from "@mantine/core";
 import { Link } from "react-router-dom";
 
 export interface CatalogListItemProps {
@@ -24,13 +24,23 @@ const CatalogListItem: FC<CatalogListItemProps> = ({
             alt={name}
             height={200}
             width={250}
-            fit="contain"
+            fit="scale-down"
           />
         </Link>
         <Stack gap="sm" px="md">
-          <Text size="xl" fw={700}>
-            {name}
-          </Text>
+          <Tooltip label={name}>
+            <Text
+              size="lg"
+              fw={700}
+              sx={{
+                overflow: "hidden",
+                textOverflow: "ellipsis",
+                whiteSpace: "nowrap",
+              }}
+            >
+              {name}
+            </Text>
+          </Tooltip>
           <Text size="lg" c="dark">
             ${price}
           </Text>
