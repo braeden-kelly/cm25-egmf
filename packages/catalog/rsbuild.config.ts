@@ -33,6 +33,11 @@ export default defineConfig({
           singleton: true,
           eager: true,
         },
+        "@tanstack/react-query": {
+          requiredVersion: "^5.48.0",
+          singleton: true,
+          eager: true,
+        },
       },
     },
   },

@@ -4,6 +4,7 @@ import "./App.css";
 import { Theme } from "@radix-ui/themes";
 import { MantineProvider } from "@mantine/core";
 import { emotionTransform, MantineEmotionProvider } from "@mantine/emotion";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 import "@radix-ui/themes/styles.css";
 import { BrowserRouter } from "react-router-dom";
@@ -31,30 +32,34 @@ const Checkout = lazy(() => import("order/checkout"));
 // @ts-ignore
 const Shipping = lazy(() => import("order/shipping"));
 
+const queryClient = new QueryClient();
+
 const App = () => {
   return (
-    <MantineProvider stylesTransform={emotionTransform}>
-      <MantineEmotionProvider>
-        <BrowserRouter>
-          <Theme accentColor="red">
-            <div className="content">
-              <h1>shell</h1>
-              <p>Start building amazing things with Rsbuild.</p>
-              <List />
-              <Item />
-              <Account />
-              <Header />
-              <Footer />
-              <Filter />
-              <Login />
-              <Cart />
-              <Checkout />
-              <Shipping />
-            </div>
-          </Theme>
-        </BrowserRouter>
-      </MantineEmotionProvider>
-    </MantineProvider>
+    <QueryClientProvider client={queryClient}>
+      <MantineProvider stylesTransform={emotionTransform}>
+        <MantineEmotionProvider>
+          <BrowserRouter>
+            <Theme accentColor="red">
+              <div className="content">
+                <h1>shell</h1>
+                <p>Start building amazing things with Rsbuild.</p>
+                <List />
+                <Item />
+                <Account />
+                <Header />
+                <Footer />
+                <Filter />
+                <Login />
+                <Cart />
+                <Checkout />
+                <Shipping />
+              </div>
+            </Theme>
+          </BrowserRouter>
+        </MantineEmotionProvider>
+      </MantineProvider>
+    </QueryClientProvider>
   );
 };
 
