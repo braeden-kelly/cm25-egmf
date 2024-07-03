@@ -1,7 +1,25 @@
 import { defineConfig } from "@rsbuild/core";
 import { pluginReact } from "@rsbuild/plugin-react";
+import { sentryWebpackPlugin } from "@sentry/webpack-plugin";
 
 export default defineConfig({
+  source: {
+    define: {
+      "process.env": JSON.stringify(process.env),
+    },
+  },
+  tools: {
+    rspack: {
+      plugins: [
+        sentryWebpackPlugin({
+          moduleMetadata: ({ release }) => ({
+            dsn: process.env.SENTRY_CATALOG_DSN,
+            release,
+          }),
+        }),
+      ],
+    },
+  },
   plugins: [pluginReact()],
   moduleFederation: {
     options: {
@@ -38,6 +56,11 @@ export default defineConfig({
           singleton: true,
           eager: true,
         },
+        // "@sentry/react": {
+        //   requiredVersion: "^8.13.0",
+        //   singleton: true,
+        //   eager: true,
+        // },
       },
     },
   },
