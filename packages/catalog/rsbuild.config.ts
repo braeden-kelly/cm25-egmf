@@ -56,11 +56,6 @@ export default defineConfig({
           singleton: true,
           eager: true,
         },
-        // "@sentry/react": {
-        //   requiredVersion: "^8.13.0",
-        //   singleton: true,
-        //   eager: true,
-        // },
       },
     },
   },
