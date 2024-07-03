@@ -8,7 +8,7 @@ import {
 } from "@sentry/react";
 
 init({
-  dsn: process.env.SENTRY_CATALOG_DSN,
+  dsn: process.env.SENTRY_PROFILE_DSN,
   integrations: [browserTracingIntegration(), replayIntegration()],
   tracesSampleRate: 1.0,
   tracePropagationTargets: ["localhost"],
