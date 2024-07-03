@@ -32,9 +32,6 @@ const CatalogList: FC = () => {
 
   return (
     <Flex gap="md" direction="row" wrap="wrap" p="md">
-      <button onClick={() => methodDoesNotExist()}>
-        trigger sentry from catalog
-      </button>
       {data?.map((product) => (
         <CatalogListItem
           key={product.name}

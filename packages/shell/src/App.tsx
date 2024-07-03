@@ -45,9 +45,6 @@ const App = () => {
             <BrowserRouter>
               <Theme accentColor="red">
                 <div className="content">
-                  <button onClick={() => methodDoesNotExist()}>
-                    trigger sentry from shell
-                  </button>
                   <h1>shell</h1>
                   <p>Start building amazing things with Rsbuild.</p>
                   <List />
