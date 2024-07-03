@@ -9,6 +9,8 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import "@radix-ui/themes/styles.css";
 import { BrowserRouter } from "react-router-dom";
 
+import * as Sentry from "@sentry/react";
+
 // TODO: types
 // @ts-ignore
 const List = lazy(() => import("catalog/list"));
@@ -36,30 +38,32 @@ const queryClient = new QueryClient();
 
 const App = () => {
   return (
-    <QueryClientProvider client={queryClient}>
-      <MantineProvider stylesTransform={emotionTransform}>
-        <MantineEmotionProvider>
-          <BrowserRouter>
-            <Theme accentColor="red">
-              <div className="content">
-                <h1>shell</h1>
-                <p>Start building amazing things with Rsbuild.</p>
-                <List />
-                <Item />
-                <Account />
-                <Header />
-                <Footer />
-                <Filter />
-                <Login />
-                <Cart />
-                <Checkout />
-                <Shipping />
-              </div>
-            </Theme>
-          </BrowserRouter>
-        </MantineEmotionProvider>
-      </MantineProvider>
-    </QueryClientProvider>
+    <Sentry.ErrorBoundary fallback={<div>An error has occurred</div>}>
+      <QueryClientProvider client={queryClient}>
+        <MantineProvider stylesTransform={emotionTransform}>
+          <MantineEmotionProvider>
+            <BrowserRouter>
+              <Theme accentColor="red">
+                <div className="content">
+                  <h1>shell</h1>
+                  <p>Start building amazing things with Rsbuild.</p>
+                  <List />
+                  <Item />
+                  <Account />
+                  <Header />
+                  <Footer />
+                  <Filter />
+                  <Login />
+                  <Cart />
+                  <Checkout />
+                  <Shipping />
+                </div>
+              </Theme>
+            </BrowserRouter>
+          </MantineEmotionProvider>
+        </MantineProvider>
+      </QueryClientProvider>
+    </Sentry.ErrorBoundary>
   );
 };
 
