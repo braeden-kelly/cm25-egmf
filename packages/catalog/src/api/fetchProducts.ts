@@ -1,6 +1,6 @@
-import { CatalogListItemProps } from "./components";
+import type { CatalogItem } from "./interface";
 
-export async function fetchProducts(): Promise<CatalogListItemProps[]> {
+export async function fetchProducts(): Promise<CatalogItem[]> {
   try {
     const response = await fetch("https://fakestoreapi.com/products");
 
@@ -9,7 +9,7 @@ export async function fetchProducts(): Promise<CatalogListItemProps[]> {
     }
 
     const data = await response.json();
-    const mappedData: CatalogListItemProps[] = data.map((product: any) => ({
+    const mappedData: CatalogItem[] = data.map((product: any) => ({
       href: product.image,
       imgSrc: product.image,
       name: product.title,

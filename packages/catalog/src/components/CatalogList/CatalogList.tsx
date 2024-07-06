@@ -2,7 +2,7 @@ import type { FC } from "react";
 import { Flex, Text } from "@mantine/core";
 import { useQuery } from "@tanstack/react-query";
 import { CatalogListItem, SkeletonCatalogListItem } from "./components";
-import { fetchProducts } from "./api";
+import { fetchProducts } from "../../api";
 
 const CatalogList: FC = () => {
   const { data, isLoading, isError } = useQuery({
