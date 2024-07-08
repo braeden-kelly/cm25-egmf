@@ -16,12 +16,15 @@ const App = () => {
           <BrowserRouter>
             <Link to="/filter">Filter</Link>
             <Link to="/catalog-list">Catalog List</Link>
-            <Link to="/catalog-item">Catalog Item</Link>
+            <Link to="/catalog-item/1">Catalog Item</Link>
             <Routes>
               <Route path="/" element={<Filter />} />
               <Route path="/filter" element={<Filter />} />
               <Route path="/catalog-list" element={<CatalogList />} />
-              <Route path="/catalog-item" element={<CatalogItem />} />
+              <Route
+                path="/catalog-item/:productId"
+                element={<CatalogItem />}
+              />
             </Routes>
           </BrowserRouter>
         </MantineEmotionProvider>
