@@ -1,15 +1,19 @@
 import type { FC } from "react";
-import { Group } from "@mantine/core";
+import { Button, Group } from "@mantine/core";
 import {
   IconCircleFilled,
   IconHeart,
   IconShoppingCart,
 } from "@tabler/icons-react";
 
-const Shortcuts: FC = () => {
+export interface Props {
+  onCartClick: () => void;
+}
+
+const Shortcuts: FC<Props> = ({ onCartClick }) => {
   return (
     <Group>
-      <IconShoppingCart color="white" />
+      <Button onClick={onCartClick}><IconShoppingCart color="white" /></Button>
       <IconHeart color="white" />
       <IconCircleFilled color="white" />
     </Group>

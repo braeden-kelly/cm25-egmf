@@ -1,13 +1,13 @@
 "use client";
-import { lazy } from "react";
+import { lazy, Suspense, useDeferredValue, useState } from "react";
 import "./App.css";
-import { Theme } from "@radix-ui/themes";
-import { MantineProvider } from "@mantine/core";
+import { Container, Flex, Theme } from "@radix-ui/themes";
+import { Drawer, Group, MantineProvider, Stack } from "@mantine/core";
 import { emotionTransform, MantineEmotionProvider } from "@mantine/emotion";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 import "@radix-ui/themes/styles.css";
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 
 import * as Sentry from "@sentry/react";
 
@@ -37,29 +37,58 @@ const Shipping = lazy(() => import("order/shipping"));
 const queryClient = new QueryClient();
 
 const App = () => {
+  const [showCart, setShowCart] = useState(false);
+  const deferredShowCart = useDeferredValue(showCart);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
   return (
     <Sentry.ErrorBoundary fallback={<div>An error has occurred</div>}>
       <QueryClientProvider client={queryClient}>
         <MantineProvider stylesTransform={emotionTransform}>
           <MantineEmotionProvider>
-            <BrowserRouter>
-              <Theme accentColor="red">
-                <div className="content">
-                  <h1>shell</h1>
-                  <p>Start building amazing things with Rsbuild.</p>
-                  <List />
-                  <Item />
-                  <Account />
-                  <Header />
-                  <Footer />
-                  <Filter />
-                  <Login />
-                  <Cart />
-                  <Checkout />
-                  <Shipping />
-                </div>
-              </Theme>
-            </BrowserRouter>
+            <Theme accentColor="red">
+              <BrowserRouter>
+                {!isLoggedIn && (
+                   <Navigate to="/login" replace={true} />
+                ) }
+                <Routes>
+                  <Route path="/login" element={
+                    <>
+                      {isLoggedIn && (
+                        <Navigate to="/" replace={false} />
+                      )}
+                      <Login
+                        isLoggedIn={isLoggedIn}
+                        onLoginSuccess={() => setIsLoggedIn(true)
+                      }/>
+                    </>
+                  } />
+                  <Route path="/*" element={
+                    <>
+                      <Header onCartClick={() => setShowCart(true)} />
+                      <Stack className="content">
+                        <Flex gap="sm" wrap="nowrap">
+                            <Container size="1"><Filter /></Container>
+                            <List />
+                        </Flex>
+                        <Item />
+                        <Account />
+                        <Drawer opened={deferredShowCart} onClose={() => setShowCart(false)} position="right">
+                          <Suspense fallback={<div>Please wait</div>}>
+                            <Theme accentColor="red">
+                              <Cart />
+                            </Theme>
+                          </Suspense>
+                        </Drawer>
+                        <Checkout />
+                        <Shipping />
+                      </Stack>
+                      <Footer />
+                    </>
+                  }/>
+                </Routes>
+              </BrowserRouter>
+            </Theme>
           </MantineEmotionProvider>
         </MantineProvider>
       </QueryClientProvider>

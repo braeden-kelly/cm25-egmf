@@ -1,12 +1,23 @@
 import type { FC } from "react";
+import { Navigate } from "react-router-dom";
 
 import { Button } from "@radix-ui/themes";
 
-const Login: FC = () => {
+export interface Props {
+  onLoginSuccess: (args: any) => void;
+  isLoggedIn: boolean;
+}
+
+const Login: FC<Props> = ({ onLoginSuccess, isLoggedIn }) => {
   return (
-    <div>
-      Login Page <Button>Login</Button>
-    </div>
+    <>
+{/*      {isLoggedIn && (
+        <Navigate to="/" replace={false} />
+      )}*/}
+      <div>
+        Login Page <Button onClick={onLoginSuccess}>Login</Button>
+      </div>
+    </>
   );
 };
 
