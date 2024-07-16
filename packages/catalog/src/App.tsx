@@ -20,7 +20,7 @@ const App = () => {
             <Routes>
               <Route path="/" element={<Filter />} />
               <Route path="/filter" element={<Filter />} />
-              <Route path="/catalog-list" element={<CatalogList />} />
+              <Route path="/catalog-list/:category?" element={<CatalogList />} />
               <Route
                 path="/catalog-item/:productId"
                 element={<CatalogItem />}

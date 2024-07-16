@@ -3,12 +3,15 @@ import { Flex, Text } from "@mantine/core";
 import { useQuery } from "@tanstack/react-query";
 import { CatalogListItem, SkeletonCatalogListItem } from "./components";
 import { fetchProducts } from "../../api";
+import { useParams } from "react-router-dom";
 
 const CatalogList: FC = () => {
   const { data, isLoading, isError } = useQuery({
     queryKey: ["products"],
     queryFn: fetchProducts,
   });
+
+  const { category } = useParams();
 
   if (isLoading) {
     return (
@@ -30,9 +33,13 @@ const CatalogList: FC = () => {
     );
   }
 
+  const filteredData = category
+    ? data?.filter(item => item.category === category)
+    : data;
+
   return (
     <Flex gap="md" direction="row" wrap="wrap" p="md">
-      {data?.map((product) => (
+      {filteredData?.map((product) => (
         <CatalogListItem
           key={product.name}
           href={product.href}

@@ -30,6 +30,38 @@ export default defineConfig({
         "./shipping": "./src/scenes/Shipping.tsx",
       },
       filename: "remoteEntry.js",
+      shared: {
+        "@mantine/core": {
+          requiredVersion: false,
+          singleton: true,
+          eager: false,
+        },
+        "react-router-dom": {
+          requiredVersion: "^6.23.1",
+          singleton: true,
+          eager: true,
+        },
+        "react-router": {
+          requiredVersion: "6.24.1",
+          singleton: true,
+          eager: true,
+        },
+        react: {
+          requiredVersion: "^18.2.0",
+          singleton: true,
+          eager: true,
+        },
+        "react-dom": {
+          requiredVersion: "^18.2.0",
+          singleton: true,
+          eager: true,
+        },
+        "@tanstack/react-query": {
+          requiredVersion: "^5.48.0",
+          singleton: true,
+          eager: true,
+        },
+      },
     },
   },
 });

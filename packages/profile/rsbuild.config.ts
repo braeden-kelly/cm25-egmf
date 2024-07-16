@@ -31,9 +31,9 @@ export default defineConfig({
       filename: "remoteEntry.js",
       shared: {
         "@mantine/core": {
-          requiredVersion: "^7.10.2",
+          requiredVersion: false,
           singleton: true,
-          eager: true,
+          eager: false,
         },
         "react-router-dom": {
           requiredVersion: "^6.23.1",

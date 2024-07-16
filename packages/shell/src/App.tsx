@@ -46,6 +46,7 @@ const App = () => {
     setLoginParent(loginRef.current);
   }, [loginRef.current]);
 
+
   return (
     <Sentry.ErrorBoundary fallback={<div>An error has occurred</div>}>
       <QueryClientProvider client={queryClient}>
@@ -71,28 +72,42 @@ const App = () => {
                       </Suspense>
                     </div>
                   } />
-                  <Route path="/*" element={
-                    <>
-                      <Header onCartClick={() => setShowCart(true)} />
-                      <Stack className="content">
-                        <Flex gap="sm" wrap="nowrap">
-                            <Container size="1"><Filter /></Container>
-                            <List />
-                        </Flex>
-                        <Item />
-                        <Account />
-                        <Drawer opened={deferredShowCart} onClose={() => setShowCart(false)} position="right">
-                          <Suspense fallback={<div>Please wait</div>}>
-                            <Theme accentColor="red">
-                              <Cart />
-                            </Theme>
-                          </Suspense>
-                        </Drawer>
-                        <Checkout />
-                        <Shipping />
-                      </Stack>
-                      <Footer />
-                    </>
+                  <Route path="*" element={
+                      <>
+                        <Header onCartClick={() => setShowCart(true)} />
+                        <Stack className="content">
+                          <Flex gap="sm" wrap="nowrap">
+                              <Container size="1"><Filter /></Container>
+                              <Routes>
+                                <Route path="/checkout" element={
+                                  <Checkout />
+                                }/>
+                                <Route path="/shipping" element={
+                                  <Shipping />
+                                }/>
+                                <Route path="/shop/:category?" element={
+                                  <List />
+                                }/>
+                                <Route path="/shop" element={
+                                  <List />
+                                }/>
+                                <Route path="*" element={
+                                  <List />
+                                }/>
+                              </Routes>
+                          </Flex>
+                          <Item />
+                          <Account />
+                          <Drawer opened={deferredShowCart} onClose={() => setShowCart(false)} position="right">
+                            <Suspense fallback={<div>Please wait</div>}>
+                              <Theme accentColor="red">
+                                <Cart />
+                              </Theme>
+                            </Suspense>
+                          </Drawer>
+                        </Stack>
+                        <Footer />
+                      </>
                   }/>
                 </Routes>
               </BrowserRouter>
