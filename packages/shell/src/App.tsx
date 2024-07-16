@@ -1,5 +1,5 @@
 "use client";
-import { lazy, Suspense, useDeferredValue, useState } from "react";
+import { lazy, Suspense, useDeferredValue, useEffect, useRef, useState } from "react";
 import "./App.css";
 import { Container, Flex, Theme } from "@radix-ui/themes";
 import { Drawer, Group, MantineProvider, Stack } from "@mantine/core";
@@ -40,6 +40,11 @@ const App = () => {
   const [showCart, setShowCart] = useState(false);
   const deferredShowCart = useDeferredValue(showCart);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const loginRef = useRef(null);
+  const [loginParent, setLoginParent] = useState(loginRef.current);
+  useEffect(() => {
+    setLoginParent(loginRef.current);
+  }, [loginRef.current]);
 
   return (
     <Sentry.ErrorBoundary fallback={<div>An error has occurred</div>}>
@@ -53,15 +58,18 @@ const App = () => {
                 ) }
                 <Routes>
                   <Route path="/login" element={
-                    <>
+                    <div ref={loginRef}>
                       {isLoggedIn && (
                         <Navigate to="/" replace={false} />
                       )}
-                      <Login
-                        isLoggedIn={isLoggedIn}
-                        onLoginSuccess={() => setIsLoggedIn(true)
-                      }/>
-                    </>
+                      <Suspense fallback={<div>Please wait</div>}>
+                        <Login
+                          parentNode={loginParent}
+                          isLoggedIn={isLoggedIn}
+                          onLoginSuccess={() => setIsLoggedIn(true)
+                        }/>
+                      </Suspense>
+                    </div>
                   } />
                   <Route path="/*" element={
                     <>
