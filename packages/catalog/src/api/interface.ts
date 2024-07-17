@@ -1,4 +1,5 @@
 export interface CatalogItem {
+  id: number;
   href: string;
   imgSrc: string;
   name: string;

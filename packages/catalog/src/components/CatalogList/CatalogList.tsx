@@ -12,7 +12,6 @@ const CatalogList: FC = () => {
     queryFn: fetchProducts,
   });
 
-
   if (isLoading) {
     return (
       <Flex gap="md" direction="row" wrap="wrap" p="md">
@@ -38,10 +37,8 @@ const CatalogList: FC = () => {
       {data?.map((product) => (
         <CatalogListItem
           key={product.name}
+          {...product}
           href={`/shop/item/${product.href}`}
-          imgSrc={product.imgSrc}
-          name={product.name}
-          price={product.price}
         />
       ))}
     </Flex>

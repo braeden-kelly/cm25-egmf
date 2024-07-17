@@ -58,7 +58,15 @@ export const getUserCart = async (id: number): Promise<UserCart> => {
     };
   });
 
-  const subTotal = userProducts.reduce(
+  return {
+    ...cart,
+    products: userProducts,
+    ...getTotals(userProducts),
+  };
+};
+
+export const getTotals = (products: UserCart["products"]) => {
+  const subTotal = products.reduce(
     (runningSubTotal, product) =>
       product.price * product.quantity + runningSubTotal,
     0
@@ -68,10 +76,8 @@ export const getUserCart = async (id: number): Promise<UserCart> => {
   const tax = subTotal * taxPercent;
 
   return {
-    ...cart,
     tax,
     subTotal,
     total: subTotal + tax,
-    products: userProducts,
   };
 };

@@ -7,6 +7,8 @@ export interface CatalogListItemProps {
   imgSrc: string;
   name: string;
   price: number;
+  id: number;
+  description: string;
 }
 
 const CatalogListItem: FC<CatalogListItemProps> = ({
@@ -14,6 +16,8 @@ const CatalogListItem: FC<CatalogListItemProps> = ({
   imgSrc,
   name,
   price,
+  id,
+  description,
 }) => {
   return (
     <Card shadow="sm" p={0} h={350} w={250}>
@@ -44,7 +48,25 @@ const CatalogListItem: FC<CatalogListItemProps> = ({
           <Text size="lg" c="dark">
             ${price}
           </Text>
-          <Button bg="black">
+          <Button
+            bg="black"
+            onClick={() => {
+              console.log("uhh");
+              dispatchEvent(
+                new CustomEvent("add-to-cart", {
+                  detail: {
+                    item: {
+                      id,
+                      title: name,
+                      price,
+                      description,
+                      image: imgSrc,
+                    },
+                  },
+                })
+              );
+            }}
+          >
             <Text size="md" fw={700}>
               Add to cart
             </Text>
