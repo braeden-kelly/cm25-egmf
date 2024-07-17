@@ -24,12 +24,12 @@ export default defineConfig({
   moduleFederation: {
     options: {
       name: "order",
+      filename: "remoteEntry.js",
       exposes: {
         "./cart": "./src/scenes/Cart/index.ts",
         "./checkout": "./src/scenes/Checkout/index.ts",
         "./shipping": "./src/scenes/Shipping/index.ts",
       },
-      filename: "remoteEntry.js",
       shared: {
         "@mantine/core": {
           requiredVersion: false,

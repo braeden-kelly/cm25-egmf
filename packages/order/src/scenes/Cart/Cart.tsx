@@ -1,4 +1,6 @@
-import { useState, type FC } from "react";
+import type { FC } from "react";
+
+import { useState } from "react";
 
 import { HoverCard } from "@mantine/core";
 import { IconShoppingCart } from "@tabler/icons-react";
@@ -20,9 +22,9 @@ const Cart: FC = () => {
   return (
     <HoverCard>
       <HoverCard.Target>
-        <IconShoppingCart />
+        <IconShoppingCart color="white" />
       </HoverCard.Target>
-      <HoverCard.Dropdown>
+      <HoverCard.Dropdown c="black">
         <OrderDetails cart={cart} />
       </HoverCard.Dropdown>
     </HoverCard>

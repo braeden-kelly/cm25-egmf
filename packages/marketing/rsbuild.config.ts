@@ -27,11 +27,14 @@ export default defineConfig({
   moduleFederation: {
     options: {
       name: "marketing",
+      filename: "remoteEntry.js",
+      remotes: {
+        order: "order@http://localhost:3002/remoteEntry.js",
+      },
       exposes: {
         "./header": "./src/scenes/Header.tsx",
         "./footer": "./src/scenes/Footer/index.ts",
       },
-      filename: "remoteEntry.js",
       shared: {
         "@mantine/core": {
           requiredVersion: "^7.10.2",
