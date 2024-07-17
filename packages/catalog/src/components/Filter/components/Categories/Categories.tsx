@@ -3,10 +3,10 @@ import { Text, Stack, NavLink } from "@mantine/core";
 import { Link as RouterLink } from "react-router-dom";
 
 const categories = [
-  ["/shop/clothing", "Clothing"],
+  ["/shop/men%27s%20clothing", "Men's Clothing"],
+  ["/shop/women%27s%20clothing", "Women's Clothing"],
   ["/shop/electronics", "Electronics"],
-  ["/shop/home-garden", "Home & Garden"],
-  ["/shop/beauty-personal-care", "Beauty & Personal Care"],
+  ["/shop/jewelery", "Jewelery"],
   ["/shop/sports-outdoors", "Sports & Outdoors"],
 ];
 

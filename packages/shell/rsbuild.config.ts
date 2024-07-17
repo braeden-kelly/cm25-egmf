@@ -7,6 +7,11 @@ export default defineConfig({
       "process.env": JSON.stringify(process.env),
     },
   },
+  html: {
+    tags: [{
+      tag: 'base', attrs: { href: '/' }, append: false,
+    }]
+  },
   plugins: [pluginReact()],
   moduleFederation: {
     options: {

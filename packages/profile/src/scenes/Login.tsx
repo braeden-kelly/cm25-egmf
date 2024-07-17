@@ -2,25 +2,20 @@ import { forwardRef, ForwardRefExoticComponent, MutableRefObject, ReactElement, 
 import { Form, Navigate } from "react-router-dom";
 import '../Login.css';
 import backgroundImage from '../../assets/pexels-gustavo-fring-6050428.jpg';
-import { Button, Flex, Heading, Text } from "@radix-ui/themes";
+import { Button, Container, Flex, Heading, Text } from "@radix-ui/themes";
 import { PasswordInput, Stack, TextInput } from "@mantine/core";
 
 export interface Props {
   onLoginSuccess: (args: any) => void;
   isLoggedIn: boolean;
-  parentNode: HTMLContainerTypes | null
 }
 
 type HTMLContainerTypesDict = Pick<HTMLElementTagNameMap, 'div' | 'section'>
 type HTMLContainerTypes = HTMLContainerTypesDict[keyof HTMLContainerTypesDict]
 
-const Login = (({ onLoginSuccess, isLoggedIn, parentNode }: Props): ReactElement => {
-  if(parentNode) {
-    parentNode.className += ' login-page';
-  }
-
+const Login = (({ onLoginSuccess, isLoggedIn }: Props): ReactElement => {
   return (
-    <>
+    <Container className="login-page">
       <div className="background" style={{ backgroundImage: `url(${backgroundImage})` }} />
       <div className="background-screen" />
       
@@ -35,7 +30,7 @@ const Login = (({ onLoginSuccess, isLoggedIn, parentNode }: Props): ReactElement
           </Stack>
         </form>
       </Flex>
-    </>
+    </Container>
   );
 });
 

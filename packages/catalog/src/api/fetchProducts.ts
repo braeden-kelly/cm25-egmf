@@ -1,8 +1,15 @@
+import { QueryKey } from "@tanstack/react-query";
 import type { CatalogItem } from "./interface";
 
-export async function fetchProducts(): Promise<CatalogItem[]> {
+export async function fetchProducts({
+  queryKey
+}: {
+  queryKey: QueryKey;
+}): Promise<CatalogItem[]> {
   try {
-    const response = await fetch("https://fakestoreapi.com/products");
+    const url = `https://fakestoreapi.com/${queryKey.join('/')}`;
+
+    const response = await fetch(url);
 
     if (!response.ok) {
       throw new Error(response.statusText || "Unknown error occurred");
@@ -10,10 +17,10 @@ export async function fetchProducts(): Promise<CatalogItem[]> {
 
     const data = await response.json();
     const mappedData: CatalogItem[] = data.map((product: any) => ({
-      href: product.image,
+      href: product.id,
       imgSrc: product.image,
       name: product.title,
-      price: product.price,
+      price: product.price
     }));
 
     return mappedData;

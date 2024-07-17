@@ -6,12 +6,12 @@ import { fetchProducts } from "../../api";
 import { useParams } from "react-router-dom";
 
 const CatalogList: FC = () => {
+  const { category } = useParams();
   const { data, isLoading, isError } = useQuery({
-    queryKey: ["products"],
+    queryKey: category ? ["products", "category", category] : ["products"],
     queryFn: fetchProducts,
   });
 
-  const { category } = useParams();
 
   if (isLoading) {
     return (
@@ -33,16 +33,12 @@ const CatalogList: FC = () => {
     );
   }
 
-  const filteredData = category
-    ? data?.filter(item => item.category === category)
-    : data;
-
   return (
     <Flex gap="md" direction="row" wrap="wrap" p="md">
-      {filteredData?.map((product) => (
+      {data?.map((product) => (
         <CatalogListItem
           key={product.name}
-          href={product.href}
+          href={`/shop/item/${product.href}`}
           imgSrc={product.imgSrc}
           name={product.name}
           price={product.price}

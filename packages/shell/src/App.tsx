@@ -40,12 +40,6 @@ const App = () => {
   const [showCart, setShowCart] = useState(false);
   const deferredShowCart = useDeferredValue(showCart);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const loginRef = useRef(null);
-  const [loginParent, setLoginParent] = useState(loginRef.current);
-  useEffect(() => {
-    setLoginParent(loginRef.current);
-  }, [loginRef.current]);
-
 
   return (
     <Sentry.ErrorBoundary fallback={<div>An error has occurred</div>}>
@@ -59,18 +53,17 @@ const App = () => {
                 ) }
                 <Routes>
                   <Route path="/login" element={
-                    <div ref={loginRef}>
+                    <>
                       {isLoggedIn && (
                         <Navigate to="/" replace={false} />
                       )}
                       <Suspense fallback={<div>Please wait</div>}>
                         <Login
-                          parentNode={loginParent}
                           isLoggedIn={isLoggedIn}
                           onLoginSuccess={() => setIsLoggedIn(true)
                         }/>
                       </Suspense>
-                    </div>
+                    </>
                   } />
                   <Route path="*" element={
                       <>
@@ -85,19 +78,21 @@ const App = () => {
                                 <Route path="/shipping" element={
                                   <Shipping />
                                 }/>
-                                <Route path="/shop/:category?" element={
-                                  <List />
+                                <Route path="/account" element={
+                                  <Account />
                                 }/>
-                                <Route path="/shop" element={
-                                  <List />
+                                <Route path="/shop/item/:productId" element={
+                                  <Suspense fallback={<div>Please wait</div>}>
+                                    <Item />
+                                  </Suspense>
                                 }/>
-                                <Route path="*" element={
-                                  <List />
+                                <Route path="/shop?/:category?" element={
+                                  <Suspense fallback={<div>Please wait</div>}>
+                                    <List />
+                                  </Suspense>
                                 }/>
                               </Routes>
                           </Flex>
-                          <Item />
-                          <Account />
                           <Drawer opened={deferredShowCart} onClose={() => setShowCart(false)} position="right">
                             <Suspense fallback={<div>Please wait</div>}>
                               <Theme accentColor="red">
