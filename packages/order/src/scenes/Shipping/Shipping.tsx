@@ -41,22 +41,24 @@ const Shipping: FC<ShippingProps> = ({ onSubmit }) => {
     <Fieldset variant="filled">
       <Title order={2}>Shipping</Title>
       <form onSubmit={form.onSubmit((values) => onSubmit(values))}>
-        <Box mx="auto">
-          <TextInput
-            label="Name"
-            placeholder="Name"
-            key={form.key("name")}
-            {...form.getInputProps("name")}
-          />
-          <TextInput
-            mt="md"
-            label="Address"
-            placeholder="Address"
-            key={form.key("address")}
-            {...form.getInputProps("address")}
-          />
-        </Box>
         <Grid>
+          <Grid.Col span={12}>
+            <TextInput
+              label="Name"
+              placeholder="Name"
+              key={form.key("name")}
+              {...form.getInputProps("name")}
+            />
+          </Grid.Col>
+          <Grid.Col span={12}>
+            <TextInput
+              mt="md"
+              label="Address"
+              placeholder="Address"
+              key={form.key("address")}
+              {...form.getInputProps("address")}
+            />
+          </Grid.Col>
           <Grid.Col span={{ xs: 12, sm: 4 }}>
             <TextInput
               mt="md"

@@ -26,7 +26,7 @@ export default defineConfig({
       name: "order",
       exposes: {
         "./cart": "./src/scenes/Cart.tsx",
-        "./checkout": "./src/scenes/Checkout.tsx",
+        "./checkout": "./src/scenes/Checkout/index.ts",
         "./shipping": "./src/scenes/Shipping/index.ts",
       },
       filename: "remoteEntry.js",

@@ -1,6 +1,6 @@
 import Cart from "./scenes/Cart";
 import Checkout from "./scenes/Checkout";
-import Shipping from "./scenes/Shipping/Shipping";
+import Shipping from "./scenes/Shipping";
 import { MantineProvider } from "@mantine/core";
 
 import { emotionTransform, MantineEmotionProvider } from "@mantine/emotion";
@@ -17,7 +17,7 @@ const App = () => {
         <MantineEmotionProvider>
           <Cart />
           <Checkout />
-          <Shipping />
+          <Shipping onSubmit={() => {}} />
         </MantineEmotionProvider>
       </MantineProvider>
     </QueryClientProvider>
