@@ -10,7 +10,6 @@ export interface CatalogItem {
 interface BaseCart {
   id: number;
   userId: number;
-  date: string;
 }
 
 interface CartService extends BaseCart {

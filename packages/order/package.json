@@ -16,6 +16,7 @@
     "@mantine/emotion": "^7.11.2",
     "@sentry/react": "^8.13.0",
     "@sentry/webpack-plugin": "^2.20.1",
+    "@tabler/icons-react": "^3.11.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },

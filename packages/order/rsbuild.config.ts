@@ -25,7 +25,7 @@ export default defineConfig({
     options: {
       name: "order",
       exposes: {
-        "./cart": "./src/scenes/Cart.tsx",
+        "./cart": "./src/scenes/Cart/index.ts",
         "./checkout": "./src/scenes/Checkout/index.ts",
         "./shipping": "./src/scenes/Shipping/index.ts",
       },
