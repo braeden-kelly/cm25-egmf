@@ -27,14 +27,14 @@ export default defineConfig({
       exposes: {
         "./cart": "./src/scenes/Cart.tsx",
         "./checkout": "./src/scenes/Checkout.tsx",
-        "./shipping": "./src/scenes/Shipping.tsx",
+        "./shipping": "./src/scenes/Shipping/index.ts",
       },
       filename: "remoteEntry.js",
       shared: {
         "@mantine/core": {
           requiredVersion: false,
           singleton: true,
-          eager: false,
+          eager: true,
         },
         "react-router-dom": {
           requiredVersion: "^6.23.1",
