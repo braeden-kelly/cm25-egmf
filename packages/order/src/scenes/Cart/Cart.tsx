@@ -10,7 +10,6 @@ import { useCart } from "./hook/useCart";
 
 const Cart: FC = () => {
   const cart = useCart();
-
   const cartHasItems = cart.products.length === 0;
 
   return (

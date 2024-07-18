@@ -39,7 +39,21 @@ const getCart = async (id: number) => {
   return cart as CartService;
 };
 
-export const getUserCart = async (id: number): Promise<UserCart> => {
+export const getUserCart = async (id?: number) => {
+  if (id) {
+    return fetchCart(id);
+  }
+
+  const local = localStorage.getItem("user-cart");
+
+  if (!local) {
+    throw new Error("Cart not found");
+  }
+
+  return JSON.parse(local) as UserCart;
+};
+
+export const fetchCart = async (id: number): Promise<UserCart> => {
   const products = await getProducts();
   const cart = await getCart(id);
 
