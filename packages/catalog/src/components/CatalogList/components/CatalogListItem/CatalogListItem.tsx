@@ -1,6 +1,9 @@
 import type { FC } from "react";
+
 import { Card, Image, Text, Stack, Button, Tooltip } from "@mantine/core";
 import { Link } from "react-router-dom";
+
+import { addToCart } from "./utils/addToCart";
 
 export interface CatalogListItemProps {
   href: string;
@@ -11,14 +14,9 @@ export interface CatalogListItemProps {
   description: string;
 }
 
-const CatalogListItem: FC<CatalogListItemProps> = ({
-  href,
-  imgSrc,
-  name,
-  price,
-  id,
-  description,
-}) => {
+const CatalogListItem: FC<CatalogListItemProps> = (props) => {
+  const { href, imgSrc, name, price } = props;
+
   return (
     <Card shadow="sm" p={0} h={350} w={250}>
       <Stack gap="sm">
@@ -48,25 +46,7 @@ const CatalogListItem: FC<CatalogListItemProps> = ({
           <Text size="lg" c="dark">
             ${price}
           </Text>
-          <Button
-            bg="black"
-            onClick={() => {
-              console.log("uhh");
-              dispatchEvent(
-                new CustomEvent("add-to-cart", {
-                  detail: {
-                    item: {
-                      id,
-                      title: name,
-                      price,
-                      description,
-                      image: imgSrc,
-                    },
-                  },
-                })
-              );
-            }}
-          >
+          <Button bg="black" onClick={() => addToCart(props)}>
             <Text size="md" fw={700}>
               Add to cart
             </Text>

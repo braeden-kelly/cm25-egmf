@@ -55,7 +55,6 @@ const Payment: FC<PaymentProps> = ({ onSubmit }) => {
               {...form.getInputProps("expirationMonth")}
             />
           </Grid.Col>
-
           <Grid.Col span={{ xs: 12, sm: 4 }}>
             <Select
               mt="md"
