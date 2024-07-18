@@ -19,7 +19,7 @@ const App = () => {
           <Container fluid>
             <BrowserRouter>
               <Routes>
-                <Route path="/" element={<Checkout />} />
+                <Route path="/" element={<Checkout id={1} />} />
                 <Route
                   path="/shipping"
                   element={<Shipping onSubmit={console.log} />}

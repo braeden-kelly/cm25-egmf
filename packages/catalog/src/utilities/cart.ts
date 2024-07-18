@@ -1,4 +1,4 @@
-import { CatalogItem } from "../../../../../api";
+import { CatalogItem } from "../api";
 
 export const addToCart = ({
   id,

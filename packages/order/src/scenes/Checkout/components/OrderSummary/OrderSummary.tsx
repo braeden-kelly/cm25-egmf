@@ -7,9 +7,11 @@ import OrderDetails from "./components/OrderDetails";
 import OrderDetailsSkeleton from "./components/OrderDetailsSkeleton";
 import OrderDetailsError from "./components/OrderDetailsError";
 
-const id = 1;
+interface OrderSummaryProps {
+  id?: number;
+}
 
-const OrderSummary: FC = () => {
+const OrderSummary: FC<OrderSummaryProps> = ({ id }) => {
   const { data, isLoading, error } = useQuery({
     queryKey: ["cart", id],
     queryFn: () => getUserCart(id),
