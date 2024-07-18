@@ -1,5 +1,4 @@
 "use client";
-import { lazy, Suspense } from "react";
 
 import { MantineProvider } from "@mantine/core";
 import { emotionTransform, MantineEmotionProvider } from "@mantine/emotion";
@@ -14,13 +13,8 @@ import Login from "./scenes/Login";
 import Shop from "./scenes/Shop";
 import Shipping from "./scenes/Shipping";
 import Account from "./scenes/Account";
-
-// TODO: types
-// @ts-ignore
-const Item = lazy(() => import("catalog/item"));
-
-// @ts-ignore
-const Checkout = lazy(() => import("order/checkout"));
+import ItemScene from "./scenes/Item";
+import Checkout from "./scenes/Checkout";
 
 const queryClient = new QueryClient();
 
@@ -37,25 +31,11 @@ const App = () => {
                 <Route path="/shop" element={<Layout />}>
                   <Route index element={<Shop />} />
                   <Route path=":category?" element={<Shop />} />
-                  <Route
-                    path="item/:productId"
-                    element={
-                      <Suspense fallback="fallback">
-                        <Item />
-                      </Suspense>
-                    }
-                  />
+                  <Route path="item/:productId" element={<ItemScene />} />
                 </Route>
                 <Route path="/order" element={<Layout />}>
                   <Route path="shipping" element={<Shipping />} />
-                  <Route
-                    path="checkout"
-                    element={
-                      <Suspense fallback="loading">
-                        <Checkout />
-                      </Suspense>
-                    }
-                  />
+                  <Route path="checkout" element={<Checkout />} />
                 </Route>
                 <Route path="/account" element={<Layout />}>
                   <Route index element={<Account />} />
