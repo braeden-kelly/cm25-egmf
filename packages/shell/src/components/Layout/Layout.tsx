@@ -1,6 +1,9 @@
+import { Skeleton } from "@mantine/core";
 import { readLocalStorageValue } from "@mantine/hooks";
 import { Suspense, lazy } from "react";
 import { Navigate, Outlet } from "react-router-dom";
+import HeaderSkeleton from "./components/HeaderSkeleton";
+import FooterSkeleton from "./components/FooterSkeleton";
 
 // @ts-ignore
 const Header = lazy(() => import("marketing/header"));
@@ -16,11 +19,11 @@ const Layout = () => {
 
   return (
     <>
-      <Suspense fallback="loading header">
+      <Suspense fallback={<HeaderSkeleton />}>
         <Header />
       </Suspense>
       <Outlet />
-      <Suspense fallback="loading footer">
+      <Suspense fallback={<FooterSkeleton />}>
         <Footer />
       </Suspense>
     </>

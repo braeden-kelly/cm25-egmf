@@ -7,8 +7,12 @@ import Shortcuts from "./components/Shortcuts";
 
 const Header = () => {
   return (
-    <Container py="md" fluid bg="dark">
-      <Flex justify="space-between" align="center">
+    <Flex component="header" py="md" align="center" justify="center" bg="dark">
+      <Flex
+        justify="space-between"
+        align="center"
+        w={{ sm: "sm", md: 800, lg: 1330, xl: 1400 }}
+      >
         <HomeLink />
         <Links />
         <Flex gap="md">
@@ -17,7 +21,7 @@ const Header = () => {
           <Shortcuts />
         </Flex>
       </Flex>
-    </Container>
+    </Flex>
   );
 };
 
