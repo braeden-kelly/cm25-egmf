@@ -1,24 +1,24 @@
-import { useEffect, useRef, useState } from "react";
-import Account from "./scenes/Account";
-import Login from "./scenes/Login";
 import { MantineProvider } from "@mantine/core";
 import { emotionTransform, MantineEmotionProvider } from "@mantine/emotion";
+import { BrowserRouter } from "react-router-dom";
+
+import Account from "./scenes/Account";
+import Login from "./scenes/Login";
+
+import "@mantine/core/styles.css";
 
 const App = () => {
-  const ref = useRef<HTMLDivElement>(null);
-  const [stateRef, setStateRef] = useState<HTMLDivElement | null>(ref.current);
-  useEffect(() => {
-    setStateRef(ref.current);
-  }, [ref.current]);
   return (
     <MantineProvider stylesTransform={emotionTransform}>
       <MantineEmotionProvider>
-        <div>
-          <Account />
-          <div ref={ref}>
-            <Login parentNode={stateRef} onLoginSuccess={() => {}} isLoggedIn={false}/>
+        <BrowserRouter>
+          <div>
+            <Account />
+            <div>
+              <Login onLoginSuccess={() => {}} />
+            </div>
           </div>
-        </div>
+        </BrowserRouter>
       </MantineEmotionProvider>
     </MantineProvider>
   );
