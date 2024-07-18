@@ -1,8 +1,8 @@
-import type { CatalogItem, UserCart } from "../../../../services/cart";
+import type { CatalogItem, UserCart } from "@services/cart";
 
 import { useEffect, useState } from "react";
 
-import { getTotals } from "../../../../services/cart";
+import { getTotals } from "@services/cart";
 import { addToProducts, increaseQuantity, itemInCart } from "./utilities";
 
 const newCart: UserCart = {
