@@ -11,20 +11,18 @@ const Filter = lazy(() => import("catalog/filter"));
 
 const Shop = () => {
   return (
-    <Flex justify="center" align="center">
-      <Grid w={{ sm: "sm", md: 800, lg: 1330, xl: 1400 }}>
-        <Grid.Col span={{ sm: 12, md: 2 }}>
-          <Suspense fallback={<FilterSkeleton />}>
-            <Filter />
-          </Suspense>
-        </Grid.Col>
-        <Grid.Col span={{ sm: 12, md: 10 }}>
-          <Suspense fallback={<CatalogListSkeleton />}>
-            <CatalogList />
-          </Suspense>
-        </Grid.Col>
-      </Grid>
-    </Flex>
+    <Grid>
+      <Grid.Col span={{ sm: 12, md: 2 }}>
+        <Suspense fallback={<FilterSkeleton />}>
+          <Filter />
+        </Suspense>
+      </Grid.Col>
+      <Grid.Col span={{ sm: 12, md: 10 }}>
+        <Suspense fallback={<CatalogListSkeleton />}>
+          <CatalogList />
+        </Suspense>
+      </Grid.Col>
+    </Grid>
   );
 };
 
