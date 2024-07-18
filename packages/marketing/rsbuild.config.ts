@@ -30,9 +30,10 @@ export default defineConfig({
       filename: "remoteEntry.js",
       remotes: {
         order: "order@http://localhost:3002/remoteEntry.js",
+        catalog: "catalog@http://localhost:3001/remoteEntry.js",
       },
       exposes: {
-        "./header": "./src/scenes/Header.tsx",
+        "./header": "./src/scenes/Header/index.ts",
         "./footer": "./src/scenes/Footer/index.ts",
       },
       shared: {
