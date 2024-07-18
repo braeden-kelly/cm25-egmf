@@ -2,12 +2,12 @@ import { QueryKey } from "@tanstack/react-query";
 import type { CatalogItem } from "./interface";
 
 export async function fetchProducts({
-  queryKey
+  queryKey,
 }: {
   queryKey: QueryKey;
 }): Promise<CatalogItem[]> {
   try {
-    const url = `https://fakestoreapi.com/${queryKey.join('/')}`;
+    const url = `https://fakestoreapi.com/${queryKey.join("/")}`;
 
     const response = await fetch(url);
 
@@ -17,10 +17,11 @@ export async function fetchProducts({
 
     const data = await response.json();
     const mappedData: CatalogItem[] = data.map((product: any) => ({
+      id: product.id,
       href: product.id,
       imgSrc: product.image,
       name: product.title,
-      price: product.price
+      price: product.price,
     }));
 
     return mappedData;

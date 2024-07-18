@@ -1,10 +1,8 @@
-import type { FC } from "react";
-import { Button, Group } from "@mantine/core";
-import {
-  IconCircleFilled,
-  IconHeart,
-  IconShoppingCart,
-} from "@tabler/icons-react";
+import { Suspense, lazy, type FC } from "react";
+import { Button, Group, Skeleton } from "@mantine/core";
+
+// @ts-ignore
+const Cart = lazy(() => import("order/cart"));
 
 export interface Props {
   onCartClick: () => void;
@@ -13,9 +11,9 @@ export interface Props {
 const Shortcuts: FC<Props> = ({ onCartClick }) => {
   return (
     <Group>
-      <Button onClick={onCartClick}><IconShoppingCart color="white" /></Button>
-      <IconHeart color="white" />
-      <IconCircleFilled color="white" />
+      <Suspense fallback={<Skeleton width={50} height={50} radius="md" />}>
+        <Cart />
+      </Suspense>
     </Group>
   );
 };

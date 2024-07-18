@@ -7,6 +7,12 @@ export default defineConfig({
     define: {
       "process.env": JSON.stringify(process.env),
     },
+    alias: {
+      "@test": "./src/test",
+      "@services": "./src/services",
+      "@components": "./src/components",
+      "@utilities": "./src/utilities",
+    },
   },
   tools: {
     rspack: {
@@ -24,17 +30,17 @@ export default defineConfig({
   moduleFederation: {
     options: {
       name: "order",
-      exposes: {
-        "./cart": "./src/scenes/Cart.tsx",
-        "./checkout": "./src/scenes/Checkout.tsx",
-        "./shipping": "./src/scenes/Shipping.tsx",
-      },
       filename: "remoteEntry.js",
+      exposes: {
+        "./cart": "./src/scenes/Cart/index.ts",
+        "./checkout": "./src/scenes/Checkout/index.ts",
+        "./shipping": "./src/scenes/Shipping/index.ts",
+      },
       shared: {
         "@mantine/core": {
           requiredVersion: false,
           singleton: true,
-          eager: false,
+          eager: true,
         },
         "react-router-dom": {
           requiredVersion: "^6.23.1",
