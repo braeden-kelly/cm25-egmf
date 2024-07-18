@@ -6,12 +6,18 @@ import {
   IconStarHalfFilled,
 } from "@tabler/icons-react";
 
+import { addToCart } from "../../../../utilities/cart";
+
 const Details: FC<{
   name: string;
   rating: { count: number; rate: number };
   description: string;
   price: number;
-}> = ({ name, rating, description, price }) => {
+  href: string;
+  id: number;
+  imgSrc: string;
+}> = (props) => {
+  const { name, rating, description, price } = props;
   return (
     <>
       <Text size="xl" fw={700}>
@@ -36,7 +42,9 @@ const Details: FC<{
         <Text size="xl" fw={700}>
           ${price}
         </Text>
-        <Button bg="black">Add to Cart</Button>
+        <Button bg="black" onClick={() => addToCart(props)}>
+          Add to Cart
+        </Button>
       </Group>
     </>
   );

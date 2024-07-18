@@ -14,6 +14,7 @@ export async function fetchProduct(
 
     const data = await response.json();
     const mappedData: CatalogItem = {
+      id: data.id,
       href: data.image,
       imgSrc: data.image,
       name: data.title,

@@ -1,112 +1,67 @@
 "use client";
-import { lazy, Suspense, useDeferredValue, useEffect, useRef, useState } from "react";
-import "./App.css";
-import { Container, Flex, Theme } from "@radix-ui/themes";
-import { Drawer, Group, MantineProvider, Stack } from "@mantine/core";
+import { lazy, Suspense } from "react";
+
+import { MantineProvider } from "@mantine/core";
 import { emotionTransform, MantineEmotionProvider } from "@mantine/emotion";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
-import "@radix-ui/themes/styles.css";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
-
 import * as Sentry from "@sentry/react";
+
+import Layout from "./components/Layout";
+
+import Login from "./scenes/Login";
+import Shop from "./scenes/Shop";
+import Shipping from "./scenes/Shipping";
+import Account from "./scenes/Account";
 
 // TODO: types
 // @ts-ignore
-const List = lazy(() => import("catalog/list"));
-// @ts-ignore
 const Item = lazy(() => import("catalog/item"));
-// @ts-ignore
-const Filter = lazy(() => import("catalog/filter"));
-// @ts-ignore
-const Account = lazy(() => import("profile/account"));
-// @ts-ignore
-const Footer = lazy(() => import("marketing/footer"));
-// @ts-ignore
-const Header = lazy(() => import("marketing/header"));
-// @ts-ignore
-const Login = lazy(() => import("profile/login"));
 
 // @ts-ignore
-const Cart = lazy(() => import("order/cart"));
-// @ts-ignore
 const Checkout = lazy(() => import("order/checkout"));
-// @ts-ignore
-const Shipping = lazy(() => import("order/shipping"));
 
 const queryClient = new QueryClient();
 
 const App = () => {
-  const [showCart, setShowCart] = useState(false);
-  const deferredShowCart = useDeferredValue(showCart);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-
   return (
     <Sentry.ErrorBoundary fallback={<div>An error has occurred</div>}>
       <QueryClientProvider client={queryClient}>
         <MantineProvider stylesTransform={emotionTransform}>
           <MantineEmotionProvider>
-            <Theme accentColor="red">
-              <BrowserRouter>
-                {!isLoggedIn && (
-                   <Navigate to="/login" replace={true} />
-                ) }
-                <Routes>
-                  <Route path="/login" element={
-                    <>
-                      {isLoggedIn && (
-                        <Navigate to="/" replace={false} />
-                      )}
-                      <Suspense fallback={<div>Please wait</div>}>
-                        <Login
-                          isLoggedIn={isLoggedIn}
-                          onLoginSuccess={() => setIsLoggedIn(true)
-                        }/>
+            <BrowserRouter>
+              <Routes>
+                <Route path="/login" element={<Login />} />
+                <Route path="/" element={<Navigate to="/shop" />} />
+                <Route path="/shop" element={<Layout />}>
+                  <Route index element={<Shop />} />
+                  <Route path=":category?" element={<Shop />} />
+                  <Route
+                    path="item/:productId"
+                    element={
+                      <Suspense fallback="fallback">
+                        <Item />
                       </Suspense>
-                    </>
-                  } />
-                  <Route path="*" element={
-                      <>
-                        <Header onCartClick={() => setShowCart(true)} />
-                        <Stack className="content">
-                          <Flex gap="sm" wrap="nowrap">
-                              <Container size="1"><Filter /></Container>
-                              <Routes>
-                                <Route path="/checkout" element={
-                                  <Checkout />
-                                }/>
-                                <Route path="/shipping" element={
-                                  <Shipping />
-                                }/>
-                                <Route path="/account" element={
-                                  <Account />
-                                }/>
-                                <Route path="/shop/item/:productId" element={
-                                  <Suspense fallback={<div>Please wait</div>}>
-                                    <Item />
-                                  </Suspense>
-                                }/>
-                                <Route path="/shop?/:category?" element={
-                                  <Suspense fallback={<div>Please wait</div>}>
-                                    <List />
-                                  </Suspense>
-                                }/>
-                              </Routes>
-                          </Flex>
-                          <Drawer opened={deferredShowCart} onClose={() => setShowCart(false)} position="right">
-                            <Suspense fallback={<div>Please wait</div>}>
-                              <Theme accentColor="red">
-                                <Cart />
-                              </Theme>
-                            </Suspense>
-                          </Drawer>
-                        </Stack>
-                        <Footer />
-                      </>
-                  }/>
-                </Routes>
-              </BrowserRouter>
-            </Theme>
+                    }
+                  />
+                </Route>
+                <Route path="/order" element={<Layout />}>
+                  <Route path="shipping" element={<Shipping />} />
+                  <Route
+                    path="checkout"
+                    element={
+                      <Suspense fallback="loading">
+                        <Checkout />
+                      </Suspense>
+                    }
+                  />
+                </Route>
+                <Route path="/account" element={<Layout />}>
+                  <Route index element={<Account />} />
+                </Route>
+              </Routes>
+            </BrowserRouter>
           </MantineEmotionProvider>
         </MantineProvider>
       </QueryClientProvider>

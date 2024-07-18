@@ -47,11 +47,6 @@ export default defineConfig({
           singleton: true,
           eager: true,
         },
-        "react-router": {
-          requiredVersion: "6.24.1",
-          singleton: true,
-          eager: true,
-        },
         react: {
           requiredVersion: "^18.2.0",
           singleton: true,
