@@ -24,7 +24,7 @@ export const useCart = () => {
       const { item } = event.detail;
 
       setCart((currentCart) => {
-        const isExistingItem = !itemInCart(currentCart, item);
+        const isExistingItem = itemInCart(currentCart, item);
         const updatedProducts = isExistingItem
           ? increaseQuantity(currentCart.products, item.id)
           : addToProducts(currentCart.products, item);

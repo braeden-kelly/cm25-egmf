@@ -7,7 +7,7 @@ export const addToCart = ({
   description,
   imgSrc,
 }: Omit<CatalogItem, "category" | "rating">) => {
-  dispatchEvent(
+  document.dispatchEvent(
     new CustomEvent("add-to-cart", {
       detail: {
         item: {
