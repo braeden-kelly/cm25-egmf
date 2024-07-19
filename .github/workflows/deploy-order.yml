@@ -31,7 +31,7 @@ jobs:
           aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws_default_region: us-east-1
 
-          aws_site_source_folder: packages/order/dist
+          aws_site_source_folder: ../packages/order/dist
 
           tf_action: "apply"
           tf_state_bucket_destroy: true # If destroying, will remove the bucket
