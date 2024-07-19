@@ -40,7 +40,6 @@ export default defineConfig({
         "@mantine/core": {
           requiredVersion: false,
           singleton: true,
-          eager: true,
         },
         "react-router-dom": {
           requiredVersion: "^6.23.1",
@@ -60,7 +59,6 @@ export default defineConfig({
         "@tanstack/react-query": {
           requiredVersion: "^5.48.0",
           singleton: true,
-          eager: true,
         },
       },
     },

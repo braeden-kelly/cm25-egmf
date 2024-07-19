@@ -25,22 +25,16 @@ export default defineConfig({
         order: "order@http://localhost:3002/remoteEntry.js",
         profile: "profile@http://localhost:3003/remoteEntry.js",
         marketing: "marketing@http://localhost:3004/remoteEntry.js",
+        workshop: "workshop@http://localhost:8080/workshop.js",
       },
       shared: {
         "@mantine/core": {
           requiredVersion: "^7.10.2",
           singleton: true,
-          eager: true,
         },
         "react-router-dom": {
           requiredVersion: "^6.23.1",
           singleton: true,
-          eager: true,
-        },
-        "react-router": {
-          requiredVersion: "6.24.1",
-          singleton: true,
-          eager: true,
         },
         react: {
           requiredVersion: "^18.2.0",
@@ -55,7 +49,6 @@ export default defineConfig({
         "@tanstack/react-query": {
           requiredVersion: "^5.48.0",
           singleton: true,
-          eager: true,
         },
       },
     },

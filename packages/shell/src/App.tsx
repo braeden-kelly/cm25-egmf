@@ -15,6 +15,7 @@ import Shipping from "./scenes/Shipping";
 import Account from "./scenes/Account";
 import ItemScene from "./scenes/Item";
 import Checkout from "./scenes/Checkout";
+import Welcome from "./scenes/Welcome";
 
 const queryClient = new QueryClient();
 
@@ -26,8 +27,8 @@ const App = () => {
           <MantineEmotionProvider>
             <BrowserRouter>
               <Routes>
+                <Route path="/" element={<Welcome />} />
                 <Route path="/login" element={<Login />} />
-                <Route path="/" element={<Navigate to="/shop" />} />
                 <Route path="/shop" element={<Layout />}>
                   <Route index element={<Shop />} />
                   <Route path=":category?" element={<Shop />} />
