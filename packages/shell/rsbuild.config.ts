@@ -21,11 +21,11 @@ export default defineConfig({
     options: {
       name: "shell-application",
       remotes: {
-        catalog: "catalog@http://localhost:3001/remoteEntry.js",
-        order: "order@http://localhost:3002/remoteEntry.js",
-        profile: "profile@http://localhost:3003/remoteEntry.js",
-        marketing: "marketing@http://localhost:3004/remoteEntry.js",
-        workshop: "workshop@http://localhost:8080/workshop.js",
+        catalog: `catalog@${process.env.MFE_URL_CATALOG}/remoteEntry.js`,
+        order: `order@${process.env.MFE_URL_ORDER}/remoteEntry.js`,
+        profile: `profile@${process.env.MFE_URL_PROFILE}/remoteEntry.js`,
+        marketing: `marketing@${process.env.MFE_URL_MARKETING}/remoteEntry.js`,
+        workshop: `workshop@${process.env.MFE_URL_WORKSHOP}/workshop.js`,
       },
       shared: {
         "@mantine/core": {

@@ -16,6 +16,20 @@ jobs:
         with:
           node-version-file: ".nvmrc"
 
+      - name: Create Env
+        run: |
+          cd ./packages/shell
+          touch .env
+          echo MFE_URL_CATALOG=${{ vars.MFE_URL_CATALOG }} >> .env
+          echo MFE_URL_MARKETING=${{ vars.MFE_URL_MARKETING }} >> .env
+          echo MFE_URL_ORDER=${{ vars.MFE_URL_ORDER }} >> .env
+          echo MFE_URL_PROFILE=${{ vars.MFE_URL_PROFILE }} >> .env
+          echo MFE_URL_WORKSHOP=${{ vars.MFE_URL_WORKSHOP }} >> .env
+          cd ../marketing
+          touch .env
+          echo MFE_URL_CATALOG=${{ vars.MFE_URL_CATALOG }} >> .env
+          echo MFE_URL_ORDER=${{ vars.MFE_URL_ORDER }} >> .env
+
       - name: Install dependencies
         run: |
           npm i -g nx
@@ -24,11 +38,103 @@ jobs:
       - name: Build
         run: nx run-many -t build --parallel=10
 
-      - name: Upload build artifacts
+      - name: Upload catalog build artifacts
         uses: actions/upload-artifact@v3
         with:
-          name: build-artifacts
+          name: catalog-artifacts
+          path: packages/catalog/dist
+
+      - name: Upload marketing build artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: marketing-artifacts
+          path: packages/marketing/dist
+
+      - name: Upload order build artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: order-artifacts
           path: packages/order/dist
+
+      - name: Upload profile build artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: profile-artifacts
+          path: packages/profile/dist
+
+      - name: Upload shell build artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: shell-artifacts
+          path: packages/shell/dist
+
+      - name: Upload workshop build artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: workshop-artifacts
+          path: packages/workshop/dist
+
+  deploy-catalog:
+    runs-on: ubuntu-latest
+    needs: [create-mfe-builds]
+
+    steps:
+      - name: Download build artifacts
+        uses: actions/download-artifact@v3
+        with:
+          name: catalog-artifacts
+          path: packages/catalog/dist
+
+      - name: Create deploy-bucket
+        uses: bitovi/github-actions-deploy-static-site-to-aws@v0.2.0
+        with:
+          aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID_SANDBOX }}
+          aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY_SANDBOX }}
+          aws_default_region: us-east-1
+          checkout: false
+          aws_site_source_folder: packages/catalog/dist
+
+          tf_action: "apply"
+          tf_state_bucket_destroy: true
+
+          aws_site_cdn_enabled: true
+
+          aws_r53_domain_name: bitovi-sandbox.com
+          aws_r53_sub_domain_name: catalog-mfe
+          aws_r53_create_sub_cert: true
+
+          aws_site_bucket_name: catalog-mfe
+
+  deploy-marketing:
+    runs-on: ubuntu-latest
+    needs: [create-mfe-builds]
+
+    steps:
+      - name: Download build artifacts
+        uses: actions/download-artifact@v3
+        with:
+          name: marketing-artifacts
+          path: packages/marketing/dist
+
+      - name: Create deploy-bucket
+        uses: bitovi/github-actions-deploy-static-site-to-aws@v0.2.0
+        with:
+          aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID_SANDBOX }}
+          aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY_SANDBOX }}
+          aws_default_region: us-east-1
+          checkout: false
+          aws_site_source_folder: packages/marketing/dist
+
+          tf_action: "apply"
+          tf_state_bucket_destroy: true
+
+          aws_site_cdn_enabled: true
+
+          aws_r53_domain_name: bitovi-sandbox.com
+          aws_r53_sub_domain_name: marketing-mfe
+          aws_r53_create_sub_cert: true
+
+          aws_site_bucket_name: marketing-mfe
 
   deploy-order:
     runs-on: ubuntu-latest
@@ -38,7 +144,7 @@ jobs:
       - name: Download build artifacts
         uses: actions/download-artifact@v3
         with:
-          name: build-artifacts
+          name: order-artifacts
           path: packages/order/dist
 
       - name: Create deploy-bucket
@@ -51,12 +157,105 @@ jobs:
           aws_site_source_folder: packages/order/dist
 
           tf_action: "apply"
-          tf_state_bucket_destroy: true # If destroying, will remove the bucket
+          tf_state_bucket_destroy: true
 
           aws_site_cdn_enabled: true
 
-          aws_r53_domain_name: bitovi-sandbox.com # You should own and have this domain available in R53
+          aws_r53_domain_name: bitovi-sandbox.com
           aws_r53_sub_domain_name: order-mfe
-          aws_r53_create_sub_cert: true # Will create and validate a cert for this sub-domain
+          aws_r53_create_sub_cert: true
 
           aws_site_bucket_name: order-mfe
+
+  deploy-profile:
+    runs-on: ubuntu-latest
+    needs: [create-mfe-builds]
+
+    steps:
+      - name: Download build artifacts
+        uses: actions/download-artifact@v3
+        with:
+          name: profile-artifacts
+          path: packages/profile/dist
+
+      - name: Create deploy-bucket
+        uses: bitovi/github-actions-deploy-static-site-to-aws@v0.2.0
+        with:
+          aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID_SANDBOX }}
+          aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY_SANDBOX }}
+          aws_default_region: us-east-1
+          checkout: false
+          aws_site_source_folder: packages/profile/dist
+
+          tf_action: "apply"
+          tf_state_bucket_destroy: true
+
+          aws_site_cdn_enabled: true
+
+          aws_r53_domain_name: bitovi-sandbox.com
+          aws_r53_sub_domain_name: profile-mfe
+          aws_r53_create_sub_cert: true
+
+          aws_site_bucket_name: profile-mfe
+
+  deploy-shell:
+    runs-on: ubuntu-latest
+    needs: [create-mfe-builds]
+
+    steps:
+      - name: Download build artifacts
+        uses: actions/download-artifact@v3
+        with:
+          name: shell-artifacts
+          path: packages/shell/dist
+
+      - name: Create deploy-bucket
+        uses: bitovi/github-actions-deploy-static-site-to-aws@v0.2.0
+        with:
+          aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID_SANDBOX }}
+          aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY_SANDBOX }}
+          aws_default_region: us-east-1
+          checkout: false
+          aws_site_source_folder: packages/shell/dist
+
+          tf_action: "apply"
+          tf_state_bucket_destroy: true
+
+          aws_site_cdn_enabled: true
+
+          aws_r53_domain_name: bitovi-sandbox.com
+          aws_r53_sub_domain_name: micro-frontend-workshop
+          aws_r53_create_sub_cert: true
+
+          aws_site_bucket_name: micro-frontend-workshop
+
+  deploy-workshop:
+    runs-on: ubuntu-latest
+    needs: [create-mfe-builds]
+
+    steps:
+      - name: Download build artifacts
+        uses: actions/download-artifact@v3
+        with:
+          name: workshop-artifacts
+          path: packages/workshop/dist
+
+      - name: Create deploy-bucket
+        uses: bitovi/github-actions-deploy-static-site-to-aws@v0.2.0
+        with:
+          aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID_SANDBOX }}
+          aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY_SANDBOX }}
+          aws_default_region: us-east-1
+          checkout: false
+          aws_site_source_folder: packages/workshop/dist
+
+          tf_action: "apply"
+          tf_state_bucket_destroy: true
+
+          aws_site_cdn_enabled: true
+
+          aws_r53_domain_name: bitovi-sandbox.com
+          aws_r53_sub_domain_name: workshop-mfe
+          aws_r53_create_sub_cert: true
+
+          aws_site_bucket_name: workshop-mfe

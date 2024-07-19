@@ -29,8 +29,8 @@ export default defineConfig({
       name: "marketing",
       filename: "remoteEntry.js",
       remotes: {
-        order: "order@http://localhost:3002/remoteEntry.js",
-        catalog: "catalog@http://localhost:3001/remoteEntry.js",
+        order: `order@${process.env.MFE_URL_CATALOG}/remoteEntry.js`,
+        catalog: `catalog@${process.env.MFE_URL_CATALOG}/remoteEntry.js`,
       },
       exposes: {
         "./header": "./src/scenes/Header/index.ts",
