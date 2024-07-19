@@ -7,7 +7,6 @@ const categories = [
   ["/shop/women%27s%20clothing", "Women's Clothing"],
   ["/shop/electronics", "Electronics"],
   ["/shop/jewelery", "Jewelery"],
-  ["/shop/sports-outdoors", "Sports & Outdoors"],
 ];
 
 const Link: FC<{ to: string; text: string }> = ({ to, text }) => {

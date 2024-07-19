@@ -1,51 +1,32 @@
-import { useState, type FC } from "react";
+import { SetStateAction, useEffect, useState, type FC } from "react";
 import { Text, Stack } from "@mantine/core";
 import { Checkboxes, Price } from "./components";
 
-const Filters: FC = () => {
+export interface FiltersProps {
+  onPriceChange: (min: string, max: string) => void;
+}
+
+const Filters: FC<FiltersProps> = ({
+  onPriceChange
+}) => {
   const [min, setMin] = useState("");
   const [max, setMax] = useState("");
-  const [colors, setColors] = useState<string[]>([]);
-  const [brands, setBrands] = useState<string[]>([]);
-
-  const onColorChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, checked } = e.currentTarget;
-
-    setColors((prevColors) => {
-      return checked
-        ? [...prevColors, name]
-        : prevColors.filter((item) => item !== name);
-    });
-  };
-
-  const onBrandChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, checked } = e.currentTarget;
-
-    setBrands((prevBrands) => {
-      return checked
-        ? [...prevBrands, name]
-        : prevBrands.filter((item) => item !== name);
-    });
-  };
+  
+  function setAndDispatchMin(_min: SetStateAction<string>) {
+    setMin(_min);
+    onPriceChange(typeof _min === 'function' ? _min(min) : _min, max);
+  }
+  function setAndDispatchMax(_max: SetStateAction<string>) {
+    setMax(_max);
+    onPriceChange(min, typeof _max === 'function' ? _max(max) : _max);
+  }
 
   return (
     <Stack gap="md">
       <Text size="xl" fw={700}>
         Filters
       </Text>
-      <Price min={min} max={max} setMin={setMin} setMax={setMax} />
-      <Checkboxes
-        title="Color"
-        options={["Black", "White", "Blue", "Red"]}
-        checked={colors}
-        onChange={onColorChange}
-      />
-      <Checkboxes
-        title="Brand"
-        options={["Nike", "Adidas", "Apple", "Samsung"]}
-        checked={brands}
-        onChange={onBrandChange}
-      />
+      <Price min={min} max={max} setMin={setAndDispatchMin} setMax={setAndDispatchMax} />
     </Stack>
   );
 };

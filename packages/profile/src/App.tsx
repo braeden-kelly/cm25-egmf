@@ -16,7 +16,7 @@ const App = () => {
         <div>
           <Account />
           <div ref={ref}>
-            <Login parentNode={stateRef} onLoginSuccess={() => {}} isLoggedIn={false}/>
+            <Login onLoginSuccess={() => {}} isLoggedIn={false}/>
           </div>
         </div>
       </MantineEmotionProvider>
