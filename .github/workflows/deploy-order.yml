@@ -24,11 +24,23 @@ jobs:
       - name: Build
         run: nx run-many -t build --parallel=10
 
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: build-artifacts
+          path: packages/order/dist
+
   deploy-order:
     runs-on: ubuntu-latest
     needs: [create-mfe-builds]
 
     steps:
+      - name: Download build artifacts
+        uses: actions/download-artifact@v3
+        with:
+          name: build-artifacts
+          path: packages/order/dist
+
       - name: Create deploy-bucket
         uses: bitovi/github-actions-deploy-static-site-to-aws@v0.2.0
         with:
