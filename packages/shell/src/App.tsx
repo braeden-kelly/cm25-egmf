@@ -4,6 +4,8 @@ import { MantineProvider } from "@mantine/core";
 import { emotionTransform, MantineEmotionProvider } from "@mantine/emotion";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
+import { cloneElement, ReactNode } from "react";
+
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import * as Sentry from "@sentry/react";
 
@@ -18,6 +20,18 @@ import Checkout from "./scenes/Checkout";
 import About from "./scenes/About";
 import Contact from "./scenes/Contact";
 import Welcome from "./scenes/Welcome";
+import { lazy, Suspense } from "react";
+
+// @ts-ignore
+const C = lazy(() => import("order/check"));
+
+const Check = () => {
+  return (
+    <Suspense fallback="no">
+      <C />
+    </Suspense>
+  );
+};
 
 const queryClient = new QueryClient();
 
@@ -37,8 +51,7 @@ const App = () => {
                   <Route path="item/:productId" element={<ItemScene />} />
                 </Route>
                 <Route path="/order" element={<Layout />}>
-                  <Route path="shipping" element={<Shipping />} />
-                  <Route path="checkout" element={<Checkout />} />
+                  <Route index path="*" element={<Check />} />
                 </Route>
                 <Route path="/about" element={<Layout />}>
                   <Route index element={<About />} />

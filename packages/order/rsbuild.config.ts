@@ -35,6 +35,7 @@ export default defineConfig({
         "./cart": "./src/scenes/Cart/index.ts",
         "./checkout": "./src/scenes/Checkout/index.ts",
         "./shipping": "./src/scenes/Shipping/index.ts",
+        "./check": "./src/scenes/Check/index.ts",
       },
       shared: {
         "@mantine/core": {
