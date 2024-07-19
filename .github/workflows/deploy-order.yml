@@ -24,7 +24,7 @@ jobs:
           cd ./packages/order
           npm run build
           cd ../../
-          tree .
+          tree . -I node_modules|.nx
 
       - name: Create deploy-bucket
         uses: bitovi/github-actions-deploy-static-site-to-aws@v0.2.0
