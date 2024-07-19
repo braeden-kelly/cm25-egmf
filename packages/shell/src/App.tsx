@@ -15,6 +15,8 @@ import Shipping from "./scenes/Shipping";
 import Account from "./scenes/Account";
 import ItemScene from "./scenes/Item";
 import Checkout from "./scenes/Checkout";
+import About from "./scenes/About";
+import Contact from "./scenes/Contact";
 import Welcome from "./scenes/Welcome";
 
 const queryClient = new QueryClient();
@@ -37,6 +39,12 @@ const App = () => {
                 <Route path="/order" element={<Layout />}>
                   <Route path="shipping" element={<Shipping />} />
                   <Route path="checkout" element={<Checkout />} />
+                </Route>
+                <Route path="/about" element={<Layout />}>
+                  <Route index element={<About />} />
+                </Route>
+                <Route path="/contact" element={<Layout />}>
+                  <Route index element={<Contact />} />
                 </Route>
                 <Route path="/account" element={<Layout />}>
                   <Route index element={<Account />} />

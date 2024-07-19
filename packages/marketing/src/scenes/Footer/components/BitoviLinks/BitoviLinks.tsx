@@ -6,22 +6,27 @@ export const links = [
   {
     text: "Frontend Development",
     href: "https://www.bitovi.com/services/frontend-development-consulting",
+    external: true,
   },
   {
     text: "Project Management",
     href: "https://www.bitovi.com/services/agile-project-management-consulting",
+    external: true,
   },
   {
     text: "Product Design",
     href: "https://www.bitovi.com/services/product-design-consulting",
+    external: true,
   },
   {
     text: "Backend Development",
     href: "https://www.bitovi.com/services/backend-engineering-consulting",
+    external: true,
   },
   {
     text: "DevOps",
     href: "https://www.bitovi.com/services/devops-consulting",
+    external: true,
   },
 ];
 

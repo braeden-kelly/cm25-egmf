@@ -1,10 +1,12 @@
 import type { FC } from "react";
 
 import { Anchor, Stack, Title } from "@mantine/core";
+import { NavLink } from "react-router-dom";
 
 interface FooterLink {
   href: string;
   text: string;
+  external: boolean;
 }
 
 interface FooterLinksProps {
@@ -17,9 +19,20 @@ const FooterLinks: FC<FooterLinksProps> = ({ title, links }) => {
     <Stack>
       <Title order={3}>{title}</Title>
       {links.map((link, index) => (
-        <Anchor key={link.href + index} c="white" href={link.href}>
-          {link.text}
-        </Anchor>
+        link.external 
+        ? (
+          <Anchor key={link.href + index} c="white" href={link.href}>
+            {link.text}
+          </Anchor>
+        ) : (
+          <NavLink
+            style={{ color: "white", textDecoration: "none" }}
+            key={link.href + index}
+            to={link.href}
+          >
+            {link.text}
+          </NavLink>
+        )
       ))}
     </Stack>
   );

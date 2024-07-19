@@ -35,6 +35,8 @@ export default defineConfig({
       exposes: {
         "./header": "./src/scenes/Header/index.ts",
         "./footer": "./src/scenes/Footer/index.ts",
+        "./about": "./src/scenes/About/index.ts",
+        "./contact": "./src/scenes/Contact/index.ts",
       },
       shared: {
         "@mantine/core": {

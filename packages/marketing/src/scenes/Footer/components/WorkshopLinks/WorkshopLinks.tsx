@@ -3,9 +3,9 @@ import type { FC } from "react";
 import FooterLinks from "../../shared/components/FooterLinks";
 
 export const links = [
-  { text: "Introduction", href: "#" },
-  { text: "Documentation", href: "#" },
-  { text: "Repo and Other Materials", href: "#" },
+  { text: "Introduction", href: "#", external: true },
+  { text: "Documentation", href: "#", external: true },
+  { text: "Repo and Other Materials", href: "#", external: true },
 ];
 
 const WorkShopLinks: FC = () => {

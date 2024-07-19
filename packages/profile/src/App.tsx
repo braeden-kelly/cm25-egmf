@@ -11,12 +11,10 @@ const App = () => {
   return (
     <MantineProvider stylesTransform={emotionTransform}>
       <MantineEmotionProvider>
-        <BrowserRouter>
-          <div>
-            <Account />
-            <div>
-              <Login onLoginSuccess={() => {}} />
-            </div>
+        <div>
+          <Account />
+          <div ref={ref}>
+            <Login onLoginSuccess={() => {}} isLoggedIn={false}/>
           </div>
         </BrowserRouter>
       </MantineEmotionProvider>
