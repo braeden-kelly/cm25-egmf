@@ -11,10 +11,12 @@ const App = () => {
   return (
     <MantineProvider stylesTransform={emotionTransform}>
       <MantineEmotionProvider>
-        <div>
-          <Account />
-          <div ref={ref}>
-            <Login onLoginSuccess={() => {}} isLoggedIn={false}/>
+        <BrowserRouter>
+          <div>
+            <Account />
+            <div>
+              <Login onLoginSuccess={() => {}} />
+            </div>
           </div>
         </BrowserRouter>
       </MantineEmotionProvider>
@@ -23,3 +25,4 @@ const App = () => {
 };
 
 export default App;
+
