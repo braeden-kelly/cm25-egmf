@@ -1,25 +1,23 @@
-import {
-  forwardRef,
-  ForwardRefExoticComponent,
-  MutableRefObject,
-  ReactElement,
-  type FC,
-  type ForwardRefRenderFunction,
-  type Ref,
-} from "react";
-import { Form, Navigate } from "react-router-dom";
+import type { FC } from "react";
+
 import "../Login.css";
 import backgroundImage from "../../assets/pexels-gustavo-fring-6050428.jpg";
-import { Button, Container, Flex, Heading, Text } from "@radix-ui/themes";
-import { PasswordInput, Stack, TextInput } from "@mantine/core";
+import {
+  Button,
+  Container,
+  Flex,
+  Title,
+  Text,
+  PasswordInput,
+  Stack,
+  TextInput,
+} from "@mantine/core";
 
 export interface Props {
-  onLoginSuccess: (args: any) => void;
+  onLoginSuccess: () => void;
 }
 
-type HTMLContainerTypesDict = Pick<HTMLElementTagNameMap, "div" | "section">;
-
-const Login = ({ onLoginSuccess }: Props): ReactElement => {
+const Login: FC<Props> = ({ onLoginSuccess }) => {
   return (
     <Container className="login-page">
       <div
@@ -38,11 +36,11 @@ const Login = ({ onLoginSuccess }: Props): ReactElement => {
         <form
           onSubmit={(e) => {
             e.preventDefault();
-            onLoginSuccess(null);
+            onLoginSuccess();
           }}
         >
           <Stack>
-            <Heading as="h3">Our treasures, your style</Heading>
+            <Title order={2}>Our treasures, your style</Title>
             <Text>Shop our exclusive collections now</Text>
             <TextInput placeholder="User name" />
             <PasswordInput placeholder="Password" />

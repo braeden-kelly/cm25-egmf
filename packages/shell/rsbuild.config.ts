@@ -8,9 +8,13 @@ export default defineConfig({
     },
   },
   html: {
-    tags: [{
-      tag: 'base', attrs: { href: '/' }, append: false,
-    }]
+    tags: [
+      {
+        tag: "base",
+        attrs: { href: "/" },
+        append: false,
+      },
+    ],
   },
   plugins: [pluginReact()],
   moduleFederation: {

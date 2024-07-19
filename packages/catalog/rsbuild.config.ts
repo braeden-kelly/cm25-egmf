@@ -28,6 +28,7 @@ export default defineConfig({
         "./list": "./src/scenes/CatalogList.tsx",
         "./item": "./src/scenes/CatalogItem.tsx",
         "./filter": "./src/scenes/Filter.tsx",
+        "./search": "./src/scenes/Search/index.ts",
       },
       filename: "remoteEntry.js",
       shared: {

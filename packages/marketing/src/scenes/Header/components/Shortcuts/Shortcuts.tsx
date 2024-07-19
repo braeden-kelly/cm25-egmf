@@ -6,16 +6,9 @@ import { Link } from "react-router-dom";
 // @ts-ignore
 const Cart = lazy(() => import("order/cart"));
 
-export interface Props {
-  onCartClick: () => void;
-}
-
-const Shortcuts: FC<Props> = ({ onCartClick }) => {
+const Shortcuts: FC = () => {
   return (
     <Group>
-      <Suspense fallback={<Skeleton width={50} height={50} radius="md" />}>
-        <Cart checkoutUrl="/order/shipping" />
-      </Suspense>
       <Button
         component={Link}
         to="/account"
@@ -25,6 +18,9 @@ const Shortcuts: FC<Props> = ({ onCartClick }) => {
       >
         <IconUser />
       </Button>
+      <Suspense fallback={<Skeleton width={50} height={50} radius="md" />}>
+        <Cart checkoutUrl="/order/shipping" />
+      </Suspense>
     </Group>
   );
 };
