@@ -13,7 +13,7 @@ export default defineConfig({
       plugins: [
         sentryWebpackPlugin({
           moduleMetadata: ({ release }) => ({
-            dsn: process.env.SENTRY_CATALOG_DSN,
+            dsn: process.env.SENTRY_DSN_CATALOG,
             release,
           }),
         }),

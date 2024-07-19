@@ -10,7 +10,7 @@
     "resolveJsonModule": true,
     "moduleResolution": "bundler",
     "useDefineForClassFields": true,
-    "types": ["@testing-library/jest-dom"],
+    "types": ["@testing-library/jest-dom", "node"],
     "baseUrl": ".",
     "paths": {
       "@test/*": ["./src/test/*"]

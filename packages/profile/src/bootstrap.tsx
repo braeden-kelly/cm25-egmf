@@ -8,10 +8,13 @@ import {
 } from "@sentry/react";
 
 init({
-  dsn: process.env.SENTRY_PROFILE_DSN,
+  dsn: process.env.SENTRY_DSN_PROFILE,
   integrations: [browserTracingIntegration(), replayIntegration()],
   tracesSampleRate: 1.0,
-  tracePropagationTargets: ["localhost"],
+  tracePropagationTargets: [
+    "localhost",
+    /^https:\/\/*-mfe\.bitovi-sandbox\.com/,
+  ],
   replaysSessionSampleRate: 0.1,
   replaysOnErrorSampleRate: 1.0,
 });

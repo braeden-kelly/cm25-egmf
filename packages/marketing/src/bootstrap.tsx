@@ -9,10 +9,13 @@ import {
 import "@mantine/core/styles.css";
 
 init({
-  dsn: process.env.SENTRY_MARKETING_DSN,
+  dsn: process.env.SENTRY_DSN_MARKETING,
   integrations: [browserTracingIntegration(), replayIntegration()],
   tracesSampleRate: 1.0,
-  tracePropagationTargets: ["localhost"],
+  tracePropagationTargets: [
+    "localhost",
+    /^https:\/\/*-mfe\.bitovi-sandbox\.com/,
+  ],
   replaysSessionSampleRate: 0.1,
   replaysOnErrorSampleRate: 1.0,
 });
