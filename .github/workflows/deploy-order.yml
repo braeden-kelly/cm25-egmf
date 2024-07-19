@@ -25,6 +25,7 @@ jobs:
           npm run build
           cd ../../
           pwd
+          ls /home/runner/work/enterprise-grade-micro-frontends/enterprise-grade-micro-frontends/packages/order/dist
 
       - name: Create deploy-bucket
         uses: bitovi/github-actions-deploy-static-site-to-aws@v0.2.0
