@@ -23,10 +23,7 @@ jobs:
         run: |
           cd ./packages/order
           npm run build
-          ls
-
-      - name: dbl check
-        run: ls
+          cd ../../
 
       - name: Create deploy-bucket
         uses: bitovi/github-actions-deploy-static-site-to-aws@v0.2.0
