@@ -3,23 +3,14 @@ import type { CatalogItem, UserCart } from "@services/cart";
 import { useEffect } from "react";
 import { useLocalStorage } from "@mantine/hooks";
 
-import { getTotals } from "@services/cart";
+import { cartKey, getTotals, newCart } from "@services/cart";
 import { addToProducts, increaseQuantity, itemInCart } from "./utilities";
-
-const newCart: UserCart = {
-  userId: Math.random(),
-  id: Math.random(),
-  products: [],
-  subTotal: 0,
-  tax: 0,
-  total: 0,
-};
 
 type AddToCartEvent = { item: CatalogItem };
 
 export const useCart = () => {
   const [cart, setCart] = useLocalStorage<UserCart>({
-    key: "user-cart",
+    key: cartKey,
     defaultValue: newCart,
   });
 

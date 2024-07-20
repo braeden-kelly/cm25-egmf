@@ -19,7 +19,7 @@ const Shortcuts: FC = () => {
         <IconUser />
       </Button>
       <Suspense fallback={<Skeleton width={50} height={50} radius="md" />}>
-        <Cart checkoutUrl="/order/shipping" />
+        <Cart checkoutUrl="/order" />
       </Suspense>
     </Group>
   );

@@ -1,24 +1,22 @@
 import type { FC } from "react";
 
-import { Grid } from "@mantine/core";
+import { Routes, Route } from "react-router-dom";
 
-import OrderSummary from "./components/OrderSummary";
+import Shipping from "./components/Shipping";
+import Layout from "./components/Layout";
 import Payment from "./components/Payment";
+import { useCheckout } from "./hooks/useCheckout";
 
-interface CheckoutProps {
-  id?: number;
-}
+const Checkout: FC<{ id?: number; homePath?: string }> = ({ id, homePath }) => {
+  const { checkout, navigateToCheckout } = useCheckout(homePath);
 
-const Checkout: FC<CheckoutProps> = ({ id }) => {
   return (
-    <Grid align="center">
-      <Grid.Col span={{ md: 12, lg: 6 }}>
-        <OrderSummary id={id} />
-      </Grid.Col>
-      <Grid.Col span={{ md: 12, lg: 6 }}>
-        <Payment onSubmit={() => {}} />
-      </Grid.Col>
-    </Grid>
+    <Routes>
+      <Route path="*" element={<Layout id={id} />}>
+        <Route index element={<Shipping onSubmit={navigateToCheckout} />} />
+        <Route path="checkout" element={<Payment onSubmit={checkout} />} />
+      </Route>
+    </Routes>
   );
 };
 

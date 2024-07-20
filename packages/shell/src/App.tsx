@@ -4,34 +4,20 @@ import { MantineProvider } from "@mantine/core";
 import { emotionTransform, MantineEmotionProvider } from "@mantine/emotion";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
-import { cloneElement, ReactNode } from "react";
-
-import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import * as Sentry from "@sentry/react";
+import { Notifications } from "@mantine/notifications";
 
 import Layout from "./components/Layout";
 
 import Login from "./scenes/Login";
 import Shop from "./scenes/Shop";
-import Shipping from "./scenes/Shipping";
 import Account from "./scenes/Account";
-import ItemScene from "./scenes/Item";
-import Checkout from "./scenes/Checkout";
+import Item from "./scenes/Item";
 import About from "./scenes/About";
 import Contact from "./scenes/Contact";
 import Welcome from "./scenes/Welcome";
-import { lazy, Suspense } from "react";
-
-// @ts-ignore
-const C = lazy(() => import("order/check"));
-
-const Check = () => {
-  return (
-    <Suspense fallback="no">
-      <C />
-    </Suspense>
-  );
-};
+import Checkout from "./scenes/Checkout";
 
 const queryClient = new QueryClient();
 
@@ -41,6 +27,7 @@ const App = () => {
       <QueryClientProvider client={queryClient}>
         <MantineProvider stylesTransform={emotionTransform}>
           <MantineEmotionProvider>
+            <Notifications />
             <BrowserRouter>
               <Routes>
                 <Route path="/" element={<Welcome />} />
@@ -48,10 +35,10 @@ const App = () => {
                 <Route path="/shop" element={<Layout />}>
                   <Route index element={<Shop />} />
                   <Route path=":category?" element={<Shop />} />
-                  <Route path="item/:productId" element={<ItemScene />} />
+                  <Route path="item/:productId" element={<Item />} />
                 </Route>
                 <Route path="/order" element={<Layout />}>
-                  <Route index path="*" element={<Check />} />
+                  <Route index path="*" element={<Checkout />} />
                 </Route>
                 <Route path="/about" element={<Layout />}>
                   <Route index element={<About />} />
