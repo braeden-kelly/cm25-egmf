@@ -12,7 +12,7 @@ import {
 import { Link, useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 
-import { fetchProduct } from "../../api";
+import { fetchProduct } from "@services/product";
 
 import Images from "./components/Images";
 import Details from "./components/Details";

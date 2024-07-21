@@ -1,8 +1,8 @@
 import type { FC } from "react";
+import type { CatalogItem } from "@services/shared";
 
 import { Text, Card, Stack, Tooltip, Image } from "@mantine/core";
 import { Link } from "react-router-dom";
-import { CatalogItem } from "src/api";
 
 interface RelatedItemProps {
   product: CatalogItem;

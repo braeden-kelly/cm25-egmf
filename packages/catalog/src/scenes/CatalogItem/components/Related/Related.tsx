@@ -3,7 +3,7 @@ import type { FC } from "react";
 import { Group, Text, Stack } from "@mantine/core";
 import { useQuery } from "@tanstack/react-query";
 
-import { fetchRelated } from "../../../../api";
+import { fetchRelated } from "@services/related";
 
 import RelatedSkeleton from "./components/RelatedSkeleton";
 import RelatedError from "./components/RelatedError";

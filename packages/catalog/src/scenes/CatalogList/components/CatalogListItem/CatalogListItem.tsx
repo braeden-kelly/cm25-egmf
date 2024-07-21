@@ -3,7 +3,7 @@ import type { FC } from "react";
 import { Card, Image, Text, Stack, Button, Tooltip } from "@mantine/core";
 import { Link } from "react-router-dom";
 
-import { addToCart, toCurrency } from "../../../../utilities/cart";
+import { addToCart, toCurrency } from "@utilities/cart";
 
 export interface CatalogListItemProps {
   href: string;

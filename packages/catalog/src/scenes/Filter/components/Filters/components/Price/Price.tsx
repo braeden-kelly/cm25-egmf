@@ -1,4 +1,5 @@
 import type { FC } from "react";
+
 import { Group, Text, TextInput, Stack } from "@mantine/core";
 
 const Price: FC<{

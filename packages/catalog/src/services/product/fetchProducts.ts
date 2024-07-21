@@ -1,5 +1,6 @@
+import type { CatalogItem } from "../shared/interface";
+
 import { QueryKey } from "@tanstack/react-query";
-import type { CatalogItem } from "./interface";
 
 export async function fetchProducts({
   queryKey,

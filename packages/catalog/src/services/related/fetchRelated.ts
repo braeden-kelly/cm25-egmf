@@ -1,4 +1,4 @@
-import type { CatalogItem } from "./interface";
+import type { CatalogItem } from "../shared/interface";
 
 export async function fetchRelated(category: string): Promise<CatalogItem[]> {
   try {

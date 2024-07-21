@@ -1,10 +1,11 @@
 import type { FC } from "react";
+
 import { Group } from "@mantine/core";
 import {
-    IconStarFilled,
-    IconStar,
-    IconStarHalfFilled,
-  } from "@tabler/icons-react";
+  IconStarFilled,
+  IconStar,
+  IconStarHalfFilled,
+} from "@tabler/icons-react";
 
 interface RatingProps {
   rate: number;

@@ -7,6 +7,10 @@ export default defineConfig({
     define: {
       "process.env": JSON.stringify(process.env),
     },
+    alias: {
+      "@services": "./src/services",
+      "@utilities": "./src/utilities",
+    },
   },
   tools: {
     rspack: {

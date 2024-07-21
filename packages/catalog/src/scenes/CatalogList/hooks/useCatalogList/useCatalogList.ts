@@ -1,7 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
 import { useParams, useSearchParams } from "react-router-dom";
-import { fetchProducts } from "src/api";
+
+import { fetchProducts } from "@services/product";
 
 type FilterPriceEvent = { min: string; max: string };
 

@@ -1,7 +1,9 @@
 import type { FC } from "react";
+
 import { Text, Group, Button, Title } from "@mantine/core";
 
-import { addToCart } from "../../../../utilities/cart";
+import { addToCart, toCurrency } from "@utilities/cart";
+
 import Rating from "./components/Rating";
 
 interface DetailsProps {
@@ -28,7 +30,7 @@ const Details: FC<DetailsProps> = (props) => {
       </Text>
       <Group gap="lg">
         <Text size="xl" fw={700}>
-          ${price}
+          {toCurrency(price)}
         </Text>
         <Button bg="black" onClick={() => addToCart(props)}>
           Add to Cart

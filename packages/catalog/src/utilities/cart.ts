@@ -1,4 +1,4 @@
-import { CatalogItem } from "../api";
+import { CatalogItem } from "@services/shared";
 
 export const addToCart = ({
   id,
