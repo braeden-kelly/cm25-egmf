@@ -27,6 +27,7 @@ export default defineConfig({
       filename: "workshop.js",
       exposes: {
         "./welcome": "./src/scenes/Welcome/index.ts",
+        "./exercises": "./src/scenes/Exercises/index.ts",
       },
       shared: {
         "@mantine/core": {
