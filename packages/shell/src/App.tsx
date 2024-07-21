@@ -9,6 +9,7 @@ import * as Sentry from "@sentry/react";
 import { Notifications } from "@mantine/notifications";
 
 import Layout from "./components/Layout";
+import LayoutNoLogin from "./components/LayoutNoLogin";
 
 import Login from "./scenes/Login";
 import Shop from "./scenes/Shop";
@@ -18,6 +19,7 @@ import About from "./scenes/About";
 import Contact from "./scenes/Contact";
 import Welcome from "./scenes/Welcome";
 import Checkout from "./scenes/Checkout";
+import Exercises from "./scenes/Exercises";
 
 const queryClient = new QueryClient();
 
@@ -31,6 +33,9 @@ const App = () => {
             <BrowserRouter>
               <Routes>
                 <Route path="/" element={<Welcome />} />
+                <Route path="/workshop" element={<LayoutNoLogin />}>
+                  <Route index path="*" element={<Exercises />} />
+                </Route>
                 <Route path="/login" element={<Login />} />
                 <Route path="/shop" element={<Layout />}>
                   <Route index element={<Shop />} />
