@@ -25,7 +25,7 @@ export default defineConfig({
     options: {
       name: "catalog",
       exposes: {
-        "./list": "./src/scenes/CatalogList.tsx",
+        "./list": "./src/scenes/CatalogList/index.ts",
         "./item": "./src/scenes/CatalogItem.tsx",
         "./filter": "./src/scenes/Filter/index.ts",
         "./search": "./src/scenes/Search/index.ts",
