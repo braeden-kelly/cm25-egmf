@@ -1,11 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import App from "./App";
 import {
   init,
   browserTracingIntegration,
   replayIntegration,
 } from "@sentry/react";
+
+import App from "./App";
 
 init({
   dsn: process.env.SENTRY_PROFILE_DSN,

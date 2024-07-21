@@ -1,3 +1,5 @@
+import type { FC } from "react";
+
 import { Button, Container, MantineProvider, Menu } from "@mantine/core";
 import { emotionTransform, MantineEmotionProvider } from "@mantine/emotion";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
@@ -12,7 +14,7 @@ import "@mantine/notifications/styles.css";
 
 const queryClient = new QueryClient();
 
-const App = () => {
+const App: FC = () => {
   return (
     <QueryClientProvider client={queryClient}>
       <MantineProvider stylesTransform={emotionTransform}>
@@ -28,23 +30,7 @@ const App = () => {
                 />
                 <Route path="/cart" element={<Cart />} />
               </Routes>
-              <Menu>
-                <Menu.Target>
-                  <Button
-                    sx={{ position: "absolute", right: "32px", bottom: "32px" }}
-                  >
-                    Other Remotes
-                  </Button>
-                </Menu.Target>
-                <Menu.Dropdown>
-                  <Menu.Item component={Link} to="/cart">
-                    Cart
-                  </Menu.Item>
-                  <Menu.Item component={Link} to="/">
-                    Checkout
-                  </Menu.Item>
-                </Menu.Dropdown>
-              </Menu>
+              <RemoteLinks />
             </BrowserRouter>
           </Container>
         </MantineEmotionProvider>
@@ -54,3 +40,23 @@ const App = () => {
 };
 
 export default App;
+
+const RemoteLinks: FC = () => {
+  return (
+    <Menu>
+      <Menu.Target>
+        <Button sx={{ position: "absolute", right: "32px", bottom: "32px" }}>
+          Other Remotes
+        </Button>
+      </Menu.Target>
+      <Menu.Dropdown>
+        <Menu.Item component={Link} to="/cart">
+          Cart
+        </Menu.Item>
+        <Menu.Item component={Link} to="/">
+          Checkout
+        </Menu.Item>
+      </Menu.Dropdown>
+    </Menu>
+  );
+};
