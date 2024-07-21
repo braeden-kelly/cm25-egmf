@@ -7,7 +7,7 @@ import ExerciseLayout from "../../shared/components/ExerciseLayout";
 
 const GettingSetup: FC = () => {
   return (
-    <ExerciseLayout title="Getting Setup" next="exercise-1">
+    <ExerciseLayout title="Getting Setup" next="../exercise-1">
       <Text>
         This workshop makes a couple assumptions about your development
         environment. Firstly you have node, npm and git setup on your computer.

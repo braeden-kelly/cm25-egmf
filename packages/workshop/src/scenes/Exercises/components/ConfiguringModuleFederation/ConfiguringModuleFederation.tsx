@@ -26,8 +26,8 @@ const ConfiguringModuleFederation = () => {
   return (
     <ExerciseLayout
       title="Configuring Module Federation"
-      next="exercise-2"
-      previous="set-up"
+      next="../exercise-2"
+      previous="../set-up"
     >
       <Text>Start by checking out this branch</Text>
       <Code my="lg" block>
