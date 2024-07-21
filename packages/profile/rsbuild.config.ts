@@ -25,8 +25,8 @@ export default defineConfig({
     options: {
       name: "profile",
       exposes: {
-        "./account": "./src/scenes/Account.tsx",
-        "./login": "./src/scenes/Login.tsx",
+        "./account": "./src/scenes/Account/index.ts",
+        "./login": "./src/scenes/Login/index.ts",
       },
       filename: "remoteEntry.js",
       shared: {

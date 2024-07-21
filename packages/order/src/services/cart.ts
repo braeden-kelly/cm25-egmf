@@ -95,3 +95,14 @@ export const getTotals = (products: UserCart["products"]) => {
     total: subTotal + tax,
   };
 };
+
+export const newCart: UserCart = {
+  userId: Math.random(),
+  id: Math.random(),
+  products: [],
+  subTotal: 0,
+  tax: 0,
+  total: 0,
+};
+
+export const cartKey = "user-cart";

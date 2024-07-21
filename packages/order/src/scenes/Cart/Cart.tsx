@@ -29,7 +29,7 @@ const Cart: FC<CartProps> = ({ checkoutUrl }) => {
         {cartHasItems ? (
           <>
             <CartSummary products={cart.products} />
-            <Button component={Link} to={checkoutUrl || "/shipping"}>
+            <Button component={Link} to={checkoutUrl || "/order"}>
               Checkout
             </Button>
           </>

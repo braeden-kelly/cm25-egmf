@@ -1,7 +1,7 @@
 import type { FC } from "react";
 
 import { useQuery } from "@tanstack/react-query";
-import { getUserCart } from "../../../../services/cart";
+import { getUserCart } from "@services/cart";
 
 import OrderDetails from "./components/OrderDetails";
 import OrderDetailsSkeleton from "./components/OrderDetailsSkeleton";

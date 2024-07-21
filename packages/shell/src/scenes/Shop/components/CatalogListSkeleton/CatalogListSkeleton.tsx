@@ -1,7 +1,7 @@
 import { Container } from "@mantine/core";
 
 const CatalogListSkeleton = () => {
-  return <Container h="100%" fluid />;
+  return <Container fluid />;
 };
 
 export default CatalogListSkeleton;

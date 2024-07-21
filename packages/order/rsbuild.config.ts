@@ -34,10 +34,13 @@ export default defineConfig({
       exposes: {
         "./cart": "./src/scenes/Cart/index.ts",
         "./checkout": "./src/scenes/Checkout/index.ts",
-        "./shipping": "./src/scenes/Shipping/index.ts",
       },
       shared: {
         "@mantine/core": {
+          requiredVersion: false,
+          singleton: true,
+        },
+        "@mantine/notifications": {
           requiredVersion: false,
           singleton: true,
         },

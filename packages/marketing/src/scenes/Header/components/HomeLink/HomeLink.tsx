@@ -7,7 +7,7 @@ const HomeLink: FC = () => {
   return (
     <Group>
       <IconBuildingStore color="white" />
-      <Link to="/" style={{ textDecoration: "none" }}>
+      <Link to="/shop" style={{ textDecoration: "none" }}>
         <Text size="lg" c="white">
           Acme Store
         </Text>
