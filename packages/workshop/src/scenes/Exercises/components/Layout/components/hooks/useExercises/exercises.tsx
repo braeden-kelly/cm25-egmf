@@ -1,6 +1,6 @@
 import type { ExerciseData } from "../../ExerciseList/shared/type";
 
-import { IconAdjustmentsAlt } from "@tabler/icons-react";
+import { IconAdjustmentsAlt, IconFlagCheck } from "@tabler/icons-react";
 
 export const exerciseMapping: Record<string, number> = {
   "set-up": 0,
@@ -8,6 +8,10 @@ export const exerciseMapping: Record<string, number> = {
   "exercise-2": 2,
   "exercise-3": 3,
   "exercise-4": 4,
+  "exercise-5": 5,
+  "exercise-6": 6,
+  "exercise-7": 7,
+  complete: 8,
 };
 
 export const exercises: ExerciseData[] = [
@@ -36,5 +40,26 @@ export const exercises: ExerciseData[] = [
     title: "Adding More Micro-Frontends",
     subTitle: "The app still needs some micro-frontends added to work",
     to: "exercise-4",
+  },
+  {
+    title: "Individual and Shared Routes",
+    subTitle: "Most apps (ours included) need routing",
+    to: "exercise-5",
+  },
+  {
+    title: "Pub-Sub and Micro-Frontends",
+    subTitle: "Add MFE to MFE communication with pub-sub",
+    to: "exercise-6",
+  },
+  {
+    title: "The URL for Communication",
+    subTitle: "The URL can also be used to communicate data across MFEs",
+    to: "exercise-7",
+  },
+  {
+    title: "Completed",
+    subTitle: "Congratulations you finished the workshop",
+    to: "complete",
+    icon: <IconFlagCheck size={18} />,
   },
 ];
