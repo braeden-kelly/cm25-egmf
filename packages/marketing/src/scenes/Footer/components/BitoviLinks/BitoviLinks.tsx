@@ -4,7 +4,7 @@ import FooterLinks from "../../shared/components/FooterLinks";
 
 export const links = [
   {
-    text: "Frontend Development",
+    text: "Frontend",
     href: "https://www.bitovi.com/services/frontend-development-consulting",
     external: true,
   },
@@ -19,7 +19,7 @@ export const links = [
     external: true,
   },
   {
-    text: "Backend Development",
+    text: "Backend",
     href: "https://www.bitovi.com/services/backend-engineering-consulting",
     external: true,
   },
