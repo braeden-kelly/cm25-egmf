@@ -18,7 +18,7 @@ const CatalogListItem: FC<CatalogListItemProps> = (props) => {
   const { href, imgSrc, name, price } = props;
 
   return (
-    <Card shadow="sm" p={0} h={350} w={250}>
+    <Card shadow="sm" p={0} h={350} w={225}>
       <Stack gap="sm">
         <Link to={href}>
           <Image

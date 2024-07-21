@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useSearchParams } from "react-router-dom";
 import { fetchProducts } from "src/api";
 
 type FilterPriceEvent = { min: string; max: string };
@@ -13,6 +13,8 @@ export const useCatalogList = () => {
   });
   const [minPrice, setMinPrice] = useState<string>("");
   const [maxPrice, setMaxPrice] = useState<string>("");
+  const [searchParams] = useSearchParams();
+  const search = searchParams.get("search");
 
   useEffect(() => {
     function handlePriceFilterChange(ev: CustomEvent<FilterPriceEvent>) {
@@ -30,7 +32,11 @@ export const useCatalogList = () => {
     };
   }, []);
 
-  const filteredData = data?.filter((item) => {
+  const searchedData = data?.filter((item) => {
+    return !search || item.name.toLowerCase().includes(search.toLowerCase());
+  });
+
+  const filteredData = searchedData?.filter((item) => {
     return (
       (!+minPrice || item.price >= +minPrice) &&
       (!+maxPrice || item.price <= +maxPrice)

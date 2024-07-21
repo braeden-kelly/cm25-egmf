@@ -23,7 +23,7 @@ const Layout = () => {
       <Suspense fallback={<HeaderSkeleton />}>
         <Header />
       </Suspense>
-      <Flex w="100%" component="main" justify="center" align="center">
+      <Flex w="100%" sx={{ flex: 1 }} py="xl" component="main">
         <Container fluid w={{ sm: "sm", md: 800, lg: 1330, xl: 1400 }}>
           <Outlet />
         </Container>

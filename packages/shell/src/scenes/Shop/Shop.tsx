@@ -12,12 +12,12 @@ const Filter = lazy(() => import("catalog/filter"));
 const Shop = () => {
   return (
     <Grid>
-      <Grid.Col span={{ sm: 12, md: 2 }}>
+      <Grid.Col span={{ sm: 12, md: 3 }}>
         <Suspense fallback={<FilterSkeleton />}>
           <Filter />
         </Suspense>
       </Grid.Col>
-      <Grid.Col span={{ sm: 12, md: 10 }}>
+      <Grid.Col span={{ sm: 12, md: 9 }}>
         <Suspense fallback={<CatalogListSkeleton />}>
           <CatalogList />
         </Suspense>
