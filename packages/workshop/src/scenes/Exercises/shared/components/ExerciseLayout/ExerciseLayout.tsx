@@ -24,7 +24,7 @@ const GettingSetup: FC<ExerciseLayoutProps> = ({
       </Title>
       {children}
       <Flex mt="xl" gap="xl">
-        {typeof previous !== "undefined" ? (
+        {previous ? (
           <ChangeExercise to={previous} title="Previous" />
         ) : (
           <Box flex={1} />

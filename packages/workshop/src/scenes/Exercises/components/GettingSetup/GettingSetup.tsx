@@ -32,7 +32,8 @@ const GettingSetup: FC = () => {
         <Anchor href="">Repo</Anchor>.
       </Text>
       <Text>
-        Once cloned, open the project in your IDE of choice - although this will
+        Once cloned, checkout out the <Code>workshop/getting-started</Code>{" "}
+        branch and open the project in your IDE of choice - although this will
         be written with vscode in mind - and install the project dependencies.
       </Text>
       <Code my="lg" block>

@@ -28,6 +28,9 @@ import { Link, Outlet, useLocation } from "react-router-dom";
 const exerciseMapping: Record<string, number> = {
   "set-up": 0,
   "exercise-1": 1,
+  "exercise-2": 2,
+  "exercise-3": 3,
+  "exercise-4": 4,
 };
 
 const getActive = (path: string): number => {
@@ -57,6 +60,21 @@ const exercises: ExerciseData[] = [
     subTitle: "Configure the Module Federation plugin for the shop",
     to: "exercise-1",
   },
+  {
+    title: "Sharing Common Modules",
+    subTitle: "Let's dedupe some code and decrease the bundle sizes",
+    to: "exercise-2",
+  },
+  {
+    title: "Fault Tolerance",
+    subTitle: "MFEs that go down shouldn't impact the rest of the app",
+    to: "exercise-3",
+  },
+  {
+    title: "Adding More Micro-Frontends",
+    subTitle: "The app still needs some micro-frontends added to work",
+    to: "exercise-4",
+  },
 ];
 
 const ExerciseList = () => {
@@ -75,34 +93,6 @@ const ExerciseList = () => {
           />
         );
       })}
-
-      <Timeline.Item
-        title="Pull request"
-        bullet={<IconGitPullRequest size={12} />}
-        lineVariant="dashed"
-      >
-        <Text c="dimmed" size="sm">
-          You&apos;ve submitted a pull request
-          <Text variant="link" component="span" inherit>
-            Fix incorrect notification message (#187)
-          </Text>
-        </Text>
-        <Text size="xs" mt={4}>
-          34 minutes ago
-        </Text>
-      </Timeline.Item>
-
-      <Timeline.Item title="Code review" bullet={<IconMessageDots size={12} />}>
-        <Text c="dimmed" size="sm">
-          <Text variant="link" component="span" inherit>
-            Robert Gluesticker
-          </Text>{" "}
-          left a code review on your pull request
-        </Text>
-        <Text size="xs" mt={4}>
-          12 minutes ago
-        </Text>
-      </Timeline.Item>
     </Timeline>
   );
 };
@@ -127,6 +117,7 @@ const ExerciseListItem: FC<ExerciseListItemProps> = ({
     <Timeline.Item
       __active={position <= active}
       __lineActive={position < active}
+      lineVariant={position < active ? "solid" : "dashed"}
       bullet={
         <Anchor component={Link} to={to} c={color}>
           {icon}
