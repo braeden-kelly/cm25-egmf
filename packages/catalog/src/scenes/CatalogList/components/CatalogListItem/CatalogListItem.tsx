@@ -3,7 +3,7 @@ import type { FC } from "react";
 import { Card, Image, Text, Stack, Button, Tooltip } from "@mantine/core";
 import { Link } from "react-router-dom";
 
-import { addToCart } from "../../../../utilities/cart";
+import { addToCart, toCurrency } from "../../../../utilities/cart";
 
 export interface CatalogListItemProps {
   href: string;
@@ -44,7 +44,7 @@ const CatalogListItem: FC<CatalogListItemProps> = (props) => {
             </Text>
           </Tooltip>
           <Text size="lg" c="dark">
-            ${price}
+            {toCurrency(price)}
           </Text>
           <Button bg="black" onClick={() => addToCart(props)}>
             <Text size="md" fw={700}>

@@ -12,6 +12,7 @@ export async function fetchRelated(category: string): Promise<CatalogItem[]> {
 
     const data = await response.json();
     const mappedData: CatalogItem[] = data.map((item: any) => ({
+      id: item.id,
       href: item.image,
       imgSrc: item.image,
       name: item.title,
