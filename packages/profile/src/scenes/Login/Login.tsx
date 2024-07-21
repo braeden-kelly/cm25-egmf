@@ -1,6 +1,6 @@
 import type { FC } from "react";
 
-import backgroundImage from "../../assets/pexels-gustavo-fring-6050428.jpg";
+import backgroundImage from "../../../assets/pexels-gustavo-fring-6050428.jpg";
 import {
   Button,
   Container,
@@ -15,7 +15,7 @@ import {
 import { createStyles } from "@mantine/emotion";
 
 export interface LoginProps {
-  onLoginSuccess: () => void;
+  onLoginSuccess?: () => void;
 }
 
 const Login: FC<LoginProps> = ({ onLoginSuccess }) => {
@@ -36,7 +36,7 @@ const Login: FC<LoginProps> = ({ onLoginSuccess }) => {
         <form
           onSubmit={(e) => {
             e.preventDefault();
-            onLoginSuccess();
+            onLoginSuccess?.();
           }}
         >
           <Stack>
