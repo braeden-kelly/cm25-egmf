@@ -8,6 +8,8 @@ import {
   replayIntegration,
 } from "@sentry/react";
 
+import "./reset.css";
+
 init({
   dsn: process.env.SENTRY_DSN_WORKSHOP,
   integrations: [browserTracingIntegration(), replayIntegration()],

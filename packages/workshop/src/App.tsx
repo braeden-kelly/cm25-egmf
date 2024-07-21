@@ -5,6 +5,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Welcome from "./scenes/Welcome/Welcome";
 
 import "@mantine/core/styles.css";
+import Workshop from "./scenes/Exercises";
 
 const App = () => {
   return (
@@ -13,6 +14,7 @@ const App = () => {
         <BrowserRouter>
           <Routes>
             <Route index element={<Welcome />} />
+            <Route path="/workshop/*" element={<Workshop />} />
           </Routes>
         </BrowserRouter>
       </MantineEmotionProvider>
