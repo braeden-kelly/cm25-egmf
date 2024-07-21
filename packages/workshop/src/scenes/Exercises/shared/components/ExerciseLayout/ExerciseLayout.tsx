@@ -1,8 +1,8 @@
 import type { FC, ReactNode } from "react";
 
-import { Title, Text, Flex, Card, Box } from "@mantine/core";
+import { Title, Flex, Box } from "@mantine/core";
 
-import { Link } from "react-router-dom";
+import ChangeExercise from "./components/ChangeExercise";
 
 interface ExerciseLayoutProps {
   children?: ReactNode;
@@ -11,7 +11,7 @@ interface ExerciseLayoutProps {
   previous?: string;
 }
 
-const GettingSetup: FC<ExerciseLayoutProps> = ({
+const ExerciseLayout: FC<ExerciseLayoutProps> = ({
   children,
   title,
   next,
@@ -25,27 +25,18 @@ const GettingSetup: FC<ExerciseLayoutProps> = ({
       {children}
       <Flex mt="xl" gap="xl">
         {previous ? (
-          <ChangeExercise to={previous} title="Previous" />
+          <ChangeExercise path={previous} variant="previous" />
         ) : (
           <Box flex={1} />
         )}
-        {next ? <ChangeExercise to={next} title="Next" /> : <Box flex={1} />}
+        {next ? (
+          <ChangeExercise path={next} variant="next" />
+        ) : (
+          <Box flex={1} />
+        )}
       </Flex>
     </Flex>
   );
 };
 
-interface ChangeExerciseProps {
-  to: string;
-  title: string;
-}
-
-const ChangeExercise: FC<ChangeExerciseProps> = ({ to, title }) => {
-  return (
-    <Card component={Link} to={to} withBorder flex={1}>
-      <Text>{title}</Text>
-    </Card>
-  );
-};
-
-export default GettingSetup;
+export default ExerciseLayout;
