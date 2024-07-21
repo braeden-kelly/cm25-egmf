@@ -29,7 +29,7 @@ export default defineConfig({
       name: "marketing",
       filename: "remoteEntry.js",
       remotes: {
-        order: `order@${process.env.MFE_URL_CATALOG}/remoteEntry.js`,
+        order: `order@${process.env.MFE_URL_ORDER}/remoteEntry.js`,
         catalog: `catalog@${process.env.MFE_URL_CATALOG}/remoteEntry.js`,
       },
       exposes: {
