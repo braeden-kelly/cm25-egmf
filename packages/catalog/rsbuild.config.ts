@@ -7,6 +7,10 @@ export default defineConfig({
     define: {
       "process.env": JSON.stringify(process.env),
     },
+    alias: {
+      "@services": "./src/services",
+      "@utilities": "./src/utilities",
+    },
   },
   tools: {
     rspack: {
@@ -25,9 +29,9 @@ export default defineConfig({
     options: {
       name: "catalog",
       exposes: {
-        "./list": "./src/scenes/CatalogList.tsx",
-        "./item": "./src/scenes/CatalogItem.tsx",
-        "./filter": "./src/scenes/Filter.tsx",
+        "./list": "./src/scenes/CatalogList/index.ts",
+        "./item": "./src/scenes/CatalogItem/index.ts",
+        "./filter": "./src/scenes/Filter/index.ts",
         "./search": "./src/scenes/Search/index.ts",
       },
       filename: "remoteEntry.js",

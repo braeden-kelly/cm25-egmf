@@ -11,6 +11,10 @@
     "moduleResolution": "bundler",
     "useDefineForClassFields": true,
     "baseUrl": ".",
+    "paths": {
+      "@services/*": ["./src/services/*"],
+      "@utilities/*": ["./src/utilities/*"]
+    }
   },
   "include": ["src"]
 }
