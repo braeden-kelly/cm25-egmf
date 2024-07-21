@@ -1,6 +1,6 @@
 import type { FC } from "react";
 
-import backgroundImage from "../../../assets/pexels-gustavo-fring-6050428.jpg";
+import { createStyles } from "@mantine/emotion";
 import {
   Button,
   Container,
@@ -12,7 +12,7 @@ import {
   TextInput,
 } from "@mantine/core";
 
-import { createStyles } from "@mantine/emotion";
+import backgroundImage from "../../../assets/pexels-gustavo-fring-6050428.jpg";
 
 export interface LoginProps {
   onLoginSuccess?: () => void;
