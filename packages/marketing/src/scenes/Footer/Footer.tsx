@@ -1,31 +1,47 @@
 import type { FC } from "react";
 
-import { SimpleGrid, Flex } from "@mantine/core";
+import { Flex, Text } from "@mantine/core";
 
 import WorkShopLinks from "./components/WorkshopLinks";
 import CompanyLinks from "./components/CompanyLinks";
-import CategoryLinks from "./components/CategoryLinks";
 import BitoviLinks from "./components/BitoviLinks";
+import Company from "./components/Company";
+import Socials from "./components/Socials";
 
 const Footer: FC = () => {
   return (
     <Flex
+      w="100%"
+      direction="column"
+      align="center"
       component="footer"
       p="xl"
       bg="dark"
       c="white"
-      align="center"
-      justify="center"
     >
-      <SimpleGrid
-        cols={{ xs: 1, md: 2, lg: 4 }}
+      <Flex
+        justify="space-between"
         w={{ sm: "sm", md: 800, lg: 1330, xl: 1400 }}
       >
-        <WorkShopLinks />
-        <CompanyLinks />
-        <CategoryLinks />
-        <BitoviLinks />
-      </SimpleGrid>
+        <Company />
+        <Flex gap="lg">
+          <BitoviLinks />
+          <WorkShopLinks />
+          <CompanyLinks />
+        </Flex>
+      </Flex>
+      <Flex
+        mt="lg"
+        pt="lg"
+        sx={{ borderTop: "1px solid #868e96" }}
+        w={{ sm: "sm", md: 800, lg: 1330, xl: 1400 }}
+        justify="space-between"
+      >
+        <Text c="dimmed" size="sm">
+          © 2024 Bitovi All rights reserved.
+        </Text>
+        <Socials />
+      </Flex>
     </Flex>
   );
 };

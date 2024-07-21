@@ -6,7 +6,7 @@ export const links = [
   { text: "Introduction", href: "/", external: false },
   { text: "Documentation", href: "/", external: false },
   {
-    text: "Repo and Other Materials",
+    text: "Repo ",
     href: "https://github.com/bitovi/enterprise-grade-micro-frontends",
     external: true,
   },
