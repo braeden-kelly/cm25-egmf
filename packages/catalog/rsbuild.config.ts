@@ -27,7 +27,7 @@ export default defineConfig({
       exposes: {
         "./list": "./src/scenes/CatalogList.tsx",
         "./item": "./src/scenes/CatalogItem.tsx",
-        "./filter": "./src/scenes/Filter.tsx",
+        "./filter": "./src/scenes/Filter/index.ts",
         "./search": "./src/scenes/Search/index.ts",
       },
       filename: "remoteEntry.js",
