@@ -4,9 +4,9 @@ on:
     branches: [main]
 
 env:
-  TF_ACTION: apply
+  TF_ACTION: destroy
   AWS_REGION: us-east-1
-      
+
 jobs:
   create-mfe-builds:
     runs-on: ubuntu-latest
@@ -113,7 +113,7 @@ jobs:
           aws_site_source_folder: packages/catalog/dist
 
           tf_state_file_name_append: catalog
-          
+
           tf_action: ${{ env.TF_ACTION }}
           tf_state_bucket_destroy: true
 
