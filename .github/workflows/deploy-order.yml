@@ -6,6 +6,7 @@ on:
 env:
   TF_ACTION: apply
   AWS_REGION: us-east-1
+  TF_STATE_BUCKET: bitovi-enterprise-grade-micro-frontends-shared-tf-state
 
 jobs:
   create-mfe-builds:
@@ -115,6 +116,7 @@ jobs:
           tf_state_file_name_append: catalog
 
           tf_action: ${{ env.TF_ACTION }}
+          tf_state_bucket: ${{ env.TF_STATE_BUCKET }}
           tf_state_bucket_destroy: true
 
           aws_site_cdn_enabled: true
@@ -148,6 +150,7 @@ jobs:
           tf_state_file_name_append: marketing
 
           tf_action: ${{ env.TF_ACTION }}
+          tf_state_bucket: ${{ env.TF_STATE_BUCKET }}
           tf_state_bucket_destroy: true
 
           aws_site_cdn_enabled: true
@@ -181,6 +184,7 @@ jobs:
           tf_state_file_name_append: order
 
           tf_action: ${{ env.TF_ACTION }}
+          tf_state_bucket: ${{ env.TF_STATE_BUCKET }}
           tf_state_bucket_destroy: true
 
           aws_site_cdn_enabled: true
@@ -214,6 +218,7 @@ jobs:
           tf_state_file_name_append: profile
 
           tf_action: ${{ env.TF_ACTION }}
+          tf_state_bucket: ${{ env.TF_STATE_BUCKET }}
           tf_state_bucket_destroy: true
 
           aws_site_cdn_enabled: true
@@ -247,6 +252,7 @@ jobs:
           tf_state_file_name_append: shell
 
           tf_action: ${{ env.TF_ACTION }}
+          tf_state_bucket: ${{ env.TF_STATE_BUCKET }}
           tf_state_bucket_destroy: true
 
           aws_site_cdn_enabled: true
@@ -278,6 +284,7 @@ jobs:
           aws_site_source_folder: packages/workshop/dist
 
           tf_action: ${{ env.TF_ACTION }}
+          tf_state_bucket: ${{ env.TF_STATE_BUCKET }}
           tf_state_bucket_destroy: true
 
           tf_state_file_name_append: workshop
