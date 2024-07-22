@@ -3,6 +3,10 @@ on:
   push:
     branches: [main]
 
+env:
+  TF_ACTION: apply
+  AWS_REGION: us-east-1
+      
 jobs:
   create-mfe-builds:
     runs-on: ubuntu-latest
@@ -100,15 +104,17 @@ jobs:
           path: packages/catalog/dist
 
       - name: Create deploy-bucket
-        uses: bitovi/github-actions-deploy-static-site-to-aws@10-tf-state-file-is-one-per-repo
+        uses: bitovi/github-actions-deploy-static-site-to-aws@v0.2.1
         with:
           aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID_SANDBOX }}
           aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY_SANDBOX }}
-          aws_default_region: us-east-1
+          aws_default_region: ${{ env.AWS_REGION }}
           checkout: false
           aws_site_source_folder: packages/catalog/dist
 
-          tf_action: "apply"
+          tf_state_file_name_append: catalog
+          
+          tf_action: ${{ env.TF_ACTION }}
           tf_state_bucket_destroy: true
 
           aws_site_cdn_enabled: true
@@ -131,15 +137,17 @@ jobs:
           path: packages/marketing/dist
 
       - name: Create deploy-bucket
-        uses: bitovi/github-actions-deploy-static-site-to-aws@10-tf-state-file-is-one-per-repo
+        uses: bitovi/github-actions-deploy-static-site-to-aws@v0.2.1
         with:
           aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID_SANDBOX }}
           aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY_SANDBOX }}
-          aws_default_region: us-east-1
+          aws_default_region: ${{ env.AWS_REGION }}
           checkout: false
           aws_site_source_folder: packages/marketing/dist
 
-          tf_action: "apply"
+          tf_state_file_name_append: marketing
+
+          tf_action: ${{ env.TF_ACTION }}
           tf_state_bucket_destroy: true
 
           aws_site_cdn_enabled: true
@@ -162,15 +170,17 @@ jobs:
           path: packages/order/dist
 
       - name: Create deploy-bucket
-        uses: bitovi/github-actions-deploy-static-site-to-aws@10-tf-state-file-is-one-per-repo
+        uses: bitovi/github-actions-deploy-static-site-to-aws@v0.2.1
         with:
           aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID_SANDBOX }}
           aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY_SANDBOX }}
-          aws_default_region: us-east-1
+          aws_default_region: ${{ env.AWS_REGION }}
           checkout: false
           aws_site_source_folder: packages/order/dist
 
-          tf_action: "apply"
+          tf_state_file_name_append: order
+
+          tf_action: ${{ env.TF_ACTION }}
           tf_state_bucket_destroy: true
 
           aws_site_cdn_enabled: true
@@ -193,15 +203,17 @@ jobs:
           path: packages/profile/dist
 
       - name: Create deploy-bucket
-        uses: bitovi/github-actions-deploy-static-site-to-aws@10-tf-state-file-is-one-per-repo
+        uses: bitovi/github-actions-deploy-static-site-to-aws@v0.2.1
         with:
           aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID_SANDBOX }}
           aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY_SANDBOX }}
-          aws_default_region: us-east-1
+          aws_default_region: ${{ env.AWS_REGION }}
           checkout: false
           aws_site_source_folder: packages/profile/dist
 
-          tf_action: "apply"
+          tf_state_file_name_append: profile
+
+          tf_action: ${{ env.TF_ACTION }}
           tf_state_bucket_destroy: true
 
           aws_site_cdn_enabled: true
@@ -224,15 +236,17 @@ jobs:
           path: packages/shell/dist
 
       - name: Create deploy-bucket
-        uses: bitovi/github-actions-deploy-static-site-to-aws@10-tf-state-file-is-one-per-repo
+        uses: bitovi/github-actions-deploy-static-site-to-aws@v0.2.1
         with:
           aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID_SANDBOX }}
           aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY_SANDBOX }}
-          aws_default_region: us-east-1
+          aws_default_region: ${{ env.AWS_REGION }}
           checkout: false
           aws_site_source_folder: packages/shell/dist
 
-          tf_action: "apply"
+          tf_state_file_name_append: shell
+
+          tf_action: ${{ env.TF_ACTION }}
           tf_state_bucket_destroy: true
 
           aws_site_cdn_enabled: true
@@ -255,16 +269,18 @@ jobs:
           path: packages/workshop/dist
 
       - name: Create deploy-bucket
-        uses: bitovi/github-actions-deploy-static-site-to-aws@10-tf-state-file-is-one-per-repo
+        uses: bitovi/github-actions-deploy-static-site-to-aws@v0.2.1
         with:
           aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID_SANDBOX }}
           aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY_SANDBOX }}
-          aws_default_region: us-east-1
+          aws_default_region: ${{ env.AWS_REGION }}
           checkout: false
           aws_site_source_folder: packages/workshop/dist
 
-          tf_action: "apply"
+          tf_action: ${{ env.TF_ACTION }}
           tf_state_bucket_destroy: true
+
+          tf_state_file_name_append: workshop
 
           aws_site_cdn_enabled: true
 
