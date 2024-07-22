@@ -4,7 +4,7 @@ on:
     branches: [main]
 
 env:
-  TF_ACTION: destroy
+  TF_ACTION: apply
   AWS_REGION: us-east-1
 
 jobs:
