@@ -5,7 +5,7 @@ import { Link as RouterLink } from "react-router-dom";
 const Link: FC<{ to: string; text: string }> = ({ to, text }) => {
   return (
     <RouterLink to={to} style={{ textDecoration: "none" }}>
-      <Text size="lg" c="white">
+      <Text size="lg" fw={500} c="white">
         {text}
       </Text>
     </RouterLink>
