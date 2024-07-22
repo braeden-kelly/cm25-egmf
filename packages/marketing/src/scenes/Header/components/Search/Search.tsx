@@ -1,14 +1,30 @@
-import { Suspense, lazy, type FC } from "react";
+import type { FC } from "react";
 
+import { Suspense, lazy } from "react";
+import { Flex, Tooltip } from "@mantine/core";
+import { ErrorBoundary } from "react-error-boundary";
+import { IconAlertTriangle } from "@tabler/icons-react";
 //@ts-ignore
 const Search = lazy(() => import("catalog/search"));
 
 const SearchContainer: FC = () => {
   return (
-    <Suspense fallback="loading">
-      <Search />
-    </Suspense>
+    <ErrorBoundary fallback={<SearchError />}>
+      <Suspense>
+        <Search />
+      </Suspense>
+    </ErrorBoundary>
   );
 };
 
 export default SearchContainer;
+
+const SearchError = () => {
+  return (
+    <Flex justify="center" align="center">
+      <Tooltip label="Our search is having some issues">
+        <IconAlertTriangle color="yellow" size={18} width={30} height={30} />
+      </Tooltip>
+    </Flex>
+  );
+};

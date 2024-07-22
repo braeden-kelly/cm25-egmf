@@ -1,7 +1,8 @@
 import { Suspense, lazy, type FC } from "react";
-import { Button, Group, Skeleton } from "@mantine/core";
-import { IconUser } from "@tabler/icons-react";
+import { Button, Flex, Group, Skeleton, Tooltip } from "@mantine/core";
+import { IconAlertTriangle, IconUser } from "@tabler/icons-react";
 import { Link } from "react-router-dom";
+import { ErrorBoundary } from "react-error-boundary";
 
 // @ts-ignore
 const Cart = lazy(() => import("order/cart"));
@@ -18,11 +19,23 @@ const Shortcuts: FC = () => {
       >
         <IconUser />
       </Button>
-      <Suspense fallback={<Skeleton width={50} height={50} radius="md" />}>
-        <Cart checkoutUrl="/order" />
-      </Suspense>
+      <ErrorBoundary fallback={<CartError />}>
+        <Suspense fallback={<Skeleton width={50} height={50} radius="md" />}>
+          <Cart checkoutUrl="/order" />
+        </Suspense>
+      </ErrorBoundary>
     </Group>
   );
 };
 
 export default Shortcuts;
+
+const CartError = () => {
+  return (
+    <Flex justify="center" align="center">
+      <Tooltip label="Our cart is having some issues">
+        <IconAlertTriangle color="yellow" size={18} width={30} height={30} />
+      </Tooltip>
+    </Flex>
+  );
+};
