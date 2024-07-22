@@ -1,13 +1,12 @@
 import type { FC } from "react";
 
-import { Heading, Strong, Text } from "@radix-ui/themes";
-import { Container, List, ListItem, Stack } from "@mantine/core";
+import { Container, List, ListItem, Stack, Title, Text } from "@mantine/core";
 
 const About: FC = () => {
   return (
-    <Container sx={{ maxWidth: "760px", align: "center", padding: "20px" }}>
+    <Container p="md">
       <Stack>
-        <Heading>About Acme Store</Heading>
+        <Title>About Acme Store</Title>
 
         <Text>
           We are a department store specializing in the finest selection of
@@ -15,7 +14,7 @@ const About: FC = () => {
           the modern sophisticate.
         </Text>
 
-        <Heading as="h3">Mission and Vision:</Heading>
+        <Title order={3}>Mission and Vision:</Title>
         <Text>
           Mission: To provide our customers with high-quality products at
           affordable prices, while delivering exceptional customer service.
@@ -26,27 +25,27 @@ const About: FC = () => {
           individuals seeking stylish and affordable products.
         </Text>
 
-        <Heading as="h3">Core Values:</Heading>
+        <Title order={3}>Core Values:</Title>
 
         <List>
           <ListItem>
-            <Strong>Quality: </Strong>
+            <Text fw={700}>Quality: </Text>
             We are committed to offering only the best products to our
             customers.
           </ListItem>
           <ListItem>
-            <Strong>Affordability: </Strong>
+            <Text fw={700}>Affordability: </Text>
             We believe that everyone deserves to look and feel their best
             without breaking the bank.
           </ListItem>
 
           <ListItem>
-            <Strong>Customer Service: </Strong>
+            <Text fw={700}>Customer Service: </Text>
             We strive to provide a personalized and enjoyable shopping
             experience for every customer.
           </ListItem>
         </List>
-        <Heading as="h3">Team:</Heading>
+        <Title order={3}>Team:</Title>
         <Text>
           Our team consists of dedicated professionals who are passionate about
           fashion and customer satisfaction. From our knowledgeable sales

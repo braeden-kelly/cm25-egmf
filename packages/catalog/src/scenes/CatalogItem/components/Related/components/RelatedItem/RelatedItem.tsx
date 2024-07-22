@@ -55,7 +55,6 @@ const RelatedItem: FC<RelatedItemProps> = ({ product }) => {
           >
             {product.description}
           </Text>
-          <Text size="md">${product.price}</Text>
         </Stack>
       </Stack>
     </Card>
