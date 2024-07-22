@@ -2,6 +2,11 @@ import { defineConfig } from "@rsbuild/core";
 import { pluginReact } from "@rsbuild/plugin-react";
 
 export default defineConfig({
+  output: {
+    sourceMap: {
+      js: "source-map",
+    },
+  },
   source: {
     define: {
       "process.env": JSON.stringify(process.env),

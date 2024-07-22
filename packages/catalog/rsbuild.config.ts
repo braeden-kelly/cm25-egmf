@@ -3,6 +3,11 @@ import { pluginReact } from "@rsbuild/plugin-react";
 import { sentryWebpackPlugin } from "@sentry/webpack-plugin";
 
 export default defineConfig({
+  output: {
+    sourceMap: {
+      js: "source-map",
+    },
+  },
   source: {
     define: {
       "process.env": JSON.stringify(process.env),
