@@ -31,6 +31,7 @@ jobs:
           echo MFE_URL_PROFILE=${{ vars.MFE_URL_PROFILE }} >> .env
           echo MFE_URL_WORKSHOP=${{ vars.MFE_URL_WORKSHOP }} >> .env
           echo SENTRY_DSN_SHELL=$${{ vars.SENTRY_DSN_SHELL }} >> .env
+          cat .env
           cd ../marketing
           touch .env
           echo MFE_URL_CATALOG=${{ vars.MFE_URL_CATALOG }} >> .env
