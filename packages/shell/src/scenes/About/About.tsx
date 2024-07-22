@@ -40,7 +40,7 @@ const AboutError = () => {
       <Title mb="md" c="red">
         Something Went Wrong!
       </Title>
-      <Text>We could not load the About page</Text>
+      <Text>We could not load the about page</Text>
       <Flex mt="xl" gap="xl">
         <Button component={Link} variant="default" to="/">
           Go Home

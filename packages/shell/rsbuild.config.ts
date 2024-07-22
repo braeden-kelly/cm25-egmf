@@ -32,6 +32,10 @@ export default defineConfig({
           requiredVersion: "^7.10.2",
           singleton: true,
         },
+        "@mantine/emotion": {
+          requiredVersion: false,
+          singleton: true,
+        },
         "@mantine/notifications": {
           requiredVersion: false,
           singleton: true,

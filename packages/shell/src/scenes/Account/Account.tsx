@@ -48,7 +48,7 @@ const AccountError = () => {
       <Title mb="md" c="red">
         Something Went Wrong!
       </Title>
-      <Text>We could not load the Account page</Text>
+      <Text>We could not load the account page</Text>
       <Flex mt="xl" gap="xl">
         <Button component={Link} variant="default" to="/">
           Go Home

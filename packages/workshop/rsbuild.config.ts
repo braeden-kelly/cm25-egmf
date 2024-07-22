@@ -34,6 +34,10 @@ export default defineConfig({
           requiredVersion: "^7.10.2",
           singleton: true,
         },
+        "@mantine/emotion": {
+          requiredVersion: false,
+          singleton: true,
+        },
         "react-router-dom": {
           requiredVersion: "^6.23.1",
           singleton: true,

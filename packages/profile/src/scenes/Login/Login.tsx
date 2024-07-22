@@ -10,6 +10,7 @@ import {
   PasswordInput,
   Stack,
   TextInput,
+  Paper,
 } from "@mantine/core";
 
 import backgroundImage from "../../../assets/pexels-gustavo-fring-6050428.jpg";
@@ -33,7 +34,10 @@ const Login: FC<LoginProps> = ({ onLoginSuccess }) => {
         justify="center"
         className={classes.loginCentered}
       >
-        <form
+        <Paper
+          p="xl"
+          shadow="md"
+          component="form"
           onSubmit={(e) => {
             e.preventDefault();
             onLoginSuccess?.();
@@ -46,7 +50,7 @@ const Login: FC<LoginProps> = ({ onLoginSuccess }) => {
             <PasswordInput placeholder="Password" />
             <Button type="submit">Login</Button>
           </Stack>
-        </form>
+        </Paper>
       </Flex>
     </Container>
   );
