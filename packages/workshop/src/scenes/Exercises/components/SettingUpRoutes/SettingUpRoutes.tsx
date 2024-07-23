@@ -5,8 +5,8 @@ const SettingUpRoutes = () => {
   return (
     <ExerciseLayout
       title="Setting Up Routes"
-      next="exercise-6"
-      previous="exercise-3"
+      next="../exercise-6"
+      previous="../exercise-3"
     >
       <Text>
         We have several pages left to set up for our application. Let's take a

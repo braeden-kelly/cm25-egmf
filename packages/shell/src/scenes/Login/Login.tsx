@@ -18,15 +18,15 @@ const LoginScene: LoginScene = () => {
 
   const navigate = useNavigate();
 
+  const handleLoginSuccess = () => {
+    setIsLoggedIn(true);
+    navigate("/shop");
+  };
+
   return (
     <ErrorBoundary fallback={<LoginError />}>
       <Suspense fallback={<LoginSkeleton />}>
-        <Login
-          onLoginSuccess={() => {
-            setIsLoggedIn(true);
-            navigate("/shop");
-          }}
-        />
+        <Login onLoginSuccess={handleLoginSuccess} />
       </Suspense>
     </ErrorBoundary>
   );

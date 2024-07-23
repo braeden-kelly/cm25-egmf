@@ -47,14 +47,19 @@ export const exercises: ExerciseData[] = [
     to: "exercise-5",
   },
   {
+    title: "Checkout Flow",
+    subTitle: "Our users will need a way to purchase items",
+    to: "exercise-6",
+  },
+  {
     title: "Pub-Sub and Micro-Frontends",
     subTitle: "Add MFE to MFE communication with pub-sub",
-    to: "exercise-6",
+    to: "exercise-7",
   },
   {
     title: "The URL for Communication",
     subTitle: "The URL can also be used to communicate data across MFEs",
-    to: "exercise-7",
+    to: "exercise-8",
   },
   {
     title: "Completed",
