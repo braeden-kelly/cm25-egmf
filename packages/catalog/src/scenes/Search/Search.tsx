@@ -1,11 +1,10 @@
-import type { FC } from "react";
-
 import { TextInput } from "@mantine/core";
 import { IconSearch } from "@tabler/icons-react";
 
 import { useSearch } from "./hooks/useSearch";
+import type { CatalogSearchScene } from "shared/catalog";
 
-const Search: FC = () => {
+const Search: CatalogSearchScene = () => {
   const { search, setSearch } = useSearch();
 
   return (

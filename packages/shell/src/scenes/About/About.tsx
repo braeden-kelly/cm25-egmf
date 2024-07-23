@@ -3,10 +3,12 @@ import { Container, Skeleton, Text, Title, Flex, Button } from "@mantine/core";
 import { ErrorBoundary } from "react-error-boundary";
 import { Link } from "react-router-dom";
 
-// @ts-ignore
-const About = lazy(() => import("marketing/about"));
+import type { AboutScene } from 'shared/marketing';
 
-const AboutScene = () => {
+// @ts-ignore
+const About = lazy<AboutScene>(() => import("marketing/about"));
+
+const AboutScene: AboutScene = () => {
   return (
     <ErrorBoundary fallback={<AboutError />}>
       <Suspense fallback={<AboutSkeleton />}>

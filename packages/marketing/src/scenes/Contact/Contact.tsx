@@ -1,8 +1,8 @@
-import type { FC } from "react";
+ import type { ContactScene } from "marketing";
 
 import { Anchor, Container, Image, Stack, Text, Title } from "@mantine/core";
 
-const Contact: FC = () => {
+const Contact: ContactScene = () => {
   return (
     <Container sx={{ maxWidth: "760px", align: "center", padding: "20px" }}>
       <Stack>

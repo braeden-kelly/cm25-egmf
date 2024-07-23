@@ -1,4 +1,4 @@
-import type { FC } from "react";
+import type { CatalogFilterScene } from "shared/catalog";
 
 import { Container, Divider } from "@mantine/core";
 
@@ -16,7 +16,7 @@ function broadcastPriceChange(min: string, max: string) {
   );
 }
 
-const Filter: FC = () => {
+const Filter: CatalogFilterScene = () => {
   return (
     <Container fluid px="md" w="350" py="lg">
       <Categories />

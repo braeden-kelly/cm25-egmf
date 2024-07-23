@@ -3,10 +3,12 @@ import { Flex, Skeleton, Text, Title, Button, Paper } from "@mantine/core";
 import { ErrorBoundary } from "react-error-boundary";
 import { Link } from "react-router-dom";
 
-// @ts-ignore
-const Welcome = lazy(() => import("workshop/welcome"));
+import type { WelcomeScene } from "shared/workshop";
 
-const WelcomeScene = () => {
+// @ts-ignore
+const Welcome: WelcomeScene = lazy<WelcomeScene>(() => import("workshop/welcome"));
+
+const WelcomeScene: WelcomeScene = () => {
   return (
     <ErrorBoundary fallback={<WelcomeError />}>
       <Suspense fallback={<WelcomeSkeleton />}>

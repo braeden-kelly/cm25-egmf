@@ -1,8 +1,8 @@
-import type { FC } from "react";
+import type { AboutScene } from 'marketing';
 
 import { Container, List, ListItem, Stack, Title, Text } from "@mantine/core";
 
-const About: FC = () => {
+const About: AboutScene = () => {
   return (
     <Container p="md">
       <Stack>

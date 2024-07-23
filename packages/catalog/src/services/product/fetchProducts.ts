@@ -1,4 +1,4 @@
-import type { CatalogItem } from "../shared/interface";
+import type { CatalogItem } from "shared/catalog";
 
 import { QueryKey } from "@tanstack/react-query";
 

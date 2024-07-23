@@ -1,4 +1,4 @@
-import type { FC } from "react";
+import type { CartScene } from 'shared/order';
 
 import { Button, Flex, HoverCard, Text } from "@mantine/core";
 import { IconShoppingCart } from "@tabler/icons-react";
@@ -9,11 +9,7 @@ import CartSummary from "@components/CartSummary";
 import { useCart } from "./hook/useCart";
 import { Link } from "react-router-dom";
 
-interface CartProps {
-  checkoutUrl?: string;
-}
-
-const Cart: FC<CartProps> = ({ checkoutUrl }) => {
+const Cart: CartScene = ({ checkoutUrl }) => {
   const cart = useCart();
   const cartHasItems = cart.products.length !== 0;
 

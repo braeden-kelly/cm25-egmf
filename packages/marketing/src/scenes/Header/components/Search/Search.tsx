@@ -1,13 +1,12 @@
-import type { FC } from "react";
-
 import { Suspense, lazy } from "react";
 import { Flex, Tooltip } from "@mantine/core";
 import { ErrorBoundary } from "react-error-boundary";
 import { IconAlertTriangle } from "@tabler/icons-react";
+import type { CatalogSearchScene } from "shared/catalog";
 //@ts-ignore
-const Search = lazy(() => import("catalog/search"));
+const Search = lazy<CatalogSearchScene>(() => import("catalog/search"));
 
-const SearchContainer: FC = () => {
+const SearchContainer: CatalogSearchScene = () => {
   return (
     <ErrorBoundary fallback={<SearchError />}>
       <Suspense>

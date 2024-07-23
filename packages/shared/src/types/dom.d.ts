@@ -1,10 +1,9 @@
-import { CatalogItem } from "./services/cart";
+import type { AddToCartEvent, FilterPriceEvent } from './shared/catalog';
 
 interface CustomEventMap {
+  "catalog-filter-price": CustomEvent<FilterPriceEvent>;
   "add-to-cart": CustomEvent<AddToCartEvent>;
 }
-
-type AddToCartEvent = { item: CatalogItem };
 
 declare global {
   interface Document {

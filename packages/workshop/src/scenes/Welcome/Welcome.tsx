@@ -11,8 +11,9 @@ import {
   Box,
 } from "@mantine/core";
 import { Link } from "react-router-dom";
+import type { WelcomeScene } from "shared/workshop";
 
-const Welcome = () => {
+const Welcome: WelcomeScene = () => {
   return (
     <Flex bg="blue" w="100%" flex={1} align="center" justify="center">
       <Paper w="50%" shadow="sm" p="xl">
