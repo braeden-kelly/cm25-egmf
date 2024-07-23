@@ -9,6 +9,13 @@ const SharingCommonModules = () => {
       next="../exercise-3"
     >
       <Text>
+        You may continue from your work on Exercise 1, or
+        check out a clean branch using the command below.
+      </Text>
+      <Code my="lg" block>
+        git checkout exercise-2
+      </Code>
+      <Text>
         These applications have some dependencies that are good candidates for
         sharing via Module Federation. Create a list of libraries you think
         should be shared and configure the Module Federation plugin to share

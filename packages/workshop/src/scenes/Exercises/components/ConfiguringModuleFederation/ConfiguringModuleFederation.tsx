@@ -31,7 +31,7 @@ const ConfiguringModuleFederation = () => {
     >
       <Text>Start by checking out this branch</Text>
       <Code my="lg" block>
-        git checkout ...
+        git checkout exercise-1
       </Code>
       <Text>
         Go ahead and do a little bit of poking around to get familiar with the

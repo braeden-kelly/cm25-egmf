@@ -57,6 +57,13 @@ const FaultTolerance: FC = () => {
           react-error-boundary.
         </Anchor>
       </Text>
+      <Text>
+        You may continue from your work on Exercise 2, or
+        check out a clean branch using the command below.
+      </Text>
+      <Code my="lg" block>
+        git checkout exercise-3
+      </Code>
       <Text pt="md">
         To install <Code>react-error-boundary</Code>.
       </Text>
