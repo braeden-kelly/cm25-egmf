@@ -42,7 +42,7 @@ export const exercises: ExerciseData[] = [
     to: "exercise-4",
   },
   {
-    title: "Individual and Shared Routes",
+    title: "Setting Up Routes",
     subTitle: "Most apps (ours included) need routing",
     to: "exercise-5",
   },
