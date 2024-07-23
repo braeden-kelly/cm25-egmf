@@ -82,7 +82,7 @@ export default defineConfig({
         catalog: `catalog@${process.env.MFE_URL_CATALOG}/remoteEntry.js`,
         order: `order@${process.env.MFE_URL_ORDER}/remoteEntry.js`,
         profile: `profile@${process.env.MFE_URL_PROFILE}/remoteEntry.js`,
-        marketing: `marketing@https://marketing-mfe.bitovi-sandbox.com/remoteEntry.js`,
+        marketing: `marketing@${process.env.MFE_URL_MARKETING}/remoteEntry.js`,
         workshop: `workshop@${process.env.MFE_URL_WORKSHOP}/workshop.js`,
       },
       shared: {
