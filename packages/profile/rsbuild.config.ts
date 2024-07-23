@@ -36,7 +36,7 @@ export default defineConfig({
       filename: "remoteEntry.js",
       shared: {
         "@mantine/core": {
-          requiredVersion: false,
+          requiredVersion: "^7.10.2",
           singleton: true,
         },
         "@mantine/emotion": {
