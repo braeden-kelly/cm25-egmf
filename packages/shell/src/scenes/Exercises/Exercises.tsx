@@ -2,10 +2,11 @@ import { Suspense, lazy } from "react";
 import { Skeleton, Text, Title, Flex, Button, Grid } from "@mantine/core";
 import { ErrorBoundary } from "react-error-boundary";
 import { Link } from "react-router-dom";
+import type { WorkshopScene } from "shared/workshop";
 // @ts-ignore
-const Exercises = lazy(() => import("workshop/exercises"));
+const Exercises = lazy<WorkshopScene>(() => import("workshop/exercises"));
 
-const ExercisesScene = () => {
+const ExercisesScene: WorkshopScene = () => {
   return (
     <ErrorBoundary fallback={<ExercisesError />}>
       <Suspense fallback={<ExercisesSkeleton />}>

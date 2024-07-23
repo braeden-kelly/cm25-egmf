@@ -1,12 +1,14 @@
+import type { CheckoutScene } from 'shared/order';
+
 import { Suspense, lazy } from "react";
 import { Skeleton, Text, Title, Flex, Button, Grid } from "@mantine/core";
 import { ErrorBoundary } from "react-error-boundary";
 import { Link } from "react-router-dom";
 
 // @ts-ignore
-const Checkout = lazy(() => import("order/checkout"));
+const Checkout = lazy<CheckoutScene>(() => import("order/checkout"));
 
-const CheckoutScene = () => {
+const CheckoutScene: CheckoutScene = () => {
   return (
     <ErrorBoundary fallback={<CheckoutError />}>
       <Suspense fallback={<CheckoutSkeleton />}>

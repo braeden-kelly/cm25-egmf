@@ -1,4 +1,4 @@
-import { CatalogItem } from "@services/shared";
+import type { CatalogItem } from "shared/catalog";
 
 export const addToCart = ({
   id,

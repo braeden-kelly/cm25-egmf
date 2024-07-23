@@ -1,0 +1,12 @@
+{
+  "files": [
+    "./packages/shared/src/types/emotion.d.ts",
+    "./packages/shared/src/types/dom.d.ts"
+  ],
+  "compilerOptions": {
+    "typeRoots": [
+      "./node_modules/@types",
+      "./packages/shared/src/types"
+    ]
+  }
+}

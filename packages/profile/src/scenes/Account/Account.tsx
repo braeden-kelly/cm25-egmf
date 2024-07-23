@@ -1,4 +1,4 @@
-import type { FC } from "react";
+import type { AccountScene } from "shared/profile";
 
 import {
   Container,
@@ -24,7 +24,7 @@ const fakeUser = {
   address: "123 Main St, Anytown, USA",
 };
 
-const Account: FC = () => {
+const Account: AccountScene = () => {
   const [, setIsLoggedIn] = useLocalStorage<boolean>({ key: "logged-in" });
   const navigate = useNavigate();
 

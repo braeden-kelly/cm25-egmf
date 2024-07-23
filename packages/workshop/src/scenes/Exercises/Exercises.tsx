@@ -8,7 +8,9 @@ import SharingCommonModules from "./components/SharingCommonModules";
 import FaultTolerance from "./components/FaultTolerance";
 import AddingMoreMicroFrontends from "./components/AddingMoreMicroFrontends";
 
-const Workshop = () => {
+import type { WorkshopScene } from "shared/workshop";
+
+const Workshop: WorkshopScene = () => {
   return (
     <Routes>
       <Route path="*" element={<Layout />}>

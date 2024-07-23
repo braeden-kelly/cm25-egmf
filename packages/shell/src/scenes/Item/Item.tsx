@@ -3,10 +3,12 @@ import { Container, Skeleton, Text, Title, Flex, Button } from "@mantine/core";
 import { ErrorBoundary } from "react-error-boundary";
 import { Link } from "react-router-dom";
 
-// @ts-ignore
-const Item = lazy(() => import("catalog/item"));
+import type { CatalogItemScene } from 'shared/catalog';
 
-const ItemScene = () => {
+// @ts-ignore
+const Item = lazy<CatalogItemScene>(() => import("catalog/item"));
+
+const ItemScene: CatalogItemScene = () => {
   return (
     <ErrorBoundary fallback={<ItemError />}>
       <Suspense fallback={<ItemSkeleton />}>

@@ -1,4 +1,4 @@
-import type { FC } from "react";
+import type { CatalogItemScene } from 'shared/catalog';
 import {
   Container,
   Grid,
@@ -20,7 +20,7 @@ import Related from "./components/Related";
 import CatalogItemSkeleton from "./components/CatalogItemSkeleton";
 import CatalogItemError from "./components/CatalogItemError";
 
-const CatalogItem: FC = () => {
+const CatalogItem: CatalogItemScene = () => {
   const { productId } = useParams<{ productId: string }>();
 
   const { data, isLoading, isError } = useQuery({

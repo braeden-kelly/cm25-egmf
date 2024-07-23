@@ -6,14 +6,16 @@ import FilterSkeleton from "./components/FilterSkeleton";
 import CatalogListSkeleton from "./components/CatalogListSkeleton";
 import FilterError from "./components/FilterError";
 import CatalogListError from "./components/CatalogListError";
+import { CatalogFilterScene, CatalogListScene } from "shared/catalog";
+import { ShopScene } from "shared/shell";
 
 // @ts-ignore
-const CatalogList = lazy(() => import("catalog/list"));
+const CatalogList = lazy<CatalogListScene>(() => import("catalog/list"));
 
 // @ts-ignore
-const Filter = lazy(() => import("catalog/filter"));
+const Filter = lazy<CatalogFilterScene>(() => import("catalog/filter"));
 
-const Shop = () => {
+const Shop: ShopScene = () => {
   return (
     <Grid>
       <Grid.Col span={{ sm: 12, md: 3 }}>
