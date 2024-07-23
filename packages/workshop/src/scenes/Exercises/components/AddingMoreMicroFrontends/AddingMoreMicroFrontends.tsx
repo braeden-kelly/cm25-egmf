@@ -19,6 +19,13 @@ const AddingMoreMicroFrontends: FC = () => {
       </Text>
       <Image my="lg" src={header} />
       <Text>Both features are MFEs the Header needs to consume.</Text>
+      <Text>
+        You may continue from your work on Exercise 3, or
+        check out a clean branch using the command below.
+      </Text>
+      <Code my="lg" block>
+        git checkout exercise-4
+      </Code>
       <Text pt="md">
         Configure the order and catalog projects to expose the cart and search,
         respectively, along with any additional configurations the projects may
