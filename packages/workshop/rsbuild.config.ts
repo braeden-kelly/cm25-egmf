@@ -9,6 +9,15 @@ export default defineConfig({
     },
   },
   plugins: [pluginReact()],
+  html: {
+    tags: [
+      {
+        tag: "base",
+        attrs: { href: "/" },
+        append: false,
+      },
+    ],
+  },
   source: {
     define: {
       "process.env": JSON.stringify(process.env),

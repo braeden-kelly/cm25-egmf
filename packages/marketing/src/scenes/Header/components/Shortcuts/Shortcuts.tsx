@@ -3,11 +3,12 @@ import { Button, Flex, Group, Skeleton, Tooltip } from "@mantine/core";
 import { IconAlertTriangle, IconUser } from "@tabler/icons-react";
 import { Link } from "react-router-dom";
 import { ErrorBoundary } from "react-error-boundary";
+import type { CartScene } from "shared/order";
 
 // @ts-ignore
-const Cart = lazy(() => import("order/cart"));
+const Cart = lazy<CartScene>(() => import("order/cart"));
 
-const Shortcuts: FC = () => {
+const Shortcuts: CartScene = () => {
   return (
     <Group>
       <Button
