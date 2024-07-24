@@ -12,8 +12,10 @@ export const useCatalogList = () => {
     queryKey: category ? ["products", "category", category] : ["products"],
     queryFn: fetchProducts,
   });
+
   const [minPrice, setMinPrice] = useState<string>("");
   const [maxPrice, setMaxPrice] = useState<string>("");
+
   const [searchParams] = useSearchParams();
   const search = searchParams.get("search");
 

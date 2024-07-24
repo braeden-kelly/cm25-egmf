@@ -1,3 +1,5 @@
+import type { WorkshopScene } from "shared/workshop";
+
 import { Route, Routes } from "react-router-dom";
 
 import Layout from "./components/Layout";
@@ -8,9 +10,10 @@ import SharingCommonModules from "./components/SharingCommonModules";
 import FaultTolerance from "./components/FaultTolerance";
 import AddingMoreMicroFrontends from "./components/AddingMoreMicroFrontends";
 
-import type { WorkshopScene } from "shared/workshop";
 import SettingUpRoutes from "./components/SettingUpRoutes";
 import CheckoutFlow from "./components/CheckoutFlow";
+import AddingItemsToCart from "./components/AddingItemsToCart";
+import FilteringByPrice from "./components/FilteringByPrice";
 
 const Workshop: WorkshopScene = () => {
   return (
@@ -23,6 +26,8 @@ const Workshop: WorkshopScene = () => {
         <Route path="exercise-4" element={<AddingMoreMicroFrontends />} />
         <Route path="exercise-5" element={<SettingUpRoutes />} />
         <Route path="exercise-6" element={<CheckoutFlow />} />
+        <Route path="exercise-7" element={<AddingItemsToCart />} />
+        <Route path="exercise-8" element={<FilteringByPrice />} />
       </Route>
     </Routes>
   );
