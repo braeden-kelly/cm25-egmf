@@ -16,11 +16,13 @@ interface CartService extends BaseCart {
   products: Array<{ productId: number; quantity: number }>;
 }
 
+type Product = CatalogItem & { quantity: number };
+
 export interface UserCart extends BaseCart {
   tax: number;
   subTotal: number;
   total: number;
-  products: Array<CatalogItem & { quantity: number }>;
+  products: Array<Product>;
 }
 
 const getProducts = async () => {

@@ -11,7 +11,10 @@ export const exerciseMapping: Record<string, number> = {
   "exercise-5": 5,
   "exercise-6": 6,
   "exercise-7": 7,
-  complete: 8,
+  "exercise-8": 8,
+  "exercise-9": 9,
+  "exercise-10": 10,
+  complete: 11,
 };
 
 export const exercises: ExerciseData[] = [
@@ -52,14 +55,24 @@ export const exercises: ExerciseData[] = [
     to: "exercise-6",
   },
   {
-    title: "Pub-Sub and Micro-Frontends",
+    title: "Adding Items to Cart",
     subTitle: "Add MFE to MFE communication with pub-sub",
     to: "exercise-7",
   },
   {
-    title: "The URL for Communication",
-    subTitle: "The URL can also be used to communicate data across MFEs",
+    title: "Filtering by Price",
+    subTitle: "Continue working with pub sub to communicate between MFEs",
     to: "exercise-8",
+  },
+  {
+    title: "The URL for Communication 1",
+    subTitle: "The URL can also be used to communicate data across MFEs",
+    to: "exercise-9",
+  },
+  {
+    title: "The URL for Communication 2",
+    subTitle: "The URL can also be used to communicate data across MFEs",
+    to: "exercise-10",
   },
   {
     title: "Completed",
