@@ -1,7 +1,8 @@
 import type { FC } from "react";
 
-import ExerciseLayout from "../../shared/components/ExerciseLayout";
 import { Text, Code } from "@mantine/core";
+
+import ExerciseLayout from "../../shared/components/ExerciseLayout";
 
 const useQuery = `const { data, isLoading, isError } = useQuery({
     queryKey: ["products"],
