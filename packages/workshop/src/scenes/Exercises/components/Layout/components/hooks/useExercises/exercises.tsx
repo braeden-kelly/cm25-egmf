@@ -65,12 +65,13 @@ export const exercises: ExerciseData[] = [
     to: "exercise-8",
   },
   {
-    title: "The URL for Communication 1",
-    subTitle: "The URL can also be used to communicate data across MFEs",
+    title: "Shop Categories",
+    subTitle:
+      "Add more ways to filter through the catalog using dynamic path segments",
     to: "exercise-9",
   },
   {
-    title: "The URL for Communication 2",
+    title: "Searching the Catalog",
     subTitle: "The URL can also be used to communicate data across MFEs",
     to: "exercise-10",
   },

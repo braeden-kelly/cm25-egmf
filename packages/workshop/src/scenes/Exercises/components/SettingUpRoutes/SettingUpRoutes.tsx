@@ -1,7 +1,10 @@
+import type { FC } from "react";
+
 import { Code, List, Text, Title } from "@mantine/core";
+
 import ExerciseLayout from "../../shared/components/ExerciseLayout";
 
-const SettingUpRoutes = () => {
+const SettingUpRoutes: FC = () => {
   return (
     <ExerciseLayout
       title="Setting Up Routes"

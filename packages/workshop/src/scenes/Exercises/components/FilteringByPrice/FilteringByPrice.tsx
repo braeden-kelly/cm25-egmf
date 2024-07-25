@@ -1,7 +1,9 @@
 import type { FC } from "react";
 
-import ExerciseLayout from "../../shared/components/ExerciseLayout";
 import { Text, Code } from "@mantine/core";
+
+import ExerciseLayout from "../../shared/components/ExerciseLayout";
+import { CodeHighlight } from "@mantine/code-highlight";
 
 const useQuery = `const { data, isLoading, isError } = useQuery({
     queryKey: ["products"],
@@ -29,10 +31,10 @@ const FilteringByPrice: FC = () => {
         The event should be called <Code>catalog-filter-price</Code> and have
         the following shape.
       </Text>
-      <Code
-        block
-        py="lg"
-      >{`type FilterPriceEvent = { min: string; max: string };`}</Code>
+      <CodeHighlight
+        my="lg"
+        code="type FilterPriceEvent = { min: string; max: string };"
+      />
       <Text>
         The min and max should correspond to the input to the min and max text
         fields in the Filters component.
@@ -42,16 +44,12 @@ const FilteringByPrice: FC = () => {
         <Code>CatalogList</Code>. The list itself comes out of the{" "}
         <Code>useQuery</Code> hook as data.
       </Text>
-      <Code py="lg" block>
-        {useQuery}
-      </Code>
+      <CodeHighlight my="lg" code={useQuery} />
       <Text>
         The data will need to be filtered based on the min and max from the
         event. You can use the following filter function to achieve this
       </Text>
-      <Code py="lg" block>
-        {theFilter}
-      </Code>
+      <CodeHighlight my="lg" code={theFilter} />
     </ExerciseLayout>
   );
 };

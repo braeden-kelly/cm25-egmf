@@ -1,4 +1,7 @@
+import type { FC } from "react";
+
 import { Alert, Code, Flex, Image, Text } from "@mantine/core";
+import { CodeHighlight, CodeHighlightTabs } from "@mantine/code-highlight";
 import { IconInfoCircle } from "@tabler/icons-react";
 
 import ExerciseLayout from "../../shared/components/ExerciseLayout";
@@ -22,7 +25,7 @@ const reactLazy = `const LazilyImported = React.lazy(() => import(...))
   <LazilyImported />
 </Suspense>`;
 
-const ConfiguringModuleFederation = () => {
+const ConfiguringModuleFederation: FC = () => {
   return (
     <ExerciseLayout
       title="Configuring Module Federation"
@@ -30,9 +33,7 @@ const ConfiguringModuleFederation = () => {
       previous="../set-up"
     >
       <Text>Start by checking out this branch</Text>
-      <Code my="lg" block>
-        git checkout exercise-1
-      </Code>
+      <CodeHighlight my="lg" lang="sh" code="git checkout exercise-1" />
       <Text>
         Go ahead and do a little bit of poking around to get familiar with the
         project. Inside packages there are six projects (you can ignore workshop
@@ -50,11 +51,15 @@ const ConfiguringModuleFederation = () => {
       </Flex>
       <Text>
         Module Federation can be configured in the{" "}
-        <Code>rsbuild.config.ts</Code> file (shown below).
+        <Code>rsbuild.config.ts</Code> file
       </Text>
-      <Code my="lg" block>
-        {buildConfig}
-      </Code>
+      <CodeHighlightTabs
+        my="lg"
+        code={[
+          { fileName: "rsbuild.config.ts", language: "ts", code: buildConfig },
+        ]}
+      />
+
       <Text>
         The Header and Footer can be found in the marketing project. As a
         reminder, you can run a package command using{" "}
@@ -64,9 +69,7 @@ const ConfiguringModuleFederation = () => {
       <Alert title="Quick Tip" icon={<IconInfoCircle />} my="xl">
         Quick Tip: For those unfamiliar with React.lazy you must wrap the
         components in a Suspense boundary.
-        <Code my="lg" block>
-          {reactLazy}
-        </Code>
+        <CodeHighlight my="lg" code={reactLazy} />
       </Alert>
     </ExerciseLayout>
   );

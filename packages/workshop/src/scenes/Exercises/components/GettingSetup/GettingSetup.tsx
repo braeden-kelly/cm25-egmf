@@ -1,6 +1,7 @@
 import type { FC } from "react";
 
 import { Title, Text, List, Anchor, Code, Alert } from "@mantine/core";
+import { CodeHighlight } from "@mantine/code-highlight";
 import { IconInfoCircle } from "@tabler/icons-react";
 
 import ExerciseLayout from "../../shared/components/ExerciseLayout";
@@ -24,9 +25,7 @@ const GettingSetup: FC = () => {
       <Text>
         Once npm, node, and git are installed, go ahead and install nx.
       </Text>
-      <Code my="lg" block>
-        npm i -g nx
-      </Code>
+      <CodeHighlight my="lg" lang="sh" code="npm i -g nx" />
       <Text>
         The materials for this workshop are in the following GitHub{" "}
         <Anchor href="">Repo</Anchor>.
@@ -36,13 +35,9 @@ const GettingSetup: FC = () => {
         branch and open the project in your IDE of choice - although this will
         be written with vscode in mind - and install the project dependencies.
       </Text>
-      <Code my="lg" block>
-        npm i
-      </Code>
+      <CodeHighlight my="lg" lang="sh" code="npm i" />
       <Text>Once installed, run the following command.</Text>
-      <Code my="lg" block>
-        npm run hello
-      </Code>
+      <CodeHighlight my="lg" lang="sh" code="npm run hello" />
       <Text>
         you should see the application opened with a “Hello Attendee!” message.
         Once you see the message you can go ahead and kill the dev server.
@@ -58,9 +53,7 @@ const GettingSetup: FC = () => {
       <Text pt="md">
         To run a command in a single package you can use the following pattern
       </Text>
-      <Code my="lg" block>
-        {`nx run <package-name>:<npm-script-name>`}
-      </Code>
+      <CodeHighlight my="lg" code={`nx run <package-name>:<npm-script-name>`} />
       <Text>
         Try running the dev command in the shell package. Look familiar? (You
         should see “Hello Attendee”)
@@ -69,9 +62,7 @@ const GettingSetup: FC = () => {
         You can also run multiple project commands of the same name using
         run-many instead of run using the following pattern.
       </Text>
-      <Code my="lg" block>
-        {`nx run-many -t <command>`}
-      </Code>
+      <CodeHighlight my="lg" code={`nx run-many -t <command>`} />
       <Text>Try running the dev command with run-many</Text>
       <Alert title="A Quick Note on run-many" icon={<IconInfoCircle />} my="xl">
         run-many only runs three processes by default. To run more than three,

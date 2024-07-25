@@ -38,7 +38,11 @@ export default defineConfig({
           singleton: true,
         },
         "@mantine/emotion": {
-          requiredVersion: false,
+          requiredVersion: "^7.10.2",
+          singleton: true,
+        },
+        "@mantine/code-highlight": {
+          requiredVersion: "^7.11.2",
           singleton: true,
         },
         "@mantine/notifications": {

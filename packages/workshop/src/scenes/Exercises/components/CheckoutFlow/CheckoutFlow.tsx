@@ -1,4 +1,7 @@
+import type { FC } from "react";
+
 import { Anchor, Code, Grid, Image, List, Text, Title } from "@mantine/core";
+import { CodeHighlight } from "@mantine/code-highlight";
 
 import ExerciseLayout from "../../shared/components/ExerciseLayout";
 
@@ -21,7 +24,7 @@ const setLogin = `const [, setIsLoggedIn] = useLocalStorage({
   };
 }`;
 
-const CheckoutFlow = () => {
+const CheckoutFlow: FC = () => {
   return (
     <ExerciseLayout
       title="Checkout Flow"
@@ -46,9 +49,7 @@ const CheckoutFlow = () => {
         to the login page. You can use the following code to check if a user is
         authenticated
       </Text>
-      <Code my="lg" block>
-        {readLogin}
-      </Code>
+      <CodeHighlight my="lg" code={readLogin} />
       <Text>
         The login micro-frontend (MFE) should be loaded at the{" "}
         <Code>/login</Code> route, ensuring it handles user authentication and
@@ -64,9 +65,7 @@ const CheckoutFlow = () => {
           hint.
         </Anchor>
       </Text>
-      <Code my="lg" block>
-        {setLogin}
-      </Code>
+      <CodeHighlight my="lg" code={setLogin} />
       <Title py="xl" order={2}>
         The Checkout Flow
       </Title>

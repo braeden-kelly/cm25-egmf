@@ -1,5 +1,5 @@
 import type { FC } from "react";
-import ExerciseLayout from "../../shared/components/ExerciseLayout";
+
 import {
   Accordion,
   Alert,
@@ -10,6 +10,9 @@ import {
   Title,
 } from "@mantine/core";
 import { IconInfoCircle } from "@tabler/icons-react";
+import { CodeHighlight } from "@mantine/code-highlight";
+
+import ExerciseLayout from "../../shared/components/ExerciseLayout";
 
 const types = `interface BaseCart {
   id: number;
@@ -50,15 +53,14 @@ const AddingItemsToCart: FC = () => {
         The team has already decided on the cart state and added the cart and
         product types to the repository. They look as follows.
       </Text>
-      <Code my="lg" block>
-        {types}
-      </Code>
+      <CodeHighlight code={types} my="lg" />
       <Text>
         The <Code>UserCart</Code> type can be imported using:
       </Text>
-      <Code my="lg" block>
-        {`import type { CatalogItem, UserCart } from "@services/cart";`}
-      </Code>
+      <CodeHighlight
+        my="lg"
+        code={`import type { CatalogItem, UserCart } from "@services/cart";`}
+      />
       <Title order={2} py="xl">
         Part 1 - Cart State
       </Title>
@@ -69,10 +71,10 @@ const AddingItemsToCart: FC = () => {
         <Code>newCart</Code>, which serve as the local storage key and the
         default value, respectively.
       </Text>
-      <Code
+      <CodeHighlight
         my="lg"
-        block
-      >{`import { cartKey, getTotals, newCart } from "@services/cart";`}</Code>
+        code={`import { cartKey, getTotals, newCart } from "@services/cart";`}
+      />
       <Accordion>
         <Accordion.Item value="hint">
           <Accordion.Control>
@@ -80,9 +82,7 @@ const AddingItemsToCart: FC = () => {
             getting stuck expand this for the code
           </Accordion.Control>
           <Accordion.Panel>
-            <Code my="lg" block>
-              {localStorageHook}
-            </Code>
+            <CodeHighlight my="lg" code={localStorageHook} />
           </Accordion.Panel>
         </Accordion.Item>
       </Accordion>
@@ -94,9 +94,10 @@ const AddingItemsToCart: FC = () => {
         that listens for an event with the following shape (below) and updates
         the cart state.
       </Text>
-      <Code my="lg" block>
-        {`type AddToCartEvent = { item: CatalogItem };`}
-      </Code>
+      <CodeHighlight
+        my="lg"
+        code={`type AddToCartEvent = { item: CatalogItem };`}
+      />
       <Text>The updating cart logic should work as follows:</Text>
       <List py="lg">
         <List.Item>
@@ -111,10 +112,10 @@ const AddingItemsToCart: FC = () => {
         You can use some helper functions to help implement the add-to-cart
         logic and create the new product array.
       </Text>
-      <Code
+      <CodeHighlight
         py="lg"
-        block
-      >{`import { addToProducts, increaseQuantity, itemInCart } from "./utilities";`}</Code>
+        code={`import { addToProducts, increaseQuantity, itemInCart } from "./utilities";`}
+      />
       <Table my="xl" withColumnBorders>
         <Table.Thead>
           <Table.Tr>
@@ -156,7 +157,10 @@ const AddingItemsToCart: FC = () => {
         To complete the process, update the cart order total using getTotals
         from the cart service.
       </Text>
-      <Code py="lg">{`import { getTotals } from '@services/cart'`}</Code>
+      <CodeHighlight
+        py="lg"
+        code={`import { getTotals } from '@services/cart'`}
+      />
       <Table my="xl" withColumnBorders>
         <Table.Thead>
           <Table.Tr>
