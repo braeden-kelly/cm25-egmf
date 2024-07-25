@@ -20,6 +20,7 @@
     "packages/*"
   ],
   "dependencies": {
+    "@mantine/code-highlight": "^7.11.2",
     "react-canvas-confetti": "^2.0.7",
     "webpack": "^5.92.1"
   }

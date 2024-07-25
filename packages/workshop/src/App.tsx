@@ -3,9 +3,10 @@ import { MantineEmotionProvider, emotionTransform } from "@mantine/emotion";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import Welcome from "./scenes/Welcome/Welcome";
+import Workshop from "./scenes/Exercises";
 
 import "@mantine/core/styles.css";
-import Workshop from "./scenes/Exercises";
+import "@mantine/code-highlight/styles.css";
 
 const App = () => {
   return (

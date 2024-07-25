@@ -1,6 +1,7 @@
 import type { FC } from "react";
 
-import { Anchor, Code, Image, List, Text } from "@mantine/core";
+import { Image, List, Text } from "@mantine/core";
+import { CodeHighlight } from "@mantine/code-highlight";
 
 import ExerciseLayout from "../../shared/components/ExerciseLayout";
 
@@ -18,14 +19,12 @@ const AddingMoreMicroFrontends: FC = () => {
         a couple of key features for our users – the cart and the search bar.
       </Text>
       <Image my="lg" src={header} />
-      <Text>Both features are MFEs the Header needs to consume.</Text>
       <Text>
-        You may continue from your work on Exercise 3, or
-        check out a clean branch using the command below.
+        Both features are MFEs the Header needs to consume. You may continue
+        from your work on Exercise 3, or check out a clean branch using the
+        command below.
       </Text>
-      <Code my="lg" block>
-        git checkout exercise-4
-      </Code>
+      <CodeHighlight my="lg" lang="console" code="git checkout exercise-4" />
       <Text pt="md">
         Configure the order and catalog projects to expose the cart and search,
         respectively, along with any additional configurations the projects may

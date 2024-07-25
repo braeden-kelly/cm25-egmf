@@ -1,6 +1,7 @@
 import type { FC } from "react";
 
 import { Alert, Anchor, Code, Text } from "@mantine/core";
+import { CodeHighlight } from "@mantine/code-highlight";
 import { IconInfoCircle } from "@tabler/icons-react";
 
 import ExerciseLayout from "../../shared/components/ExerciseLayout";
@@ -40,9 +41,7 @@ const FaultTolerance: FC = () => {
       >
         If you want to see it in action, throw an error in any component in an
         MFE.
-        <Code my="lg" block>
-          {catalogList}
-        </Code>
+        <CodeHighlight my="lg" code={catalogList} />
       </Alert>
       <Text>
         If the Filter MFE goes down, our customers should still be able to shop
@@ -58,24 +57,18 @@ const FaultTolerance: FC = () => {
         </Anchor>
       </Text>
       <Text>
-        You may continue from your work on Exercise 2, or
-        check out a clean branch using the command below.
+        You may continue from your work on Exercise 2, or check out a clean
+        branch using the command below.
       </Text>
-      <Code my="lg" block>
-        git checkout exercise-3
-      </Code>
+      <CodeHighlight my="lg" lang="sh" code="git checkout exercise-3" />
       <Text pt="md">
         To install <Code>react-error-boundary</Code>.
       </Text>
-      <Code my="lg" block>
-        {`npm i react-error-boundary`}
-      </Code>
+      <CodeHighlight my="lg" code="npm i react-error-boundary" />
       <Text pt="md">
         To use <Code>react-error-boundary</Code>.
       </Text>
-      <Code my="lg" block>
-        {errorBoundary}
-      </Code>
+      <CodeHighlight my="lg" code={errorBoundary} />
       <Text>
         Add error boundaries to each of the MFEs the shell application is
         currently using. The fallbacks can be as intricate or plain as you’d

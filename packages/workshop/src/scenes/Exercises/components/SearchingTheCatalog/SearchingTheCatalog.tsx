@@ -3,6 +3,7 @@ import type { FC } from "react";
 import ExerciseLayout from "../../shared/components/ExerciseLayout";
 
 import { Code, Text } from "@mantine/core";
+import { CodeHighlight } from "@mantine/code-highlight";
 
 const code = `const searchFilter = (item: CatalogItem) => {
   return !search || item.name.toLowerCase().includes(search.toLowerCase());
@@ -32,9 +33,7 @@ const SearchingTheCatalog: FC = () => {
         filter the data based on the search text. A filter is provided below for
         convenience.
       </Text>
-      <Code block my="lg">
-        {code}
-      </Code>
+      <CodeHighlight code={code} my="lg" />
     </ExerciseLayout>
   );
 };

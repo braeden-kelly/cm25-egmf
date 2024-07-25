@@ -5,8 +5,8 @@ import { emotionTransform, MantineEmotionProvider } from "@mantine/emotion";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import * as Sentry from "@sentry/react";
 import { Notifications } from "@mantine/notifications";
+import * as Sentry from "@sentry/react";
 
 import Layout from "./components/Layout";
 import LayoutNoLogin from "./components/LayoutNoLogin";
