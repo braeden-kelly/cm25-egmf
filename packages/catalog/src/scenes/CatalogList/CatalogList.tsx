@@ -1,3 +1,5 @@
+import type { Catalog } from "shared-types";
+
 import { Flex } from "@mantine/core";
 
 import SkeletonCatalogList from "./components/SkeletonCatalogList";

@@ -1,4 +1,4 @@
-import type { Catalog } from "shared-types/remotes";
+import type { Catalog } from "shared-types";
 
 import { TextInput } from "@mantine/core";
 import { IconSearch } from "@tabler/icons-react";

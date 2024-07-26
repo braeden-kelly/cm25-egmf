@@ -1,9 +1,10 @@
+import type { Catalog } from "shared-types";
+
 import {
   Container,
   Grid,
   Stack,
   Divider,
-  Flex,
   Text,
   Breadcrumbs,
   Anchor,
