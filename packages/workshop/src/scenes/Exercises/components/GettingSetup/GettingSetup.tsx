@@ -16,10 +16,14 @@ const GettingSetup: FC = () => {
       </Text>
       <List py="lg">
         <List.Item>
-          <Anchor href="#">npm & node</Anchor>
+          <Anchor href="https://www.freecodecamp.org/news/node-version-manager-nvm-install-guide/">
+            npm & node
+          </Anchor>
         </List.Item>
         <List.Item>
-          <Anchor href="#">git</Anchor>
+          <Anchor href="https://git-scm.com/book/en/v2/Getting-Started-Installing-Git">
+            git
+          </Anchor>
         </List.Item>
       </List>
       <Text>
@@ -28,19 +32,23 @@ const GettingSetup: FC = () => {
       <CodeHighlight my="lg" lang="sh" code="npm i -g nx" />
       <Text>
         The materials for this workshop are in the following GitHub{" "}
-        <Anchor href="">Repo</Anchor>.
+        <Anchor href="https://github.com/bitovi/enterprise-grade-micro-frontends">
+          Repo
+        </Anchor>
+        .
       </Text>
-      <Text>
-        Once cloned, checkout out the <Code>workshop/getting-started</Code>{" "}
-        branch and open the project in your IDE of choice - although this will
-        be written with vscode in mind - and install the project dependencies.
+      <Text pt="lg">
+        Once cloned, checkout out the <Code>main</Code> branch and open the
+        project in your IDE of choice - although this will be written with
+        vscode in mind - and install the project dependencies.
       </Text>
       <CodeHighlight my="lg" lang="sh" code="npm i" />
       <Text>Once installed, run the following command.</Text>
-      <CodeHighlight my="lg" lang="sh" code="npm run hello" />
+      <CodeHighlight my="lg" lang="sh" code="npm run start" />
       <Text>
-        you should see the application opened with a “Hello Attendee!” message.
-        Once you see the message you can go ahead and kill the dev server.
+        you should see the application opened with a “Hello - Nice to meet you!”
+        message. Once you see the message you can go ahead and kill the dev
+        server.
       </Text>
       <Title py="xl" order={2}>
         Nx
@@ -55,21 +63,25 @@ const GettingSetup: FC = () => {
       </Text>
       <CodeHighlight my="lg" code={`nx run <package-name>:<npm-script-name>`} />
       <Text>
-        Try running the dev command in the shell package. Look familiar? (You
-        should see “Hello Attendee”)
+        Try running the dev command in the <Code>workshop</Code> package and
+        navigate the the url. Look familiar? (You should see “Hello - Nice to
+        meet you!”)
       </Text>
       <Text pt="md">
         You can also run multiple project commands of the same name using
         run-many instead of run using the following pattern.
       </Text>
-      <CodeHighlight my="lg" code={`nx run-many -t <command>`} />
-      <Text>Try running the dev command with run-many</Text>
       <Alert title="A Quick Note on run-many" icon={<IconInfoCircle />} my="xl">
         run-many only runs three processes by default. To run more than three,
         you can add the parallel flag to run more than that{" "}
-        {`(--parallel=<number-you-want-to-run>)`}
+        <Code>{`--parallel=<number-you-want-to-run>`}</Code>
       </Alert>
-      <Text>If you got this far, congrats! You're all setup!</Text>
+      <CodeHighlight my="lg" code={`nx run-many -t <command>`} />
+      <Text>
+        Try running the dev command with run-many and parallel set to 6
+      </Text>
+
+      <Text pt="md">If you got this far, congrats! You're all setup!</Text>
     </ExerciseLayout>
   );
 };
