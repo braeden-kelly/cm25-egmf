@@ -1,8 +1,8 @@
-import type { Catalog } from "shared-types";
+import { CatalogItem } from "@services/shared/types";
 
 export async function fetchProduct(
   id: string | undefined
-): Promise<Catalog.CatalogItem> {
+): Promise<CatalogItem> {
   if (!id) throw new Error("Product ID is required");
 
   try {
@@ -13,7 +13,7 @@ export async function fetchProduct(
     }
 
     const data = await response.json();
-    const mappedData: Catalog.CatalogItem = {
+    const mappedData: CatalogItem = {
       id: data.id,
       href: data.image,
       imgSrc: data.image,

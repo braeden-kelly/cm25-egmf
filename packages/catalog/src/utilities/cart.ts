@@ -1,6 +1,6 @@
-import type { Catalog } from "shared-types";
+import { CatalogItem } from "@services/shared/types";
 
-type CartItem = Omit<Catalog.CatalogItem, "category" | "rating">;
+type CartItem = Omit<CatalogItem, "category" | "rating">;
 
 export const addToCart = ({
   id,

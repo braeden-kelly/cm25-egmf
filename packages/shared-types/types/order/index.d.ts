@@ -19,7 +19,7 @@ export namespace Order {
 }
 
 interface OrderEventMap {
-  "add-to-cart": CustomEvent<AddToCartEvent>;
+  "add-to-cart": CustomEvent<Order.AddToCartEvent>;
 }
 
 declare global {

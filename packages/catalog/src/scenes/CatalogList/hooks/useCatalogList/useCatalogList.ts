@@ -25,10 +25,10 @@ export const useCatalogList = () => {
       setMaxPrice(ev.detail.max);
     }
 
-    document.addEventListener("catalog-filter-price", handlePriceFilterChange);
+    window.addEventListener("catalog-filter-price", handlePriceFilterChange);
 
     return () => {
-      document.removeEventListener(
+      window.removeEventListener(
         "catalog-filter-price",
         handlePriceFilterChange
       );

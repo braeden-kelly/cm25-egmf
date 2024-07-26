@@ -1,4 +1,4 @@
-import type { Catalog } from "shared-types";
+import { CatalogItem } from "@services/shared/types";
 
 import { QueryKey } from "@tanstack/react-query";
 
@@ -6,7 +6,7 @@ export async function fetchProducts({
   queryKey,
 }: {
   queryKey: QueryKey;
-}): Promise<Catalog.CatalogItem[]> {
+}): Promise<CatalogItem[]> {
   try {
     const url = `https://fakestoreapi.com/${queryKey.join("/")}`;
 
@@ -17,7 +17,7 @@ export async function fetchProducts({
     }
 
     const data = await response.json();
-    const mappedData: Catalog.CatalogItem[] = data.map((product: any) => ({
+    const mappedData: CatalogItem[] = data.map((product: any) => ({
       id: product.id,
       href: product.id,
       imgSrc: product.image,
