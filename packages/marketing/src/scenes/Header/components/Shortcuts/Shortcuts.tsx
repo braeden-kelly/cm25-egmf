@@ -1,14 +1,14 @@
-import { Suspense, lazy, type FC } from "react";
+import type { FC } from "react";
+
+import { Suspense, lazy } from "react";
 import { Button, Flex, Group, Skeleton, Tooltip } from "@mantine/core";
 import { IconAlertTriangle, IconUser } from "@tabler/icons-react";
 import { Link } from "react-router-dom";
 import { ErrorBoundary } from "react-error-boundary";
-import type { CartScene } from "shared/order";
 
-// @ts-ignore
-const Cart = lazy<CartScene>(() => import("order/cart"));
+const Cart = lazy(() => import("order/cart"));
 
-const Shortcuts: CartScene = () => {
+const Shortcuts: FC = () => {
   return (
     <Group>
       <Button
@@ -31,7 +31,7 @@ const Shortcuts: CartScene = () => {
 
 export default Shortcuts;
 
-const CartError = () => {
+const CartError: FC = () => {
   return (
     <Flex justify="center" align="center">
       <Tooltip label="Our cart is having some issues">

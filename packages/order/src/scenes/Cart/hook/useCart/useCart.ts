@@ -1,12 +1,11 @@
-import type { CatalogItem, UserCart } from "@services/cart";
+import type { Order } from "shared-types";
+import type { UserCart } from "@services/cart";
 
 import { useEffect } from "react";
 import { useLocalStorage } from "@mantine/hooks";
 
 import { cartKey, getTotals, newCart } from "@services/cart";
 import { addToProducts, increaseQuantity, itemInCart } from "./utilities";
-
-type AddToCartEvent = { item: CatalogItem };
 
 export const useCart = () => {
   const [cart, setCart] = useLocalStorage<UserCart>({
@@ -15,7 +14,7 @@ export const useCart = () => {
   });
 
   useEffect(() => {
-    const onAddToCart = (event: CustomEvent<AddToCartEvent>) => {
+    const onAddToCart = (event: CustomEvent<Order.AddToCartEvent>) => {
       const { item } = event.detail;
 
       setCart((currentCart) => {
@@ -32,9 +31,9 @@ export const useCart = () => {
       });
     };
 
-    document.addEventListener("add-to-cart", onAddToCart);
+    window.addEventListener("add-to-cart", onAddToCart);
 
-    return () => document.removeEventListener("add-to-cart", onAddToCart);
+    return () => window.removeEventListener("add-to-cart", onAddToCart);
   }, []);
 
   return cart;

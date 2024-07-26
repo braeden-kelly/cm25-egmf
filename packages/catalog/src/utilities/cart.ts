@@ -1,4 +1,6 @@
-import type { CatalogItem } from "shared/catalog";
+import { CatalogItem } from "@services/shared/types";
+
+type CartItem = Omit<CatalogItem, "category" | "rating">;
 
 export const addToCart = ({
   id,
@@ -6,7 +8,7 @@ export const addToCart = ({
   price,
   description,
   imgSrc,
-}: Omit<CatalogItem, "category" | "rating">) => {
+}: CartItem) => {
   document.dispatchEvent(
     new CustomEvent("add-to-cart", {
       detail: {

@@ -1,12 +1,13 @@
+import type { FC } from "react";
+
 import { Suspense, lazy } from "react";
 import { Skeleton, Text, Title, Flex, Button, Grid } from "@mantine/core";
 import { ErrorBoundary } from "react-error-boundary";
 import { Link } from "react-router-dom";
-import type { WorkshopScene } from "shared/workshop";
-// @ts-ignore
-const Exercises = lazy<WorkshopScene>(() => import("workshop/exercises"));
 
-const ExercisesScene: WorkshopScene = () => {
+const Exercises = lazy(() => import("workshop/exercises"));
+
+const ExercisesScene: FC = () => {
   return (
     <ErrorBoundary fallback={<ExercisesError />}>
       <Suspense fallback={<ExercisesSkeleton />}>
@@ -18,7 +19,7 @@ const ExercisesScene: WorkshopScene = () => {
 
 export default ExercisesScene;
 
-const ExercisesSkeleton = () => {
+const ExercisesSkeleton: FC = () => {
   return (
     <Grid w="100%" px="lg">
       <Grid.Col span={3}>
@@ -31,7 +32,7 @@ const ExercisesSkeleton = () => {
   );
 };
 
-const ExercisesError = () => {
+const ExercisesError: FC = () => {
   return (
     <Flex align="center" direction="column">
       <Title mb="md" c="red">

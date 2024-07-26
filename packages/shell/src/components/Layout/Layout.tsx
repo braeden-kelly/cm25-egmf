@@ -5,12 +5,9 @@ import { readLocalStorageValue } from "@mantine/hooks";
 
 import HeaderSkeleton from "./components/HeaderSkeleton";
 import FooterSkeleton from "./components/FooterSkeleton";
-import type { FooterScene, HeaderScene } from "shared/marketing";
 
-// @ts-ignore
-const Header = lazy<HeaderScene>(() => import("marketing/header"));
-// @ts-ignore
-const Footer = lazy<FooterScene>(() => import("marketing/footer"));
+const Header = lazy(() => import("marketing/header"));
+const Footer = lazy(() => import("marketing/footer"));
 
 const Layout: FC = () => {
   const isLoggedIn = readLocalStorageValue<boolean>({ key: "logged-in" });

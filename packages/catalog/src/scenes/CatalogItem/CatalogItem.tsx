@@ -1,10 +1,10 @@
-import type { CatalogItemScene } from 'shared/catalog';
+import type { Catalog } from "shared-types";
+
 import {
   Container,
   Grid,
   Stack,
   Divider,
-  Flex,
   Text,
   Breadcrumbs,
   Anchor,
@@ -20,7 +20,7 @@ import Related from "./components/Related";
 import CatalogItemSkeleton from "./components/CatalogItemSkeleton";
 import CatalogItemError from "./components/CatalogItemError";
 
-const CatalogItem: CatalogItemScene = () => {
+const CatalogItem: Catalog.Item = () => {
   const { productId } = useParams<{ productId: string }>();
 
   const { data, isLoading, isError } = useQuery({

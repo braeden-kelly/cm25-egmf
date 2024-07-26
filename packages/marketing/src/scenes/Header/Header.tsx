@@ -1,11 +1,13 @@
-import { Box, Container, Divider, Flex } from "@mantine/core";
+import type { Marketing } from "shared-types";
+
+import { Divider, Flex } from "@mantine/core";
 
 import HomeLink from "./components/HomeLink";
 import Search from "./components/Search";
 import Links from "./components/Links";
 import Shortcuts from "./components/Shortcuts";
 
-const Header = () => {
+const Header: Marketing.Header = () => {
   return (
     <Flex component="header" py="md" align="center" justify="center" bg="dark">
       <Flex

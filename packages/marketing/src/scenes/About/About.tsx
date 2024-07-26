@@ -1,8 +1,8 @@
-import type { AboutScene } from 'marketing';
+import type { Marketing } from "shared-types";
 
 import { Container, List, ListItem, Stack, Title, Text } from "@mantine/core";
 
-const About: AboutScene = () => {
+const About: Marketing.About = () => {
   return (
     <Container p="md">
       <Stack>

@@ -1,14 +1,12 @@
+import type { FC } from "react";
+
 import { Suspense, lazy } from "react";
-import { Flex, Skeleton, Text, Title, Button, Paper } from "@mantine/core";
+import { Flex, Skeleton, Text, Title, Paper } from "@mantine/core";
 import { ErrorBoundary } from "react-error-boundary";
-import { Link } from "react-router-dom";
 
-import type { WelcomeScene } from "shared/workshop";
+const Welcome = lazy(() => import("workshop/welcome"));
 
-// @ts-ignore
-const Welcome: WelcomeScene = lazy<WelcomeScene>(() => import("workshop/welcome"));
-
-const WelcomeScene: WelcomeScene = () => {
+const WelcomeScene: FC = () => {
   return (
     <ErrorBoundary fallback={<WelcomeError />}>
       <Suspense fallback={<WelcomeSkeleton />}>
@@ -20,7 +18,7 @@ const WelcomeScene: WelcomeScene = () => {
 
 export default WelcomeScene;
 
-const WelcomeSkeleton = () => {
+const WelcomeSkeleton: FC = () => {
   return (
     <Flex flex={1} align="center" justify="center">
       <Skeleton h={656} w="50%" />
@@ -28,7 +26,7 @@ const WelcomeSkeleton = () => {
   );
 };
 
-const WelcomeError = () => {
+const WelcomeError: FC = () => {
   return (
     <Flex bg="blue" flex={1} align="center" justify="center" direction="column">
       <Paper h={656} w="50%">

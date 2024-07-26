@@ -1,14 +1,13 @@
+import type { FC } from "react";
+
 import { Suspense, lazy } from "react";
 import { Container, Skeleton, Text, Title, Flex, Button } from "@mantine/core";
 import { ErrorBoundary } from "react-error-boundary";
 import { Link } from "react-router-dom";
 
-import type { AboutScene } from 'shared/marketing';
+const About = lazy(() => import("marketing/about"));
 
-// @ts-ignore
-const About = lazy<AboutScene>(() => import("marketing/about"));
-
-const AboutScene: AboutScene = () => {
+const AboutScene: FC = () => {
   return (
     <ErrorBoundary fallback={<AboutError />}>
       <Suspense fallback={<AboutSkeleton />}>
@@ -20,7 +19,7 @@ const AboutScene: AboutScene = () => {
 
 export default AboutScene;
 
-const AboutSkeleton = () => {
+const AboutSkeleton: FC = () => {
   return (
     <Container p="md">
       <Skeleton h={45} />
@@ -36,7 +35,7 @@ const AboutSkeleton = () => {
   );
 };
 
-const AboutError = () => {
+const AboutError: FC = () => {
   return (
     <Flex align="center" direction="column">
       <Title mb="md" c="red">

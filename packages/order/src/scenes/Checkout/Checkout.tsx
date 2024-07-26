@@ -1,4 +1,4 @@
-import type { CheckoutScene } from "shared/order";
+import type { Order } from "shared-types";
 
 import { Routes, Route } from "react-router-dom";
 
@@ -7,7 +7,7 @@ import Layout from "./components/Layout";
 import Payment from "./components/Payment";
 import { useCheckout } from "./hooks/useCheckout";
 
-const Checkout: CheckoutScene = ({ id, homePath }) => {
+const Checkout: Order.Checkout = ({ id, homePath }) => {
   const { checkout, navigateToCheckout } = useCheckout(homePath);
 
   return (

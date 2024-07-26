@@ -1,9 +1,9 @@
-import type { CatalogFilterScene } from "shared/catalog";
-
 import { Container, Divider } from "@mantine/core";
 
 import Categories from "./components/Categories";
 import Filters from "./components/Filters/Filters";
+
+import { Catalog } from "shared-types";
 
 function broadcastPriceChange(min: string, max: string) {
   document.dispatchEvent(
@@ -16,7 +16,7 @@ function broadcastPriceChange(min: string, max: string) {
   );
 }
 
-const Filter: CatalogFilterScene = () => {
+const Filter: Catalog.Filter = () => {
   return (
     <Container fluid px="md" w="350" py="lg">
       <Categories />
