@@ -1,4 +1,6 @@
-import { FC, Suspense, lazy } from "react";
+import type { FC } from "react";
+
+import { Suspense, lazy } from "react";
 import { Navigate, Outlet } from "react-router-dom";
 import { Container, Flex } from "@mantine/core";
 import { readLocalStorageValue } from "@mantine/hooks";

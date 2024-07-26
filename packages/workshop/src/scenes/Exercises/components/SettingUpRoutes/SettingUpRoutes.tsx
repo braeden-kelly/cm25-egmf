@@ -1,6 +1,7 @@
 import type { FC } from "react";
 
 import { Code, List, Text, Title } from "@mantine/core";
+import { CodeHighlight } from "@mantine/code-highlight";
 
 import ExerciseLayout from "../../shared/components/ExerciseLayout";
 
@@ -11,6 +12,14 @@ const SettingUpRoutes: FC = () => {
       next="../exercise-6"
       previous="../exercise-3"
     >
+      <Text>
+        You may continue from your work on the previous exercise, or check out a
+        clean branch using the command below.
+      </Text>
+      <CodeHighlight
+        my="lg"
+        code="git checkout soln/adding-more-micro-frontends"
+      />
       <Text>
         We have several pages left to set up for our application. Let's take a
         moment to wire up the following MFEs with their respective routes. Each

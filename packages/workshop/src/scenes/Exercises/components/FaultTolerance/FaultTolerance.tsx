@@ -45,33 +45,29 @@ const FaultTolerance: FC = () => {
       </Alert>
       <Text>
         If the Filter MFE goes down, our customers should still be able to shop
-        in the catalog, just in a limited capacity. If you want to see it in
-        action, throw an error in any component in an MFE.
+        in the catalog, just in a limited capacity.
       </Text>
       <Text pt="md">
         To remedy this, the shell application needs to wrap our MFEs in a
-        Suspense boundary and an error boundary. Rather than creating an error
+        suspense boundary and an error boundary. Rather than creating an error
         boundary from scratch, we will use{" "}
         <Anchor href="https://www.npmjs.com/package/react-error-boundary">
           react-error-boundary.
         </Anchor>
       </Text>
-      <Text>
-        You may continue from your work on Exercise 2, or check out a clean
-        branch using the command below.
+      <Text pt="lg">
+        You may continue from your work on the previous exercise, or check out a
+        clean branch using the command below.
       </Text>
-      <CodeHighlight my="lg" lang="sh" code="git checkout exercise-3" />
-      <Text pt="md">
-        To install <Code>react-error-boundary</Code>.
-      </Text>
-      <CodeHighlight my="lg" code="npm i react-error-boundary" />
+      <CodeHighlight my="lg" code="git checkout soln/sharing-common-modules" />
+
       <Text pt="md">
         To use <Code>react-error-boundary</Code>.
       </Text>
       <CodeHighlight my="lg" code={errorBoundary} />
       <Text>
         Add error boundaries to each of the MFEs the shell application is
-        currently using. The fallbacks can be as intricate or plain as you’d
+        currently using. The fallbacks can be as intricate or plain as you'd
         like - feel free to explore using Mantine to create more elaborate
         fallbacks.
       </Text>

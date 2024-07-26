@@ -1,4 +1,4 @@
-import type { AccountScene } from 'shared/profile';
+import type { FC } from "react";
 
 import { Suspense, lazy } from "react";
 import {
@@ -13,10 +13,9 @@ import {
 import { ErrorBoundary } from "react-error-boundary";
 import { Link } from "react-router-dom";
 
-// @ts-ignore
-const Account = lazy<AccountScene>(() => import("profile/account"));
+const Account = lazy(() => import("profile/account"));
 
-const AccountScene: AccountScene = () => {
+const AccountScene: FC = () => {
   return (
     <ErrorBoundary fallback={<AccountError />}>
       <Suspense fallback={<AccountSkeleton />}>
@@ -28,7 +27,7 @@ const AccountScene: AccountScene = () => {
 
 export default AccountScene;
 
-const AccountSkeleton = () => {
+const AccountSkeleton: FC = () => {
   return (
     <Container>
       <Skeleton mb="xl" h={45} />
@@ -44,7 +43,7 @@ const AccountSkeleton = () => {
   );
 };
 
-const AccountError = () => {
+const AccountError: FC = () => {
   return (
     <Flex align="center" direction="column">
       <Title mb="md" c="red">

@@ -1,8 +1,7 @@
 import type { FC } from "react";
 
-import { Alert, Code, Flex, Image, Text } from "@mantine/core";
+import { Accordion, Code, Flex, Image, List, Text, Title } from "@mantine/core";
 import { CodeHighlight, CodeHighlightTabs } from "@mantine/code-highlight";
-import { IconInfoCircle } from "@tabler/icons-react";
 
 import ExerciseLayout from "../../shared/components/ExerciseLayout";
 
@@ -25,6 +24,24 @@ const reactLazy = `const LazilyImported = React.lazy(() => import(...))
   <LazilyImported />
 </Suspense>`;
 
+const shared = `
+ const shared = {
+        react: {
+          requiredVersion: "^18.2.0",
+          singleton: true,
+          eager: true,
+        },
+        "react-dom": {
+          requiredVersion: "^18.2.0",
+          singleton: true,
+          eager: true,
+        },
+        "react-router-dom": {
+          requiredVersion: "^6.23.1",
+          singleton: true,
+        },
+    }`;
+
 const ConfiguringModuleFederation: FC = () => {
   return (
     <ExerciseLayout
@@ -33,7 +50,11 @@ const ConfiguringModuleFederation: FC = () => {
       previous="../set-up"
     >
       <Text>Start by checking out this branch</Text>
-      <CodeHighlight my="lg" lang="sh" code="git checkout exercise-1" />
+      <CodeHighlight
+        my="lg"
+        lang="sh"
+        code="git checkout exercise/configuring-module-federation"
+      />
       <Text>
         Go ahead and do a little bit of poking around to get familiar with the
         project. Inside packages there are six projects (you can ignore workshop
@@ -41,36 +62,64 @@ const ConfiguringModuleFederation: FC = () => {
         of src contains all the MFEs we will use for our projects.
       </Text>
 
-      <Text pt="md">
-        Using module federation, pull the Header, Footer, Filter, and
-        CatalogList into the root of the shell application. Use the image below
-        as a guide, the layout for the page is provided.
-      </Text>
-      <Flex my="lg" align="center" justify="center">
-        <Image w={500} src={diagram} />
-      </Flex>
+      <Title py="xl" order={2}>
+        Exercise
+      </Title>
       <Text>
+        Using module federation, pull the Header, Footer, Filter, and
+        CatalogList into the <Code>/shop</Code> section of the shell
+        application. The Header and Footer can be placed in the placeholders
+        inside <Code>shell/src/components/Layout</Code> and the Filter and
+        Catalog in <Code>shell/src/scenes/Shop</Code>.
+      </Text>
+
+      <Text pt="md">To accomplish this you'll need to:</Text>
+      <List py="lg">
+        <List.Item>
+          Create the types for the modules and namespaces for the projects and
+          MFEs
+        </List.Item>
+        <List.Item>
+          Update the types of the MFEs to be consumed (the Header, the Footer,
+          the Filter and the Catalog List)
+        </List.Item>
+        <List.Item>Expose the MFEs in their respective projects</List.Item>
+        <List.Item>Consume the MFEs in the shell application</List.Item>
+        <List.Item>Add any shared modules</List.Item>
+      </List>
+
+      <Text pt="md">
+        The Header and Footer can be found in the marketing project in their
+        respective scenes. Likewise, the Filter and Catalog in the catalog
+        project.
+      </Text>
+      <Text pt="md">
         Module Federation can be configured in the{" "}
         <Code>rsbuild.config.ts</Code> file
       </Text>
+
       <CodeHighlightTabs
         my="lg"
         code={[
           { fileName: "rsbuild.config.ts", language: "ts", code: buildConfig },
         ]}
       />
-
       <Text>
-        The Header and Footer can be found in the marketing project. As a
-        reminder, you can run a package command using{" "}
-        <Code>{`nx run <package>:<command>`}</Code>. The host and the remote
-        must be running for module federation to work.
+        Use the image below as a guide, the layout for the page is provided.
       </Text>
-      <Alert title="Quick Tip" icon={<IconInfoCircle />} my="xl">
-        Quick Tip: For those unfamiliar with React.lazy you must wrap the
-        components in a Suspense boundary.
-        <CodeHighlight my="lg" code={reactLazy} />
-      </Alert>
+      <Flex my="lg" align="center" justify="center">
+        <Image w={500} src={diagram} />
+      </Flex>
+      <Accordion>
+        <Accordion.Item value="hint">
+          <Accordion.Control>
+            Running into errors? Did you share the correct modules?
+          </Accordion.Control>
+          <Accordion.Panel>
+            <CodeHighlight code={shared} />
+          </Accordion.Panel>
+        </Accordion.Item>
+      </Accordion>
     </ExerciseLayout>
   );
 };

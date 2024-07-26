@@ -1,9 +1,24 @@
 import type { FC } from "react";
 
-import { Text } from "@mantine/core";
+import { Accordion, Text, Code } from "@mantine/core";
 import { CodeHighlight } from "@mantine/code-highlight";
 
 import ExerciseLayout from "../../shared/components/ExerciseLayout";
+
+const additional = `const addition =  {
+        "@mantine/core": {
+          requiredVersion: "^7.10.2",
+          singleton: true,
+        },
+        "@mantine/emotion": {
+          requiredVersion: "^7.10.2",
+          singleton: true,
+        },
+        "@tanstack/react-query": {
+          requiredVersion: "^5.48.0",
+          singleton: true,
+        },
+}`;
 
 const SharingCommonModules: FC = () => {
   return (
@@ -13,10 +28,13 @@ const SharingCommonModules: FC = () => {
       next="../exercise-3"
     >
       <Text>
-        You may continue from your work on Exercise 1, or check out a clean
-        branch using the command below.
+        You may continue from your work on the previous exercise, or check out a
+        clean branch using the command below.
       </Text>
-      <CodeHighlight my="lg" code="git checkout exercise-2" />
+      <CodeHighlight
+        my="lg"
+        code="git checkout soln/configuring-module-federation"
+      />
       <Text>
         These applications have some dependencies that are good candidates for
         sharing via Module Federation. Create a list of libraries you think
@@ -27,6 +45,20 @@ const SharingCommonModules: FC = () => {
         Be prepared to discuss why the library is a good candidate for sharing
         and why you chose the sharing configuration (singleton, eager, etc.) you
         did for each library.
+      </Text>
+      <Accordion py="lg">
+        <Accordion.Item value="additional">
+          <Accordion.Control>
+            Here are some additional libraries we can share
+          </Accordion.Control>
+          <Accordion.Panel>
+            <CodeHighlight code={additional} />
+          </Accordion.Panel>
+        </Accordion.Item>
+      </Accordion>
+      <Text>
+        Once added go ahead and remove the <Code>TempWrapper</Code>s from the
+        Header, Footer, Catalog List and Filter
       </Text>
     </ExerciseLayout>
   );
