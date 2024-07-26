@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "types": "./remotes.d.ts",
   "devDependencies": {
-    "react": "^18.3.1"
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0"
   }
 }

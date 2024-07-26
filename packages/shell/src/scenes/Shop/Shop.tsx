@@ -1,4 +1,6 @@
-import { FC, Suspense, lazy } from "react";
+import type { FC } from "react";
+
+import { Suspense, lazy } from "react";
 import { Grid } from "@mantine/core";
 import { ErrorBoundary } from "react-error-boundary";
 
