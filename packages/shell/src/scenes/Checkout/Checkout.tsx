@@ -1,14 +1,13 @@
-import type { CheckoutScene } from 'shared/order';
+import type { FC } from "react";
 
 import { Suspense, lazy } from "react";
 import { Skeleton, Text, Title, Flex, Button, Grid } from "@mantine/core";
 import { ErrorBoundary } from "react-error-boundary";
 import { Link } from "react-router-dom";
 
-// @ts-ignore
-const Checkout = lazy<CheckoutScene>(() => import("order/checkout"));
+const Checkout = lazy(() => import("order/checkout"));
 
-const CheckoutScene: CheckoutScene = () => {
+const CheckoutScene: FC = () => {
   return (
     <ErrorBoundary fallback={<CheckoutError />}>
       <Suspense fallback={<CheckoutSkeleton />}>
@@ -20,7 +19,7 @@ const CheckoutScene: CheckoutScene = () => {
 
 export default CheckoutScene;
 
-const CheckoutSkeleton = () => {
+const CheckoutSkeleton: FC = () => {
   return (
     <Grid align="center">
       <Grid.Col span={{ md: 12, lg: 6 }}>
@@ -33,7 +32,7 @@ const CheckoutSkeleton = () => {
   );
 };
 
-const CheckoutError = () => {
+const CheckoutError: FC = () => {
   return (
     <Flex align="center" direction="column">
       <Title mb="md" c="red">

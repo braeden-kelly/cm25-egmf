@@ -1,6 +1,8 @@
-import type { CatalogItem } from "shared/catalog";
+import { Catalog } from "shared-types";
 
-export async function fetchRelated(category: string): Promise<CatalogItem[]> {
+export async function fetchRelated(
+  category: string
+): Promise<Catalog.CatalogItem[]> {
   try {
     const response = await fetch(
       `https://fakestoreapi.com/products/category/${category}?limit=3`
@@ -11,7 +13,7 @@ export async function fetchRelated(category: string): Promise<CatalogItem[]> {
     }
 
     const data = await response.json();
-    const mappedData: CatalogItem[] = data.map((item: any) => ({
+    const mappedData: Catalog.CatalogItem[] = data.map((item: any) => ({
       id: item.id,
       href: item.image,
       imgSrc: item.image,

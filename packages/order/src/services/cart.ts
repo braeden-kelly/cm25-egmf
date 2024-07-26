@@ -1,11 +1,4 @@
-export interface CatalogItem {
-  id: number;
-  title: string;
-  price: number;
-  description: string;
-  category: string;
-  image: string;
-}
+import type { Order } from "shared-types";
 
 interface BaseCart {
   id: number;
@@ -16,7 +9,7 @@ interface CartService extends BaseCart {
   products: Array<{ productId: number; quantity: number }>;
 }
 
-type Product = CatalogItem & { quantity: number };
+type Product = Order.CatalogItem & { quantity: number };
 
 export interface UserCart extends BaseCart {
   tax: number;
@@ -30,7 +23,7 @@ const getProducts = async () => {
     (result) => result.json()
   );
 
-  return products as Array<CatalogItem>;
+  return products as Array<Order.CatalogItem>;
 };
 
 const getCart = async (id: number) => {
