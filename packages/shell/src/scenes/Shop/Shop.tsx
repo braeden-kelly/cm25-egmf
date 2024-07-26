@@ -1,4 +1,4 @@
-import { Suspense, lazy } from "react";
+import { FC, Suspense, lazy } from "react";
 import { Grid } from "@mantine/core";
 import { ErrorBoundary } from "react-error-boundary";
 
@@ -6,16 +6,11 @@ import FilterSkeleton from "./components/FilterSkeleton";
 import CatalogListSkeleton from "./components/CatalogListSkeleton";
 import FilterError from "./components/FilterError";
 import CatalogListError from "./components/CatalogListError";
-import { CatalogFilterScene, CatalogListScene } from "shared/catalog";
-import { ShopScene } from "shared/shell";
 
-// @ts-ignore
-const CatalogList = lazy<CatalogListScene>(() => import("catalog/list"));
+const CatalogList = lazy(() => import("catalog/list"));
+const Filter = lazy(() => import("catalog/filter"));
 
-// @ts-ignore
-const Filter = lazy<CatalogFilterScene>(() => import("catalog/filter"));
-
-const Shop: ShopScene = () => {
+const Shop: FC = () => {
   return (
     <Grid>
       <Grid.Col span={{ sm: 12, md: 3 }}>

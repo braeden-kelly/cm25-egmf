@@ -1,5 +1,3 @@
-import type { CatalogListScene } from "shared/catalog";
-
 import { Flex } from "@mantine/core";
 
 import SkeletonCatalogList from "./components/SkeletonCatalogList";
@@ -7,7 +5,7 @@ import CatalogListItem from "./components/CatalogListItem";
 import CatalogListError from "./components/CatalogListError";
 import { useCatalogList } from "./hooks/useCatalogList";
 
-const CatalogList: CatalogListScene = () => {
+const CatalogList: Catalog.List = () => {
   const { isError, isLoading, catalogList } = useCatalogList();
 
   if (isLoading) {

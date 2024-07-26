@@ -1,0 +1,8 @@
+{
+  "name": "shared-types",
+  "version": "0.0.0",
+  "types": "./remotes.d.ts",
+  "devDependencies": {
+    "react": "^18.3.1"
+  }
+}
