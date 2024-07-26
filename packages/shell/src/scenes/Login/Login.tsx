@@ -5,12 +5,10 @@ import { useLocalStorage } from "@mantine/hooks";
 import { useNavigate, Link } from "react-router-dom";
 import { Skeleton, Text, Title, Flex, Button } from "@mantine/core";
 import { ErrorBoundary } from "react-error-boundary";
-import type { LoginScene } from "shared/profile";
 
-// @ts-ignore
-const Login = lazy<LoginScene>(() => import("profile/login"));
+const Login = lazy(() => import("profile/login"));
 
-const LoginScene: LoginScene = () => {
+const LoginScene: FC = () => {
   const [, setIsLoggedIn] = useLocalStorage({
     key: "logged-in",
     defaultValue: false,

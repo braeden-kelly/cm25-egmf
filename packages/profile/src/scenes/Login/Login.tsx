@@ -1,4 +1,4 @@
-import type { LoginScene } from "shared/profile";
+import type { Profile } from "shared-types";
 
 import { createStyles } from "@mantine/emotion";
 import {
@@ -15,7 +15,7 @@ import {
 
 import backgroundImage from "../../../assets/pexels-gustavo-fring-6050428.jpg";
 
-const Login: LoginScene = ({ onLoginSuccess }) => {
+const Login: Profile.Login = ({ onLoginSuccess }) => {
   const { classes } = useStyles();
 
   return (

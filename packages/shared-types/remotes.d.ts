@@ -6,3 +6,6 @@ export * from "./types/marketing";
 
 import "./types/order/remotes";
 export * from "./types/order";
+
+import "./types/profile/remotes";
+export * from "./types/profile";
