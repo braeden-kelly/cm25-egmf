@@ -1,8 +1,8 @@
- import type { ContactScene } from "marketing";
+import type { Marketing } from "shared-types";
 
 import { Anchor, Container, Image, Stack, Text, Title } from "@mantine/core";
 
-const Contact: ContactScene = () => {
+const Contact: Marketing.Contact = () => {
   return (
     <Container sx={{ maxWidth: "760px", align: "center", padding: "20px" }}>
       <Stack>

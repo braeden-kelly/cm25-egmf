@@ -1,4 +1,4 @@
-import type { FC } from "react";
+import type { Marketing } from "shared-types";
 
 import { Flex, Text } from "@mantine/core";
 
@@ -8,7 +8,7 @@ import BitoviLinks from "./components/BitoviLinks";
 import Company from "./components/Company";
 import Socials from "./components/Socials";
 
-const Footer: FC = () => {
+const Footer: Marketing.Footer = () => {
   return (
     <Flex
       w="100%"
