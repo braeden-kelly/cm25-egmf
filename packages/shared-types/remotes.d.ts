@@ -9,3 +9,6 @@ export * from "./types/order";
 
 import "./types/profile/remotes";
 export * from "./types/profile";
+
+import "./types/workshop/remotes";
+export * from "./types/workshop";
