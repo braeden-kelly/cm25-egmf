@@ -9,7 +9,7 @@ export const addToCart = ({
   description,
   imgSrc,
 }: CartItem) => {
-  document.dispatchEvent(
+  window.dispatchEvent(
     new CustomEvent("add-to-cart", {
       detail: {
         item: {

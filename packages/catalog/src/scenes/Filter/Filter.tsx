@@ -6,7 +6,7 @@ import Filters from "./components/Filters/Filters";
 import { Catalog } from "shared-types";
 
 function broadcastPriceChange(min: string, max: string) {
-  document.dispatchEvent(
+  window.dispatchEvent(
     new CustomEvent("catalog-filter-price", {
       detail: {
         min,
