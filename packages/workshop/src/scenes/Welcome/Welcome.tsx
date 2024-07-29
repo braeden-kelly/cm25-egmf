@@ -15,7 +15,16 @@ import type { WelcomeScene } from "shared/workshop";
 
 const Welcome: WelcomeScene = () => {
   return (
-    <Flex bg="blue" w="100%" flex={1} align="center" justify="center">
+    <Flex
+      sx={{
+        background:
+          "linear-gradient(90deg, rgba(4,100,106,1) 0%, rgba(0,42,45,1) 100%)",
+      }}
+      w="100%"
+      flex={1}
+      align="center"
+      justify="center"
+    >
       <Paper w="50%" shadow="sm" p="xl">
         <Container>
           <Flex direction="column" gap="lg">
@@ -26,7 +35,13 @@ const Welcome: WelcomeScene = () => {
               This application is a tool to help developers learn about
               micro-frontends and is a part of a larger workshop called
               Enterprise-Grade Micro-Frontends. The slides for which you can
-              find <Anchor href="/">here.</Anchor>
+              find{" "}
+              <Anchor
+                href="https://davidnic11.github.io/workshop-enterprise-grade-micro-frontends"
+                sx={{ color: "#00848B" }}
+              >
+                here.
+              </Anchor>
             </Text>
 
             <Text>
@@ -34,7 +49,10 @@ const Welcome: WelcomeScene = () => {
               awesome! The slides are built out with discussion in mind so they
               may be hard to follow. If you have anything you'd like to discuss
               you can find many developers able to answer your questions in{" "}
-              <Anchor href="/">Bitovi's Discord</Anchor>.
+              <Anchor href="/" sx={{ color: "#00848B" }}>
+                Bitovi's Discord
+              </Anchor>
+              .
             </Text>
 
             <Text>
@@ -60,7 +78,18 @@ const Welcome: WelcomeScene = () => {
               <Button variant="default" component={Link} to="/shop">
                 To Shop!
               </Button>
-              <Button component={Link} to="/workshop/set-up">
+              <Button
+                component={Link}
+                to="/workshop/set-up"
+                variant="primary"
+                sx={{
+                  background: "#00464A",
+                  ":hover": {
+                    background: "#00464A",
+                    filter: "brightness(150%)",
+                  },
+                }}
+              >
                 Let's Get Set Up!
               </Button>
             </Flex>

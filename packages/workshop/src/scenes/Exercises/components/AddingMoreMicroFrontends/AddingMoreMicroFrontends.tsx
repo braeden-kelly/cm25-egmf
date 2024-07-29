@@ -34,13 +34,13 @@ const AddingMoreMicroFrontends: FC = () => {
       <List py="lg">
         <List.Item>
           The cart can be placed in{" "}
-          <Code>marketing/src/scenes/Header/components/Search/Search.tsx</Code>
-        </List.Item>
-        <List.Item>
-          The search can be placed in{" "}
           <Code>
             marketing/src/scenes/Header/components/Shortcuts/Shortcuts.tsx
           </Code>
+        </List.Item>
+        <List.Item>
+          The search can be placed in{" "}
+          <Code>marketing/src/scenes/Header/components/Search/Search.tsx</Code>
         </List.Item>
       </List>
     </ExerciseLayout>
