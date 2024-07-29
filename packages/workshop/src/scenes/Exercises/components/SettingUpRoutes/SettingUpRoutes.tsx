@@ -22,18 +22,45 @@ const SettingUpRoutes: FC = () => {
       />
       <Text>
         We have several pages left to set up for our application. Let's take a
-        moment to wire up the following MFEs with their respective routes. Each
-        MFE should maintain the site's layout.
+        moment to wire up the following MFEs with their respective routes. Add
+        the <Code>Route</Code>s to the <Code>App.tsx</Code> file in the shell
+        application. Each MFE should maintain the site's layout.
       </Text>
-      <List py="lg">
+      <List py="lg" type="ordered">
         <List.Item>
           <Code>marketing/about</Code> at <Code>/about</Code>
+          <List>
+            <List.Item>
+              You can load this in to the <Code>About</Code> scene in{" "}
+              <Code>src/scenes/About</Code>
+            </List.Item>
+          </List>
         </List.Item>
         <List.Item>
           <Code>marketing/contact</Code> at <Code>/contact</Code>
+          <List>
+            <List.Item>
+              You can load this in to the <Code>Contact</Code> scene in{" "}
+              <Code>src/scenes/Contact</Code>
+            </List.Item>
+          </List>
         </List.Item>
         <List.Item>
           <Code>profile/account</Code> at <Code>/account</Code>
+          <List>
+            <List.Item>
+              We haven't worked in the profile package yet, it will needs its
+              module federation plugin configured
+            </List.Item>
+            <List.Item>
+              The types for profile have already been added to{" "}
+              <Code>shared-types</Code>
+            </List.Item>
+            <List.Item>
+              You can load this in to the <Code>Account</Code> scene in{" "}
+              <Code>src/scenes/Account</Code>
+            </List.Item>
+          </List>
         </List.Item>
       </List>
       <Text>
@@ -49,7 +76,7 @@ const SettingUpRoutes: FC = () => {
         catalog list. Let's fix that. Create a dynamic segment under the{" "}
         <Code>/shop</Code>
         route so that <Code>shop/item/1</Code> and <Code>shop/item/2</Code>{" "}
-        render the catalog/item MFE.
+        render the <Code>catalog/item</Code> MFE.
       </Text>
       <Text pt="md">
         After setting up the routes, update the <Code>CatalogItem</Code>{" "}

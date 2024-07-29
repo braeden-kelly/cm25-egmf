@@ -1,6 +1,6 @@
 import type { FC } from "react";
 
-import { Accordion, Text, Code } from "@mantine/core";
+import { Accordion, Text, Code, Anchor } from "@mantine/core";
 import { CodeHighlight } from "@mantine/code-highlight";
 
 import ExerciseLayout from "../../shared/components/ExerciseLayout";
@@ -46,6 +46,9 @@ const SharingCommonModules: FC = () => {
         and why you chose the sharing configuration (singleton, eager, etc.) you
         did for each library.
       </Text>
+      <Anchor href="https://davidnic11.github.io/workshop-enterprise-grade-micro-frontends/49">
+        Link to Slides for the shared modules
+      </Anchor>
       <Accordion py="lg">
         <Accordion.Item value="additional">
           <Accordion.Control>
