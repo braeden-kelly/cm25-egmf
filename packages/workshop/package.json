@@ -3,7 +3,7 @@
   "private": true,
   "version": "1.0.0",
   "scripts": {
-    "dev": "rsbuild dev --port 8080",
+    "dev": "rsbuild dev --port 8081",
     "build": "rsbuild build",
     "preview": "rsbuild preview"
   },

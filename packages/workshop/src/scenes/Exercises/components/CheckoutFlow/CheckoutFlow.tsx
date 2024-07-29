@@ -1,7 +1,17 @@
 import type { FC } from "react";
 
-import { Anchor, Code, Grid, Image, List, Text, Title } from "@mantine/core";
+import {
+  Alert,
+  Anchor,
+  Code,
+  Grid,
+  Image,
+  List,
+  Text,
+  Title,
+} from "@mantine/core";
 import { CodeHighlight } from "@mantine/code-highlight";
+import { IconInfoCircle } from "@tabler/icons-react";
 
 import ExerciseLayout from "../../shared/components/ExerciseLayout";
 
@@ -17,12 +27,17 @@ const isLoggedIn = readLocalStorageValue<boolean>({ key: "logged-in" });`;
 const setLogin = `const [, setIsLoggedIn] = useLocalStorage({
     key: "logged-in",
     defaultValue: false,
-  });
+});
 
-  const handleLoginSuccess = () => {
-    setIsLoggedIn(true);
-  };
-}`;
+const handleLoginSuccess = () => {
+  setIsLoggedIn(true);
+};
+`;
+
+const newShared = `"@mantine/notifications": {
+  requiredVersion: false,
+  singleton: true,
+},`;
 
 const CheckoutFlow: FC = () => {
   return (
@@ -43,7 +58,7 @@ const CheckoutFlow: FC = () => {
         You may continue from your work on the previous exercise, or check out a
         clean branch using the command below.
       </Text>
-      <CodeHighlight my="lg" code="soln/setting-up-routes" />
+      <CodeHighlight my="lg" code="git checkout soln/setting-up-routes" />
       <Title py="xl" order={2}>
         User Authentication
       </Title>
@@ -100,8 +115,8 @@ const CheckoutFlow: FC = () => {
       <Text>
         We need to implement a checkout flow to enable users to purchase items
         from the catalog. This will involve consuming and updating the checkout
-        MFE (<Code>profile/checkout</Code>). The checkout flow can be described
-        as follows.
+        MFE (<Code>order/checkout</Code>). The checkout flow can be described as
+        follows.
       </Text>
       <List py="lg" type="ordered">
         <List.Item>
@@ -126,34 +141,73 @@ const CheckoutFlow: FC = () => {
         Part Three
       </Title>
       <Text>
-        Inside the checkout scene, a lot of the infrastructure is already in
-        place. To achieve this flow, you'll need to:
+        A lot of the UI is in place, but the infrastructure for the checkout
+        flow is in your hands. To achieve this flow, you'll need to:
       </Text>
-      <List py="lg" type="ordered">
-        <List.Item>
-          Update the shell application to load and defer the <Code>/order</Code>{" "}
-          route to the
-          <Code>order/checkout</Code> MFE.
-          <List>
-            <List.Item>
-              The MFE can be loaded into the <Code>Checkout</Code> scene and the
-              route to the <Code>App.tsx</Code> file in the shell
-            </List.Item>
-          </List>
-        </List.Item>
-        <List.Item>
-          Update the <Code>Checkout</Code> component in{" "}
-          <Code>checkout/src/scenes/Checkout/Checkout.tsx</Code> file to handle
-          the layout and subroutes.
-        </List.Item>
-        <List.Item>
-          Update the <Code>Layout</Code> component in
-          <Code>
-            checkout/src/scenes/Checkout/components/Layout/Layout.tsx
-          </Code>{" "}
-          to render the proper view for the app.
-        </List.Item>
-      </List>
+      <Title order={4} py="md">
+        Step One
+      </Title>
+      <Text>
+        Update the shell application to load and defer the <Code>/order</Code>{" "}
+        route to the
+        <Code>order/checkout</Code> MFE.
+      </Text>
+      <Title order={4} py="md">
+        Step Two
+      </Title>
+      <Text>
+        Update the <Code>Checkout</Code> component in{" "}
+        <Code>checkout/src/scenes/Checkout/Checkout.tsx</Code> file to handle
+        the layout and subroutes. The needed components are already imported in
+        the file. The layout (<Code>Layout</Code>) should wrap{" "}
+        <Code>Shipping</Code> and <Code>Payment</Code>.
+      </Text>
+      <Title order={4} py="md">
+        Step Three
+      </Title>
+      <Text>
+        Update the <Code>Layout</Code> component in{" "}
+        <Code>checkout/src/scenes/Checkout/components/Layout/Layout.tsx</Code>{" "}
+        to render the proper view for the app.
+      </Text>
+      <Title order={4} py="md">
+        Step Four
+      </Title>
+      <Text>
+        Update the <Code>useCheckout</Code> hook and implement:
+        <List>
+          <List.Item>
+            <Code>navigateToCheckout</Code> - Should navigate the user from
+            shipping to the payment section
+          </List.Item>
+          <List.Item>
+            <Code>checkout</Code> - There is already some code in this function,
+            at the bottom, implement the needed routing logic to return to the
+            shop
+          </List.Item>
+        </List>
+      </Text>
+      <Title order={4} py="md">
+        Step Five
+      </Title>
+      <Text>
+        Pass the functions from <Code>useCheckout</Code> to{" "}
+        <Code>Shipping</Code> and <Code>Payment</Code>
+      </Text>
+      <Text mt="md">
+        Once completed, you should be able to navigate from shop through
+        checkout and back again.
+      </Text>
+      <Alert
+        my="lg"
+        icon={<IconInfoCircle />}
+        title="Want more user feedback on checkout?"
+      >
+        The current UX doesn't give our users any notice. The existing code in{" "}
+        <Code>useCheckout</Code> helps fix this. Add this code to the shell and
+        order shared config.
+        <CodeHighlight code={newShared}></CodeHighlight>
+      </Alert>
     </ExerciseLayout>
   );
 };
