@@ -37,7 +37,7 @@ const FilteringByPrice: FC = () => {
       />
       <Text>
         The min and max should correspond to the input to the min and max text
-        fields in the Filters component.
+        fields in the <Code>Filters</Code> component.
       </Text>
       <Text pt="md">
         The listener should be added to the <Code>useCatalogList</Code> hook in{" "}

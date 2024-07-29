@@ -13,6 +13,8 @@ export default defineConfig({
     },
   },
   html: {
+    favicon: "./src/assets/favicon.png",
+    title: "Enterprise-Grade Micro-Frontends",
     tags: [
       {
         tag: "base",

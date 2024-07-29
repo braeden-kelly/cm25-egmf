@@ -10,6 +10,8 @@ export default defineConfig({
   },
   plugins: [pluginReact()],
   html: {
+    favicon: "./src/assets/favicon.png",
+    title: "Workshop MFE",
     tags: [
       {
         tag: "base",
