@@ -11,7 +11,7 @@ export default defineConfig({
   plugins: [pluginReact()],
   html: {
     favicon: "./src/assets/favicon.png",
-    title: "Workshop MFE",
+    title: "Workshop Remotes",
     tags: [
       {
         tag: "base",

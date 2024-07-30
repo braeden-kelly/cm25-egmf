@@ -13,6 +13,10 @@ export default defineConfig({
       "process.env": JSON.stringify(process.env),
     },
   },
+  html: {
+    favicon: "./assets/favicon.png",
+    title: "Profile Remotes",
+  },
   tools: {
     rspack: {
       plugins: [
