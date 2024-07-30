@@ -30,25 +30,25 @@ jobs:
           echo MFE_URL_ORDER=${{ vars.MFE_URL_ORDER }} >> .env
           echo MFE_URL_PROFILE=${{ vars.MFE_URL_PROFILE }} >> .env
           echo MFE_URL_WORKSHOP=${{ vars.MFE_URL_WORKSHOP }} >> .env
-          echo SENTRY_DSN_SHELL=$${{ vars.SENTRY_DSN_SHELL }} >> .env
+          echo SENTRY_DSN_SHELL=${{ vars.SENTRY_DSN_SHELL }} >> .env
           cat .env
           cd ../marketing
           touch .env
           echo MFE_URL_CATALOG=${{ vars.MFE_URL_CATALOG }} >> .env
           echo MFE_URL_ORDER=${{ vars.MFE_URL_ORDER }} >> .env
-          echo SENTRY_DSN_MARKETING=$${{ vars.SENTRY_DSN_MARKETING }} >> .env
+          echo SENTRY_DSN_MARKETING=${{ vars.SENTRY_DSN_MARKETING }} >> .env
           cd ../catalog
           touch .env
-          echo SENTRY_DSN_CATALOG=$${{ vars.SENTRY_DSN_CATALOG }} >> .env
+          echo SENTRY_DSN_CATALOG=${{ vars.SENTRY_DSN_CATALOG }} >> .env
           cd ../order
           touch .env
-          echo SENTRY_DSN_ORDER=$${{ vars.SENTRY_DSN_ORDER }} >> .env
+          echo SENTRY_DSN_ORDER=${{ vars.SENTRY_DSN_ORDER }} >> .env
           cd ../profile
           touch .env
-          echo SENTRY_DSN_PROFILE=$${{ vars.SENTRY_DSN_PROFILE }} >> .env
+          echo SENTRY_DSN_PROFILE=${{ vars.SENTRY_DSN_PROFILE }} >> .env
           cd ../workshop
           touch .env
-          echo SENTRY_DSN_WORKSHOP=$${{ vars.SENTRY_DSN_WORKSHOP }} >> .env
+          echo SENTRY_DSN_WORKSHOP=${{ vars.SENTRY_DSN_WORKSHOP }} >> .env
 
       - name: Install dependencies
         run: |
