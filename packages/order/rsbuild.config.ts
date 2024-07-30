@@ -19,6 +19,10 @@ export default defineConfig({
       "@utilities": "./src/utilities",
     },
   },
+  html: {
+    favicon: "./src/assets/favicon.png",
+    title: "Order Remotes",
+  },
   tools: {
     rspack: {
       plugins: [

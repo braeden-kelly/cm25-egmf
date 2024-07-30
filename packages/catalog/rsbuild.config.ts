@@ -17,6 +17,10 @@ export default defineConfig({
       "@utilities": "./src/utilities",
     },
   },
+  html: {
+    favicon: "./src/assets/favicon.png",
+    title: "Catalog Remotes",
+  },
   tools: {
     rspack: {
       plugins: [

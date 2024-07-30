@@ -1,6 +1,7 @@
 import type { FC } from "react";
 import ExerciseLayout from "../../shared/components/ExerciseLayout";
 import { Accordion, Code, List, Text } from "@mantine/core";
+import { CodeHighlight } from "@mantine/code-highlight";
 
 const query = `const oldQueryKey = ['products']
 
@@ -15,8 +16,13 @@ const ShopCategories: FC = () => {
       next="../exercise-10"
     >
       <Text>
+        You may continue from your work on the previous exercise, or check out a
+        clean branch using the command below.
+      </Text>
+      <CodeHighlight my="lg" code="git checkout soln/filtering-by-price" />
+      <Text>
         Now that we've set up custom eventing for our application let's continue
-        our exploration of micro-frontend-to-micro-frontned communication using
+        our exploration of micro-frontend-to-micro-frontend communication using
         the URL, particularly how to use path parameters to enable
         communication.{" "}
       </Text>
@@ -68,11 +74,18 @@ const ShopCategories: FC = () => {
         </List.Item>
         <List.Item>
           Jewelry - <Code>/shop/jewelry</Code>
+          <List>
+            <List.Item>
+              The backend we use for the storefront currently miss spelt Jewelry
+              as "jewelery". For this filter to work, you will need to update
+              the filter link to use "jewelery"{" "}
+            </List.Item>
+          </List>
         </List.Item>
       </List>
       <Text>
-        The goal of this exercise is to update the routing logic in the shell
-        application to load the catalog list into these paths and update the
+        Update the routing logic in the shell application to load the catalog
+        list into these paths and update the
         <Code>useCatalogList</Code> hook to read the path segment and filter the
         list data accordingly.
       </Text>
@@ -81,9 +94,7 @@ const ShopCategories: FC = () => {
         you have the category, you can update the queryKey configuration for the
         useQuery hook as follows:
       </Text>
-      <Code block my="lg">
-        {query}
-      </Code>
+      <CodeHighlight my="lg" code={query} />
     </ExerciseLayout>
   );
 };

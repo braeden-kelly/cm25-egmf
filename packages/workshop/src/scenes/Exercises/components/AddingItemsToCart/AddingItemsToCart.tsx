@@ -33,6 +33,64 @@ const localStorageHook = `const [cart, setCart] = useLocalStorage<UserCart>({
     defaultValue: newCart,
   });`;
 
+const addToCartEvent = ` export interface CatalogItem {
+  id: number;
+  title: string;
+  price: number;
+  description: string;
+  category: string;
+  image: string;
+}
+  
+type AddToCartEvent = { item: CatalogItem };
+`;
+
+const globalTypeHelp = `declare global {
+  interface Window {
+    addEventListener<K extends never>(
+      type: K,
+      listener: (this: Window, ev: never) => void
+    );
+    removeEventListener<K extends never>(
+      type: K,
+      listener: (ev: never) => void
+    );
+    dispatchEvent<K extends never>(ev: never);
+  }
+}
+`;
+
+const addFunction = `export const addToCart = ({
+  id,
+  name,
+  price,
+  description,
+  imgSrc,
+}: CartItem) => {};`;
+
+const useCheckoutUpdates = `import type { UserCart } from "@services/cart";
+import { cartKey, newCart } from "@services/cart";
+import { useLocalStorage } from "@mantine/hooks";
+ 
+// ...
+
+const useCheckout = () => {
+
+  const [, setCart] = useLocalStorage<UserCart>({ key: cartKey });
+
+  // ...
+
+  const checkout = () => {
+    setCart(newCart);
+
+    // rest of checkout
+  }
+
+// ...
+
+}
+`;
+
 const AddingItemsToCart: FC = () => {
   return (
     <ExerciseLayout
@@ -42,7 +100,10 @@ const AddingItemsToCart: FC = () => {
     >
       <Text>
         With all of our routes set up, it's time to get our MFEs communicating.
+        You may continue from your work on the previous exercise, or check out a
+        clean branch using the command below.
       </Text>
+      <CodeHighlight my="lg" code="git checkout soln/checkout-flow" />
       <Text pt="md">
         Adding a catalog item to the cart is a cross-team effort. The order
         team, in charge of the cart, needs to create the cart state, the event
@@ -59,7 +120,7 @@ const AddingItemsToCart: FC = () => {
       </Text>
       <CodeHighlight
         my="lg"
-        code={`import type { CatalogItem, UserCart } from "@services/cart";`}
+        code={`import type { UserCart } from "@services/cart";`}
       />
       <Title order={2} py="xl">
         Part 1 - Cart State
@@ -69,7 +130,9 @@ const AddingItemsToCart: FC = () => {
         want to store it in local storage like the login state. To do this, the
         cart service has a couple of helpers, the <Code>cartKey</Code> and the{" "}
         <Code>newCart</Code>, which serve as the local storage key and the
-        default value, respectively.
+        default value, respectively. This logic should reside in the{" "}
+        <Code>useCart</Code>
+        hook which currently has a hard-coded cart.
       </Text>
       <CodeHighlight
         my="lg"
@@ -94,10 +157,14 @@ const AddingItemsToCart: FC = () => {
         that listens for an event with the following shape (below) and updates
         the cart state.
       </Text>
-      <CodeHighlight
-        my="lg"
-        code={`type AddToCartEvent = { item: CatalogItem };`}
-      />
+      <CodeHighlight my="lg" code={addToCartEvent} />
+      <Text>
+        The event listener can be typed in the <Code>order</Code> section of the{" "}
+        <Code>shared-types</Code>. Below is the template for merging to the
+        global <Code>Window</Code> type, replace the <Code>never</Code>s with
+        the correct values.
+      </Text>
+      <CodeHighlight my="lg" code={globalTypeHelp} />
       <Text>The updating cart logic should work as follows:</Text>
       <List py="lg">
         <List.Item>
@@ -113,7 +180,7 @@ const AddingItemsToCart: FC = () => {
         logic and create the new product array.
       </Text>
       <CodeHighlight
-        py="lg"
+        my="lg"
         code={`import { addToProducts, increaseQuantity, itemInCart } from "./utilities";`}
       />
       <Table my="xl" withColumnBorders>
@@ -158,7 +225,7 @@ const AddingItemsToCart: FC = () => {
         from the cart service.
       </Text>
       <CodeHighlight
-        py="lg"
+        my="lg"
         code={`import { getTotals } from '@services/cart'`}
       />
       <Table my="xl" withColumnBorders>
@@ -185,19 +252,59 @@ const AddingItemsToCart: FC = () => {
       </Title>
       <Text>
         Next, wire up the “Add to Cart” button in the catalog list and catalog
-        item MFEs. Once complete, you should be able to add items to the cart
-        and see the price being reflected in the header. If you hover over the
-        cart icon, you should see the items you've added.
+        item MFEs. To do this, you can add the dispatch logic to the{" "}
+        <Code>addToCart</Code> function in{" "}
+        <Code>/catalog/src/utilities/cart.ts</Code> file. It should look like:
+      </Text>
+      <CodeHighlight my="lg" code={addFunction} />
+      <Text>
+        This function can be imported into the <Code>CatalogListItem</Code> (
+        <Code>
+          catalog/src/scenes/CatalogList/components/CatalogListItem/CatalogListItem.tsx
+        </Code>
+        ) and <Code>Details</Code> (
+        <Code>
+          catalog/src/scenes/CatalogItem/components/Details/Details.tsx
+        </Code>
+        ) component using the following import alias:
+      </Text>
+      <CodeHighlight
+        my="lg"
+        code={`import { addToCart } from "@services/utilities";`}
+      />
+      <Text>
+        Inside each of these components is a button titled "Add to Cart" with
+        empty <Code>onClick</Code> props. The components prop shape can be
+        passed directly to <Code>addToCart</Code>
       </Text>
       <Alert
         title="To Make it Work With Checkout"
         icon={<IconInfoCircle />}
         my="xl"
       >
-        To link this cart together with the checkout process, remove the
-        hard-coded id in the <Code>CartSummary</Code> component in{" "}
-        <Code>order/src/shared/components/CartSummary</Code> component
+        <Text>
+          To link this cart together with the checkout process, remove the
+          hard-coded id in the <Code>OrderSummary</Code> component in{" "}
+          <Code>order/src/shared/components/OrderSummary</Code> component. The{" "}
+          <Code>id</Code> can be removed from the <Code>queryKey</Code> array
+          and the <Code>query</Code> function as well.
+        </Text>
+        <Text mt="lg">
+          Next, you'll need to update the <Code>useCheckout</Code> hook inside
+          of{" "}
+          <Code>
+            order/src/scenes/Checkout/hooks/useCheckout/useCheckout.tsx
+          </Code>
+          to reset the cart on checkout. You can accomplish this using the
+          following code:
+          <CodeHighlight my="lg" code={useCheckoutUpdates} />
+        </Text>
       </Alert>
+      <Text>
+        Once complete, you should be able to add items to the cart and see the
+        price being reflected in the header. If you hover over the cart icon,
+        you should see the items you've added.
+      </Text>
     </ExerciseLayout>
   );
 };
