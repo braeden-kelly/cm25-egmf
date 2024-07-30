@@ -37,7 +37,8 @@ export default defineConfig({
         tag: "meta",
         attrs: {
           property: "og:image",
-          content: "https://workshop-mfe.bitovi-sandbox.com/title-card.png",
+          content:
+            "https://davidnic11.github.io/workshop-enterprise-grade-micro-frontends/title-card.png",
         },
       },
     ],

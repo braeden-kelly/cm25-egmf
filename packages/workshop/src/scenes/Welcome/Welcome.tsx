@@ -49,7 +49,10 @@ const Welcome: WelcomeScene = () => {
               awesome! The slides are built out with discussion in mind so they
               may be hard to follow. If you have anything you'd like to discuss
               you can find many developers able to answer your questions in{" "}
-              <Anchor href="/" sx={{ color: "#00848B" }}>
+              <Anchor
+                href="https://discord.gg/uNZFcEMw"
+                sx={{ color: "#00848B" }}
+              >
                 Bitovi's Discord
               </Anchor>
               .
