@@ -13,10 +13,10 @@ const Layout = () => {
 
   return (
     <Grid w="100%" px="lg">
-      <Grid.Col span={3}>
+      <Grid.Col span={{ sm: 12, md: 3 }}>
         <ExerciseList />
       </Grid.Col>
-      <Grid.Col span={9}>
+      <Grid.Col span={{ sm: 12, md: 9 }}>
         <Outlet />
       </Grid.Col>
     </Grid>
