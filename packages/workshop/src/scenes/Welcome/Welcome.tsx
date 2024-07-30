@@ -25,7 +25,12 @@ const Welcome: FC = () => {
       align="center"
       justify="center"
     >
-      <Paper w="50%" shadow="sm" p="xl">
+      <Paper
+        w={{ sm: "75%", md: "50%" }}
+        shadow="sm"
+        py="lg"
+        px={{ sm: "sm", md: "xl" }}
+      >
         <Container>
           <Flex direction="column" gap="lg">
             <Title mb="lg" order={1}>
@@ -44,7 +49,7 @@ const Welcome: FC = () => {
               </Anchor>
             </Text>
 
-            <Text>
+            {/* <Text>
               If you are reading this without attending the workshop, that's
               awesome! The slides are built out with discussion in mind so they
               may be hard to follow. If you have anything you'd like to discuss
@@ -56,7 +61,7 @@ const Welcome: FC = () => {
                 Bitovi's Discord
               </Anchor>
               .
-            </Text>
+            </Text> */}
 
             <Text>
               There are several different ways to create and compose
