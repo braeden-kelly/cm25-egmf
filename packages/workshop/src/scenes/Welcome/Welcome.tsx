@@ -1,3 +1,5 @@
+import type { FC } from "react";
+
 import {
   Flex,
   Title,
@@ -8,12 +10,10 @@ import {
   Code,
   Button,
   Paper,
-  Box,
 } from "@mantine/core";
 import { Link } from "react-router-dom";
-import type { WelcomeScene } from "shared/workshop";
 
-const Welcome: WelcomeScene = () => {
+const Welcome: FC = () => {
   return (
     <Flex
       sx={{

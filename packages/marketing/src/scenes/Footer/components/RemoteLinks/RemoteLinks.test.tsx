@@ -2,7 +2,7 @@ import { render, screen } from "@testing-library/react";
 
 import MarketingWrapper from "@test/MarketingWrapper";
 
-import CompanyLinks, { links } from "./CompanyLinks";
+import CompanyLinks, { links } from "./RemoteLinks";
 
 describe("<CompanyLinks />", () => {
   it("renders", () => {
