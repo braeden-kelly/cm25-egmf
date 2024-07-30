@@ -3,7 +3,7 @@ import type { Marketing } from "shared-types";
 import { Flex, Text } from "@mantine/core";
 
 import WorkShopLinks from "./components/WorkshopLinks";
-import CompanyLinks from "./components/CompanyLinks";
+import RemoteLinks from "./components/RemoteLinks";
 import BitoviLinks from "./components/BitoviLinks";
 import Company from "./components/Company";
 import Socials from "./components/Socials";
@@ -26,8 +26,8 @@ const Footer: Marketing.Footer = () => {
         <Company />
         <Flex gap="lg">
           <BitoviLinks />
+          <RemoteLinks />
           <WorkShopLinks />
-          <CompanyLinks />
         </Flex>
       </Flex>
       <Flex
