@@ -1,4 +1,4 @@
-import type { WorkshopScene } from "shared/workshop";
+import type { FC } from "react";
 
 import { Route, Routes } from "react-router-dom";
 
@@ -17,7 +17,7 @@ import ShopCategories from "./components/ShopCategories";
 import SearchingTheCatalog from "./components/SearchingTheCatalog";
 import Conclusion from "./components/Conclusion";
 
-const Workshop: WorkshopScene = () => {
+const Workshop: FC = () => {
   return (
     <Routes>
       <Route path="*" element={<Layout />}>
