@@ -5,7 +5,12 @@ import FooterLinks from "../../shared/components/FooterLinks";
 export const links = [
   { text: "Introduction", href: "/", external: false },
   {
-    text: "Repo ",
+    text: "Exercises",
+    href: "/workshop/exercise-1",
+    external: false,
+  },
+  {
+    text: "Repo",
     href: "https://github.com/bitovi/enterprise-grade-micro-frontends",
     external: true,
   },

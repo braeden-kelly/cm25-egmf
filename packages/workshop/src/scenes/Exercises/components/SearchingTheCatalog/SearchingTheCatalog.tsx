@@ -11,13 +11,7 @@ const code = `const searchFilter = (item: CatalogItem) => {
 }`;
 
 const params = `const [searchParams, setSearchParams] = useSearchParams();
-
-const category = searchParams.get("categories");
-
-const setCategory = (category: string) => {
-  // alt: setSearchParams('category', category)
-  setSearchParams({ category });
-};`;
+`;
 
 const SearchingTheCatalog: FC = () => {
   return (
