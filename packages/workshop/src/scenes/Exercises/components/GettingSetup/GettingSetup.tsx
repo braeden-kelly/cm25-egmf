@@ -35,7 +35,8 @@ const GettingSetup: FC = () => {
         Once cloned, checkout out the <Code>main</Code> branch and open the project in your IDE of choice - although
         this will be written with vscode in mind - and install the project dependencies.
       </Text>
-      <CodeHighlight my="lg" lang="sh" code="npm i" />
+
+      <CodeHighlight my="lg" lang="sh" code={`npm setup:local \nnpm install`} />
       <Text>Once installed, run the following command.</Text>
       <CodeHighlight my="lg" lang="sh" code="npm run start" />
       <Text>
