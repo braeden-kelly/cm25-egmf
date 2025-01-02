@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
+    "preinstall": "sh ./setup.sh",
     "start": "nx run-many -t dev --parallel=10"
   },
   "private": true,
