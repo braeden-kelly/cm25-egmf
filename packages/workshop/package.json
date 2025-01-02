@@ -10,6 +10,7 @@
   "dependencies": {
     "@mantine/core": "^7.11.2",
     "@mantine/emotion": "^7.11.2",
+    "@mantine/hooks": "^7.15.2",
     "@sentry/react": "^8.19.0",
     "@sentry/webpack-plugin": "^2.21.1",
     "react": "^18.3.1",

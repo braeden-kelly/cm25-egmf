@@ -232,7 +232,7 @@ const ConfiguringModuleFederation: FC = () => {
       <Text>
         Using module federation, pull the Header, Footer, Filter, and CatalogList into the <Code>/shop</Code> section of
         the shell application. The table below is provided as a reference to help you out throughout the exercise, it
-        can also be found [TODO ADD LINK TO CHEAT SHEET].
+        can also be found in the Cheat Sheet for the workshop.
       </Text>
       <Table>
         <Table.Thead>
