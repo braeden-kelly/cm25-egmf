@@ -7,33 +7,26 @@ import ChangeExercise from "./components/ChangeExercise";
 interface ExerciseLayoutProps {
   children?: ReactNode;
   title: string;
+  slides?: string;
   next?: string;
   previous?: string;
 }
 
-const ExerciseLayout: FC<ExerciseLayoutProps> = ({
-  children,
-  title,
-  next,
-  previous,
-}) => {
+const ExerciseLayout: FC<ExerciseLayoutProps> = ({ children, title, next, previous, slides }) => {
   return (
     <Flex direction="column">
       <Title mb="xl" order={1}>
         {title}
       </Title>
+      {slides && (
+        <Flex pb="lg">
+          <a href={slides}>To Relevant Slides</a>
+        </Flex>
+      )}
       {children}
       <Flex mt="xl" gap="xl">
-        {previous ? (
-          <ChangeExercise path={previous} variant="previous" />
-        ) : (
-          <Box flex={1} />
-        )}
-        {next ? (
-          <ChangeExercise path={next} variant="next" />
-        ) : (
-          <Box flex={1} />
-        )}
+        {previous ? <ChangeExercise path={previous} variant="previous" /> : <Box flex={1} />}
+        {next ? <ChangeExercise path={next} variant="next" /> : <Box flex={1} />}
       </Flex>
     </Flex>
   );

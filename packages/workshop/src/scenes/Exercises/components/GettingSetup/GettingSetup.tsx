@@ -36,7 +36,7 @@ const GettingSetup: FC = () => {
         this will be written with vscode in mind - and install the project dependencies.
       </Text>
 
-      <CodeHighlight my="lg" lang="sh" code={`npm setup:local \nnpm install`} />
+      <CodeHighlight my="lg" lang="sh" code={`npm run setup:local \nnpm install`} />
       <Text>Once installed, run the following command.</Text>
       <CodeHighlight my="lg" lang="sh" code="npm run start" />
       <Text>
