@@ -11,6 +11,7 @@ const SettingUpRoutes: FC = () => {
       title="Setting Up Routes"
       next="../exercise-6"
       previous="../exercise-3"
+      slides="https://davidnic11.github.io/workshop-enterprise-grade-micro-frontends/06-summary"
     >
       <Text>
         You may continue from your work on the previous exercise, or check out a

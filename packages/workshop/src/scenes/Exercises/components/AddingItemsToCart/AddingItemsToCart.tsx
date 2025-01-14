@@ -97,6 +97,7 @@ const AddingItemsToCart: FC = () => {
       title="Adding Items to Cart"
       previous="../exercise-6"
       next="../exercise-8"
+      slides="https://davidnic11.github.io/workshop-enterprise-grade-micro-frontends/07-eventing-pub-sub"
     >
       <Text>
         With all of our routes set up, it's time to get our MFEs communicating.
