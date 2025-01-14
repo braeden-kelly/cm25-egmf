@@ -26,6 +26,7 @@ const SharingCommonModules: FC = () => {
       title="Sharing Common Modules"
       previous="../exercise-1"
       next="../exercise-3"
+      slides="https://davidnic11.github.io/workshop-enterprise-grade-micro-frontends/05-shared-configuration"
     >
       <Text>
         You may continue from your work on the previous exercise, or check out a

@@ -173,12 +173,17 @@ const shared = `
 
 const ConfiguringModuleFederation: FC = () => {
   return (
-    <ExerciseLayout title="Configuring Module Federation" next="../exercise-2" previous="../set-up">
+    <ExerciseLayout
+      title="Configuring Module Federation"
+      slides="https://davidnic11.github.io/workshop-enterprise-grade-micro-frontends/05-project-configuration"
+      next="../exercise-2"
+      previous="../set-up"
+    >
       <Text>Start by checking out this branch</Text>
       <CodeHighlight my="lg" lang="sh" code="git checkout exercise/configuring-module-federation" />
       <Text>
         Go ahead and do a little bit of poking around to get familiar with the project. Inside packages there are six
-        projects.
+        projects, the four team projects:
       </Text>
       <List py="lg">
         <List.Item>
@@ -195,13 +200,13 @@ const ConfiguringModuleFederation: FC = () => {
         </List.Item>
       </List>
       <Text>
-        All contain micro-fronteds for thier respective team. While
+        All contain micro-frontends for their respective team. While
         <Code>shared-types</Code> is where all the shared types will go and <Code>shell</Code> is the project's shell
         application.
       </Text>
       <Text pt="md">
-        Each of the packages that house component logic (all except <Code>shared-types</Code>) have the same structure
-        the most important files and directories to know about are:
+        Each of the packages except <Code>shared-types</Code> house component logic and have the same file structure.
+        The most important files and directories to know about are:
         <List py="lg">
           <List.Item>
             <Code>rsbuild.config.ts</Code> - The project's build configuration file
@@ -219,12 +224,12 @@ const ConfiguringModuleFederation: FC = () => {
       </Title>
       <Text>
         Currently our project looks a little barren, if you start the application (<Code>npm start</Code>) you should
-        see the makings of an application with placeholders. The goal of this exercise it to remove the placeholders and
+        see the makings of an application with placeholders. The goal of this exercise is to remove the placeholders and
         load in the actual micro-frontends.
       </Text>
-      <Flex my="lg" align="center" justify="center" gap="xl">
-        <Image w={500} src={current} />
-        <Image w={500} src={goal} />
+      <Flex my="lg" direction={{ sm: "column", md: "row" }} align="center" justify="center" gap="xl">
+        <Image flex="initial" src={current} miw={0} />
+        <Image flex="initial" src={goal} miw={0} />
       </Flex>
       <Title py="xl" order={2}>
         Exercise
@@ -232,7 +237,7 @@ const ConfiguringModuleFederation: FC = () => {
       <Text>
         Using module federation, pull the Header, Footer, Filter, and CatalogList into the <Code>/shop</Code> section of
         the shell application. The table below is provided as a reference to help you out throughout the exercise, it
-        can also be found in the Cheat Sheet for the workshop.
+        can also be found in the Cheat Sheet for the workshop underneath the exercise list.
       </Text>
       <Table>
         <Table.Thead>
@@ -279,21 +284,21 @@ const ConfiguringModuleFederation: FC = () => {
         respected team name. The Header is under the marketing team, so we will be adding our types to{" "}
         <Code>shared-types/src/marketing</Code>.
         <Alert title="A Quick Note on Finding MFE Types" icon={<IconInfoCircle />} my="xl">
-          The best way to determine the shape of each micro-frontend is to check the <Code>scene</Code> the project is
-          in. In the case of the Header, its scene is <Code>marketing/scenes/header</Code> and if we check{" "}
+          The best way to determine the shape of each micro-frontend is to check the <Code>scene</Code> that the project
+          is in. In the case of the Header, its scene is <Code>marketing/scenes/header</Code>, and if we check{" "}
           <Code>Header.tsx</Code> we see that the Header is a react component that doesn't take any props.
         </Alert>
       </Text>
       <Text pt="md">
-        Starting with <Code>index.d.ts</Code>, which is where our Header type defition will live, the Header is a react
-        component that doesn't take any props, so we can update the file to include:
+        Starting with <Code>index.d.ts</Code>, which is where our Header type definition will live, the Header is a
+        react component that doesn't take any props, so we can update the file to include:
       </Text>
       <CodeHighlightTabs
         my="lg"
         code={[{ fileName: "shared-types/marketing/index.d.ts", language: "ts", code: indexDTs }]}
       />
       <Text>
-        Next we will need to add the Header types for its dyanmic import To do this, we need to update the
+        Next we will need to add the Header types for its dynamic import. To do this, we need to update the
         <Code>remotes.d.ts</Code> file.
       </Text>
       <CodeHighlightTabs
@@ -303,12 +308,12 @@ const ConfiguringModuleFederation: FC = () => {
       <Title py="xl" order={4}>
         Consuming the Types
       </Title>
-      <Text>Now the Header needs to be updated to consume the new types</Text>
+      <Text>Now the Header needs to be updated to consume the new types.</Text>
       <CodeHighlightTabs
         my="lg"
         code={[{ fileName: "marketing/src/scenes/Header/Header.tsx", language: "ts", code: updatedHeader }]}
       />
-      <Text>With this, the typing portion is done and we can move to configuring Module Federation</Text>
+      <Text>With this, the typing portion is done and we can move to configuring Module Federation.</Text>
       <Title py="xl" order={4}>
         Exposing the Header
       </Title>
@@ -334,9 +339,9 @@ const ConfiguringModuleFederation: FC = () => {
       <Text>
         The next step is to determine if there are any modules that need to be shared between the two projects. We will
         be going over the specfics of what makes a good shared module in the next section; however, in a react project
-        with React Router, at a minimal you will need <Code>react</Code>, <Code>react-dom</Code>, and{" "}
-        <Code>react-router-dom</Code>. The module sharing needs to be added to the Module Federation config of both
-        teams.
+        with React Router, at a minimum you will need <Code>react</Code>, <Code>react-dom</Code>, and{" "}
+        <Code>react-router-dom</Code>. The configuration for sharing the modules needs to be added to the Module
+        Federation config of both teams.
       </Text>
       <CodeHighlightTabs
         my="lg"
@@ -355,13 +360,13 @@ const ConfiguringModuleFederation: FC = () => {
         code={[{ fileName: "shell/src/components/Layout/Layout.tsx", language: "ts", code: layoutHeader }]}
       />
       <Text>
-        With that the Header is fully loaded, running the project again we can now see the header in its rightful spot.
+        With that, the Header is fully loaded, running the project again we can now see the Header in its rightful spot.
       </Text>
       <Title py="xl" order={3}>
         On to the Rest
       </Title>
-      The Footer, Catalog List, and Filter all need the same treatment we just gave the Header. As a reminder you'll
-      need to:
+      The Footer, CatalogList, and Filter all need the same treatment we just gave the Header. As a reminder you'll need
+      to:
       <List py="lg">
         <List.Item>Create the types for the modules and namespaces for the projects and MFEs</List.Item>
         <List.Item>Update the types of the MFEs to be consumed</List.Item>

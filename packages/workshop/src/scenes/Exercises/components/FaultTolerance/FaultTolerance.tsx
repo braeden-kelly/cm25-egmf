@@ -28,6 +28,7 @@ const FaultTolerance: FC = () => {
       title="Fault Tolerance"
       next="../exercise-4"
       previous="../exercise-2"
+      slides="https://davidnic11.github.io/workshop-enterprise-grade-micro-frontends/05-fault-tolerant-composition"
     >
       <Text>
         Currently, if an MFE goes down, our entire application goes down, which,
