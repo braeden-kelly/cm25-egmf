@@ -13,6 +13,7 @@ const AddingMoreMicroFrontends: FC = () => {
       title="Adding More Micro-Frontends"
       next="../exercise-5"
       previous="../exercise-3"
+      slides="https://davidnic11.github.io/workshop-enterprise-grade-micro-frontends/05-project-configuration"
     >
       <Text>
         Looking at the current shop vs the final product, our Header is missing

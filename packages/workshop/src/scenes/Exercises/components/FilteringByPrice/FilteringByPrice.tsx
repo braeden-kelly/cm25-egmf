@@ -33,6 +33,7 @@ const FilteringByPrice: FC = () => {
       title="Filtering by Price"
       previous="../exercise-7"
       next="../exercise-9"
+      slides="https://davidnic11.github.io/workshop-enterprise-grade-micro-frontends/07-eventing-pub-sub"
     >
       <Text>
         You may continue from your work on the previous exercise, or check out a
