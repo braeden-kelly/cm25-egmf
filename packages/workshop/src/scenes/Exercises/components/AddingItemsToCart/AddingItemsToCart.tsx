@@ -97,10 +97,24 @@ const AddingItemsToCart: FC = () => {
       </Text>
       <CodeHighlight my="lg" code="git checkout soln/checkout-flow" />
       <Text pt="md">
-        Adding a catalog item to the cart is a cross-team effort. The order team, in charge of the cart, needs to create
-        the cart state, the event type they are expecting, and create listeners to respond to any incoming events. The
-        catalog team needs to dispatch those events.
+        Adding a catalog item to the cart is a cross-team effort.{" "}
+        <Text component="span" fw="bold">
+          The order team, in charge of the cart, needs to create the cart state, the event type they are expecting, and
+          create listeners to respond to any incoming events
+        </Text>
+        . The catalog team needs to dispatch those events.
       </Text>
+      <List py="lg">
+        <List.Item>Publisher - catalog team</List.Item>
+        <List.Item>Subscriber - order team</List.Item>
+      </List>
+      <Title order={2} py="xl">
+        Cart Shape
+      </Title>
+      <Alert title="Don't copy these types!" icon={<IconInfoCircle />} mb="xl">
+        These types are already in your project, you do not need to copy them over. This is an overview of the Cart
+        state shape since you will be implementing some business logic.
+      </Alert>
       <Text pt="md">
         The team has already decided on the cart state and added the cart and product types to the repository. They look
         as follows.
@@ -113,6 +127,10 @@ const AddingItemsToCart: FC = () => {
       <Title order={2} py="xl">
         Part 1 - Cart State
       </Title>
+      <Alert title="What's up with local storage" icon={<IconInfoCircle />} mb="xl">
+        Since there is not a backend associated with this project, we will be putting the cart state in local storage as
+        a form of persistence, as opposed to a communication method.
+      </Alert>
       <Text>
         Let's start by adding the cart state (of type <Code>UserCart</Code>); we want to store it in local storage like
         the login state. To do this, the cart service has a couple of helpers, the <Code>cartKey</Code> and the{" "}
@@ -227,7 +245,7 @@ const AddingItemsToCart: FC = () => {
       <CodeHighlight my="lg" code={`import { addToCart } from "@utilities/cart";`} />
       <Text>
         Inside each of these components is a button titled "Add to Cart" with empty <Code>onClick</Code> props. The
-        components prop shape can be passed directly to <Code>addToCart</Code>
+        components props can be passed directly to <Code>addToCart</Code>
       </Text>
       <Alert title="To Make it Work With Checkout" icon={<IconInfoCircle />} my="xl">
         <Text>
@@ -241,6 +259,7 @@ const AddingItemsToCart: FC = () => {
           <Code>order/src/scenes/Checkout/hooks/useCheckout/useCheckout.tsx</Code>
           to reset the cart on checkout. You can accomplish this using the following code:
           <CodeHighlight my="lg" code={useCheckoutUpdates} />
+          In practice, this would be retrieved from the backend separately to avoid sharing a state value.
         </Text>
       </Alert>
       <Text>
