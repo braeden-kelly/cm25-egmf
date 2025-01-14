@@ -61,11 +61,14 @@ const CheatSheetContent = () => {
       <Box py="lg">
         <Text sx={{ fontWeight: "bold" }}>Helpful Links</Text>
         <List>
-          <List.Item>Deployed Project</List.Item>
+          <List.Item><a href="https://micro-frontend-workshop.bitovi-sandbox.com/" target="_blank">Deployed Project</a></List.Item>
           <List.Item>
             Slides
             <List>
-              <List.Item>Section 1</List.Item>
+              <List.Item><a href="https://davidnic11.github.io/workshop-enterprise-grade-micro-frontends/05-project-configuration" target="_blank">Project Configuration</a></List.Item>
+              <List.Item><a href="https://davidnic11.github.io/workshop-enterprise-grade-micro-frontends/05-shared-configuration" target="_blank">Shared Configuration</a></List.Item>
+              <List.Item><a href="https://davidnic11.github.io/workshop-enterprise-grade-micro-frontends/05-fault-tolerant-composition" target="_blank">Fault Tolerant Composition</a></List.Item>
+              <List.Item><a href="https://davidnic11.github.io/workshop-enterprise-grade-micro-frontends/07-eventing-pub-sub" target="_blank">Eventing / Pub Sub</a></List.Item>
             </List>
           </List.Item>
         </List>
