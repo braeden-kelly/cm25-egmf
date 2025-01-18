@@ -1,3 +1,4 @@
 - https://micro-frontend-workshop.bitovi-sandbox.com/
-- https://github.com/bitovi/enterprise-grade-micro-frontends
+- https://github.com/bitovi
 - https://davidnic11.github.io/workshop-enterprise-grade-micro-frontends/1
+- https://discord.com/channels/1127340805741359164/1327990410282401802
