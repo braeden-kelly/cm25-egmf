@@ -1,0 +1,4 @@
+- Need to be cautious to implement properly
+  - Potential performance gain when done right
+  - Bloat, duplication, complexity when not
+- Stressed way too much the complexity, so this is just not ever going to be a reality for MMO imo so bailed
